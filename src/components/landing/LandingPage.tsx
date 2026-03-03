@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState, type FormEvent } from "react";
+import { usePathname, useRouter } from "next/navigation";
 import {
   CTA_MODE,
   LANDING_CONTENT,
@@ -24,6 +25,11 @@ const SECTION_IDS = {
 
 type NavMenu = "superpowers" | "channels" | null;
 type BillingCycle = "monthly" | "yearly";
+type LandingPageProps = {
+  forcedLocale?: Locale;
+};
+
+const LOCALE_PATH_PREFIX = /^\/(en|ar)(?=\/|$)/;
 
 const REPLICA_MEDIA = {
   heroDesktop: "https://cdn.memorae.ai/l3/Homepage-new-desktop.webp",
@@ -107,8 +113,22 @@ const PRICING_PLANS = {
   ],
 } satisfies Record<BillingCycle, Array<{ id: string; name: string; price: string; period: string; image: string }>>;
 
-export function LandingPage() {
+function getLocalePathname(pathname: string, locale: Locale): string {
+  if (LOCALE_PATH_PREFIX.test(pathname)) {
+    return `/${locale}/homepage`;
+  }
+
+  return `/${locale}/homepage`;
+}
+
+export function LandingPage({ forcedLocale }: LandingPageProps) {
+  const router = useRouter();
+  const pathname = usePathname();
   const [locale, setLocale] = useState<Locale>(() => {
+    if (forcedLocale) {
+      return forcedLocale;
+    }
+
     if (typeof window === "undefined") {
       return "en";
     }
@@ -131,6 +151,12 @@ export function LandingPage() {
   const content = LANDING_CONTENT[locale];
   const isArabic = locale === "ar";
   const direction = isArabic ? "rtl" : "ltr";
+
+  useEffect(() => {
+    if (forcedLocale && forcedLocale !== locale) {
+      setLocale(forcedLocale);
+    }
+  }, [forcedLocale, locale]);
 
   useEffect(() => {
     document.documentElement.lang = locale;
@@ -273,6 +299,19 @@ export function LandingPage() {
     ? ["عادات", "مهام", "مكافآت", "تركيز", "نمو", "استمرارية"]
     : ["Habits", "Quests", "Rewards", "Focus", "Growth", "Consistency"];
 
+  const switchLocale = (nextLocale: Locale) => {
+    if (nextLocale === locale) {
+      return;
+    }
+
+    setLocale(nextLocale);
+
+    const nextPathname = getLocalePathname(pathname ?? "", nextLocale);
+    const search = typeof window !== "undefined" ? window.location.search : "";
+    const hash = typeof window !== "undefined" ? window.location.hash : "";
+    router.push(`${nextPathname}${search}${hash}`);
+  };
+
   return (
     <div
       dir={direction}
@@ -319,7 +358,7 @@ export function LandingPage() {
               <button
                 type="button"
                 className="cta-secondary px-4 py-2 text-sm"
-                onClick={() => setLocale(isArabic ? "en" : "ar")}
+                onClick={() => switchLocale(isArabic ? "en" : "ar")}
                 aria-label="Switch language"
               >
                 {content.nav.languageToggle}
@@ -830,7 +869,7 @@ export function LandingPage() {
             <button
               type="button"
               className="hover:text-white"
-              onClick={() => setLocale(isArabic ? "en" : "ar")}
+              onClick={() => switchLocale(isArabic ? "en" : "ar")}
             >
               {content.footer.language}: {isArabic ? "AR" : "EN"}
             </button>

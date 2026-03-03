@@ -1,5 +1,13 @@
-import { LandingPage } from "@/components/landing/LandingPage";
+import { headers } from "next/headers";
+import { redirect } from "next/navigation";
 
-export default function Home() {
-  return <LandingPage />;
+function resolveDefaultLocale(acceptLanguageHeader: string): "en" | "ar" {
+  return /\bar\b/i.test(acceptLanguageHeader) ? "ar" : "en";
+}
+
+export default async function Home() {
+  const requestHeaders = await headers();
+  const acceptLanguage = requestHeaders.get("accept-language") ?? "";
+  const locale = resolveDefaultLocale(acceptLanguage);
+  redirect(`/${locale}/homepage`);
 }
