@@ -1,13 +1,6 @@
-import { headers } from "next/headers";
 import { redirect } from "next/navigation";
+import { DEFAULT_LOCALE } from "@/i18n/config";
 
-function resolveDefaultLocale(acceptLanguageHeader: string): "en" | "ar" {
-  return /\bar\b/i.test(acceptLanguageHeader) ? "ar" : "en";
-}
-
-export default async function Home() {
-  const requestHeaders = await headers();
-  const acceptLanguage = requestHeaders.get("accept-language") ?? "";
-  const locale = resolveDefaultLocale(acceptLanguage);
-  redirect(`/${locale}/homepage`);
+export default function Home() {
+  redirect(`/${DEFAULT_LOCALE}`);
 }

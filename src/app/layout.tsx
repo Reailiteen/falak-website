@@ -1,4 +1,10 @@
 import type { Metadata } from "next";
+import { headers } from "next/headers";
+import {
+  DEFAULT_LOCALE,
+  getLocaleDirection,
+  isLocale,
+} from "@/i18n/config";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -22,13 +28,18 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const requestHeaders = await headers();
+  const localeHeader = requestHeaders.get("x-falak-locale");
+  const locale = isLocale(localeHeader) ? localeHeader : DEFAULT_LOCALE;
+  const direction = getLocaleDirection(locale);
+
   return (
-    <html lang="en">
+    <html lang={locale} dir={direction}>
       <body className="antialiased">{children}</body>
     </html>
   );

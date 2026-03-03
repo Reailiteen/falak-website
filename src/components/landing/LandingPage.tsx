@@ -11,6 +11,7 @@ import {
   THEME_TOKENS,
 } from "@/lib/landing/content";
 import { buildTrackedUrl, trackLandingEvent } from "@/lib/landing/analytics";
+import { LANDING_UI_COPY } from "@/lib/landing/ui-copy";
 import type { FeatureItem, Locale } from "@/lib/landing/types";
 
 const SECTION_IDS = {
@@ -26,7 +27,7 @@ const SECTION_IDS = {
 type NavMenu = "superpowers" | "channels" | null;
 type BillingCycle = "monthly" | "yearly";
 type LandingPageProps = {
-  forcedLocale?: Locale;
+  locale: Locale;
 };
 
 const LOCALE_PATH_PREFIX = /^\/(en|ar)(?=\/|$)/;
@@ -114,67 +115,31 @@ const PRICING_PLANS = {
 } satisfies Record<BillingCycle, Array<{ id: string; name: string; price: string; period: string; image: string }>>;
 
 function getLocalePathname(pathname: string, locale: Locale): string {
-  if (LOCALE_PATH_PREFIX.test(pathname)) {
-    return `/${locale}/homepage`;
-  }
-
-  return `/${locale}/homepage`;
+  return `/${locale}`;
 }
 
-export function LandingPage({ forcedLocale }: LandingPageProps) {
+export function LandingPage({ locale }: LandingPageProps) {
   const router = useRouter();
   const pathname = usePathname();
-  const [locale, setLocale] = useState<Locale>(() => {
-    if (forcedLocale) {
-      return forcedLocale;
-    }
-
-    if (typeof window === "undefined") {
-      return "en";
-    }
-
-    const saved = window.localStorage.getItem("falak_locale");
-    if (saved === "en" || saved === "ar") {
-      return saved;
-    }
-
-    return window.navigator.language.toLowerCase().startsWith("ar") ? "ar" : "en";
-  });
   const [phone, setPhone] = useState("");
   const [activeMenu, setActiveMenu] = useState<NavMenu>(null);
   const [showTalkModal, setShowTalkModal] = useState(false);
   const [billingCycle, setBillingCycle] = useState<BillingCycle>("yearly");
   const viewedRef = useRef(false);
-  const previousLocaleRef = useRef<Locale>(locale);
   const depthRef = useRef({ half: false, nearEnd: false });
 
   const content = LANDING_CONTENT[locale];
+  const ui = LANDING_UI_COPY[locale];
   const isArabic = locale === "ar";
   const direction = isArabic ? "rtl" : "ltr";
 
   useEffect(() => {
-    if (forcedLocale && forcedLocale !== locale) {
-      setLocale(forcedLocale);
-    }
-  }, [forcedLocale, locale]);
-
-  useEffect(() => {
     document.documentElement.lang = locale;
     document.documentElement.dir = direction;
-    window.localStorage.setItem("falak_locale", locale);
 
     if (!viewedRef.current) {
       trackLandingEvent("landing_view", { locale, section: "page" });
       viewedRef.current = true;
-      return;
-    }
-
-    if (previousLocaleRef.current !== locale) {
-      trackLandingEvent("language_switch", {
-        from: previousLocaleRef.current,
-        to: locale,
-      });
-      previousLocaleRef.current = locale;
     }
   }, [direction, locale]);
 
@@ -304,7 +269,10 @@ export function LandingPage({ forcedLocale }: LandingPageProps) {
       return;
     }
 
-    setLocale(nextLocale);
+    trackLandingEvent("language_switch", {
+      from: locale,
+      to: nextLocale,
+    });
 
     const nextPathname = getLocalePathname(pathname ?? "", nextLocale);
     const search = typeof window !== "undefined" ? window.location.search : "";
@@ -338,13 +306,13 @@ export function LandingPage({ forcedLocale }: LandingPageProps) {
 
             <nav className="hidden items-center gap-7 text-sm font-medium text-white/85 lg:flex">
               <button type="button" className="falak-nav-link cursor-pointer" onMouseEnter={() => setActiveMenu("superpowers")}>
-                {isArabic ? "المزايا" : "Superpowers"}
+                {ui.navSuperpowers}
               </button>
               <button type="button" className="falak-nav-link cursor-pointer" onMouseEnter={() => setActiveMenu("channels")}>
-                {isArabic ? "القنوات" : "Channels"}
+                {ui.navChannels}
               </button>
               <button type="button" className="falak-nav-link cursor-pointer" onClick={() => onTryFree("nav_pricing")}>
-                {isArabic ? "الأسعار" : "Pricing"}
+                {ui.navPricing}
               </button>
               <a href={`#${SECTION_IDS.howItWorks}`} className="falak-nav-link">
                 {content.nav.links.howItWorks}
@@ -364,7 +332,7 @@ export function LandingPage({ forcedLocale }: LandingPageProps) {
                 {content.nav.languageToggle}
               </button>
               <button type="button" className="cta-primary hidden cursor-pointer px-5 py-2.5 text-sm sm:inline-flex" onClick={() => onTryFree("nav")}>
-                {isArabic ? "ابدأ مجاناً" : "Try free"}
+                {ui.ctaTryFree}
               </button>
             </div>
           </div>
@@ -374,9 +342,9 @@ export function LandingPage({ forcedLocale }: LandingPageProps) {
               {activeMenu === "superpowers" ? (
                 <>
                   <div className="mb-4 flex items-center justify-between">
-                    <h3 className="text-2xl font-semibold text-[#333333]">{isArabic ? "المزايا" : "Superpowers"}</h3>
+                    <h3 className="text-2xl font-semibold text-[#333333]">{ui.navSuperpowers}</h3>
                     <button type="button" className="text-sm font-semibold text-[#557BF4]" onClick={() => setActiveMenu(null)}>
-                      {isArabic ? "إغلاق" : "Close"}
+                      {ui.close}
                     </button>
                   </div>
                   <div className="grid grid-cols-3 gap-4">
@@ -399,9 +367,9 @@ export function LandingPage({ forcedLocale }: LandingPageProps) {
               ) : (
                 <>
                   <div className="mb-4 flex items-center justify-between">
-                    <h3 className="text-2xl font-semibold text-[#333333]">{isArabic ? "قنوات فلك" : "Falak Channels"}</h3>
+                    <h3 className="text-2xl font-semibold text-[#333333]">{ui.channelsHeading}</h3>
                     <button type="button" className="text-sm font-semibold text-[#557BF4]" onClick={() => setActiveMenu(null)}>
-                      {isArabic ? "إغلاق" : "Close"}
+                      {ui.close}
                     </button>
                   </div>
                   <div className="grid grid-cols-3 gap-4">
@@ -450,7 +418,7 @@ export function LandingPage({ forcedLocale }: LandingPageProps) {
                 </span>
                 <span className="font-semibold">4.8</span>
                 <span className="opacity-85">|</span>
-                <span className="opacity-90">{isArabic ? "موثوق لدى عائلات حول العالم" : "Trusted by families worldwide"}</span>
+                <span className="opacity-90">{ui.trustedByFamilies}</span>
               </div>
 
               <h1 className="text-balance text-[47px] font-semibold leading-[4rem] tracking-tight text-white md:text-[3.5rem] md:leading-[4.5rem] lg:text-[6rem] lg:leading-[6rem]">
@@ -462,10 +430,10 @@ export function LandingPage({ forcedLocale }: LandingPageProps) {
 
               <div className="mt-6 flex flex-col items-center gap-4 md:flex-row">
                 <button type="button" className="cta-primary cursor-pointer px-14 py-[14px] text-xl md:text-2xl" onClick={() => onTryFree("hero")}>
-                  {isArabic ? "ابدأ مجاناً" : "Try free"}
+                  {ui.ctaTryFree}
                 </button>
                 <button type="button" className="cta-outline-light cursor-pointer px-10 py-[14px] text-xl md:text-2xl" onClick={() => setShowTalkModal(true)}>
-                  {isArabic ? "تحدث مع فلك" : "Talk to Falak"}
+                  {ui.ctaTalkToFalak}
                 </button>
               </div>
 
@@ -504,10 +472,10 @@ export function LandingPage({ forcedLocale }: LandingPageProps) {
               <img src={REPLICA_MEDIA.bubble} alt="" className="falak-hero-orb object-contain" loading="lazy" />
             </div>
             <div className="pointer-events-none absolute -left-2 top-[24%] hidden rotate-[-15deg] lg:block">
-              <div className="chip border-white/40 bg-white/20 text-white">{isArabic ? "هدوء" : "Calm"}</div>
+              <div className="chip border-white/40 bg-white/20 text-white">{ui.chipCalm}</div>
             </div>
             <div className="pointer-events-none absolute -right-2 top-[34%] hidden rotate-[11deg] lg:block">
-              <div className="chip border-white/40 bg-white/20 text-white">{isArabic ? "ثبات" : "Steady"}</div>
+              <div className="chip border-white/40 bg-white/20 text-white">{ui.chipSteady}</div>
             </div>
 
             <div className="mx-auto mt-8 flex max-w-[250px] items-center gap-4 md:hidden">
@@ -519,9 +487,9 @@ export function LandingPage({ forcedLocale }: LandingPageProps) {
                     </div>
                   </div>
                   <div>
-                    <p className="text-xs font-semibold text-[#557BF4]">{isArabic ? "قريباً" : "Soon"}</p>
+                    <p className="text-xs font-semibold text-[#557BF4]">{ui.soon}</p>
                     <h3 className="text-lg font-semibold text-[#102B35]">Falak App</h3>
-                    <p className="text-sm text-[#5B6F75]">{isArabic ? "على App Store و Google Play" : "On App Store and Google Play"}</p>
+                    <p className="text-sm text-[#5B6F75]">{ui.onStores}</p>
                   </div>
                 </div>
               </article>
@@ -537,10 +505,10 @@ export function LandingPage({ forcedLocale }: LandingPageProps) {
                   </div>
                   <div className="flex flex-col">
                     <span className="mb-1 w-fit rounded-md bg-[#FF66C4]/15 px-2 py-[2px] text-[10px] font-semibold text-[#FF66C4]">
-                      {isArabic ? "قريباً" : "Coming soon"}
+                      {ui.comingSoon}
                     </span>
                     <h3 className="text-left text-lg font-semibold text-[#111827]">Falak App</h3>
-                    <p className="text-left text-sm text-[#6B7280]">{isArabic ? "متاح على المتجرين" : "Available on both stores"}</p>
+                    <p className="text-left text-sm text-[#6B7280]">{ui.availableOnStores}</p>
                   </div>
                 </div>
               </article>
@@ -571,16 +539,16 @@ export function LandingPage({ forcedLocale }: LandingPageProps) {
 
           <div className="relative z-10 mt-16 w-full max-w-6xl px-4 text-center md:mt-0">
             <h2 className="text-xl font-semibold leading-tight text-[#333333] md:text-3xl lg:text-4xl">
-              {isArabic ? "خطوات واضحة، نتائج هادئة كل يوم." : "Clear steps, calm progress every day."}
+              {ui.featureHeadingLine1}
             </h2>
             <p className="mt-2 text-lg font-semibold leading-tight text-[#333333] md:text-2xl lg:text-3xl">
-              {isArabic ? "بدون ضغط، فقط نمو ثابت للأسرة." : "No pressure, just steady family growth."}
+              {ui.featureHeadingLine2}
             </p>
           </div>
 
           <div className="container-shell relative z-10">
             <h2 className="falak-memory-title mt-40">
-              {isArabic ? "نظام هادئ ينظم يوم العائلة" : "A calm system for daily family flow"}
+              {ui.memorySystemTitle}
             </h2>
 
             <div className="falak-floating-tags" aria-hidden="true">
@@ -709,11 +677,9 @@ export function LandingPage({ forcedLocale }: LandingPageProps) {
 
         <section id={SECTION_IDS.channels} className="section-padding falak-channel-zone">
           <div className="container-shell">
-            <h2 className="section-heading text-center text-white">{isArabic ? "قنوات فلك" : "Falak Channels"}</h2>
+            <h2 className="section-heading text-center text-white">{ui.channelsHeading}</h2>
             <p className="mx-auto mt-4 max-w-3xl text-center text-sm leading-7 text-white/85">
-              {isArabic
-                ? "تجربة موحّدة بين الوالدين والأطفال مع تنبيهات ودعم مستمر عبر التطبيق."
-                : "A unified guardian-child workflow with calm reminders, approvals, and progress in one connected app experience."}
+              {ui.channelsDescription}
             </p>
             <div className="mt-8 grid gap-4 md:grid-cols-3">
               {CHANNEL_ITEMS.map((item) => (
@@ -730,24 +696,24 @@ export function LandingPage({ forcedLocale }: LandingPageProps) {
         <section id={SECTION_IDS.pricing} className="section-padding bg-[#f5f8ff]">
           <div id="try_for_free" className="relative -top-20" aria-hidden="true" />
           <div className="container-shell">
-            <h2 className="section-heading text-center">{isArabic ? "ابدأ بالخطة المناسبة" : "Start with the plan that fits your family"}</h2>
+            <h2 className="section-heading text-center">{ui.pricingHeading}</h2>
             <div className="mx-auto mt-6 flex w-fit items-center gap-2 rounded-full bg-[#eaf2f1] p-1">
               <button
                 type="button"
                 className={`rounded-full px-5 py-2 text-sm font-semibold transition ${billingCycle === "monthly" ? "bg-white text-[#2B3A66] shadow-sm" : "text-[#5E6A85]"}`}
                 onClick={() => setBillingCycle("monthly")}
               >
-                {isArabic ? "شهري" : "Monthly"}
+                {ui.monthly}
               </button>
               <button
                 type="button"
                 className={`rounded-full px-5 py-2 text-sm font-semibold transition ${billingCycle === "yearly" ? "bg-white text-[#2B3A66] shadow-sm" : "text-[#5E6A85]"}`}
                 onClick={() => setBillingCycle("yearly")}
               >
-                {isArabic ? "سنوي" : "Yearly"}
+                {ui.yearly}
               </button>
               <span className="rounded-full bg-[#557BF4] px-3 py-1 text-[10px] font-semibold uppercase tracking-wide text-white">
-                {isArabic ? "6 أشهر مجاناً" : "6 Months Free"}
+                {ui.sixMonthsFree}
               </span>
             </div>
 
@@ -765,7 +731,7 @@ export function LandingPage({ forcedLocale }: LandingPageProps) {
                     className="cta-primary mt-5 w-full justify-center px-4 py-3 text-sm"
                     onClick={() => onTryFree(`pricing_${plan.id}`)}
                   >
-                    {isArabic ? "ابدأ الآن" : "Start now"}
+                    {ui.startNow}
                   </button>
                 </article>
               ))}
@@ -871,7 +837,7 @@ export function LandingPage({ forcedLocale }: LandingPageProps) {
               className="hover:text-white"
               onClick={() => switchLocale(isArabic ? "en" : "ar")}
             >
-              {content.footer.language}: {isArabic ? "AR" : "EN"}
+              {content.footer.language}: {ui.languageCode}
             </button>
           </div>
         </div>
@@ -882,15 +848,13 @@ export function LandingPage({ forcedLocale }: LandingPageProps) {
           <div className="w-full max-w-lg rounded-3xl border border-white/20 bg-white p-6 shadow-2xl">
             <div className="flex items-start justify-between gap-3">
               <div>
-                <h3 className="text-2xl font-semibold text-[#23364a]">{isArabic ? "تحدث مع فلك" : "Talk to Falak"}</h3>
+                <h3 className="text-2xl font-semibold text-[#23364a]">{ui.ctaTalkToFalak}</h3>
                 <p className="mt-2 text-sm leading-7 text-[#556b7a]">
-                  {isArabic
-                    ? "اختر أسرع طريقة للبدء: تنزيل التطبيق أو التواصل مع فريقنا."
-                    : "Pick the fastest way to start: install the app now or contact our team for setup help."}
+                  {ui.talkModalBody}
                 </p>
               </div>
               <button type="button" className="rounded-full bg-[#eef4ff] px-3 py-1 text-sm font-semibold text-[#405a8e]" onClick={() => setShowTalkModal(false)}>
-                {isArabic ? "إغلاق" : "Close"}
+                {ui.close}
               </button>
             </div>
 
@@ -920,7 +884,7 @@ export function LandingPage({ forcedLocale }: LandingPageProps) {
                 {content.hero.ctaPrimaryAndroid}
               </a>
               <a href="mailto:support@falak.app" className="rounded-2xl border border-[#dbe6f7] px-4 py-3 text-center text-sm font-semibold text-[#2e4f79] sm:col-span-2">
-                {isArabic ? "راسلنا عبر البريد" : "Email support@falak.app"}
+                {ui.emailSupport}
               </a>
             </div>
           </div>

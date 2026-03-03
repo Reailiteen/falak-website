@@ -3,9 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "clean": "rm -rf .next",
+    "clean:hard": "rm -rf .next .turbo",
     "dev": "next dev",
+    "dev:local": "next dev --hostname 127.0.0.1",
     "build": "next build",
     "start": "next start",
+    "verify-redirect": "node scripts/verify-homepage-redirect.mjs",
     "lint": "next lint"
   },
   "dependencies": {
@@ -18,6 +22,7 @@
     "@types/node": "^22.0.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
+    "playwright": "^1.58.2",
     "postcss": "^8.4.0",
     "tailwindcss": "^4.0.0",
     "typescript": "^5.0.0"

@@ -1,6 +1,6 @@
 # Falak Web
 
-Next.js app for Falak with locale-based landing routes.
+Next.js app for Falak with middleware-driven i18n routing and translated landing content.
 
 ## Stack
 
@@ -17,12 +17,23 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
-## Locale Routes
+## i18n Routing
 
-- `/` redirects to `/en/homepage`
-- `/en/homepage` English landing page
-- `/ar/homepage` Arabic landing page
-- `/en` and `/ar` redirect to their `/homepage` route
+- Locale-aware routing is handled in [`middleware.ts`](./middleware.ts).
+- Supported locales are defined in [`src/i18n/config.ts`](./src/i18n/config.ts).
+- `/` redirects to the preferred locale homepage based on cookie/`Accept-Language`.
+- Canonical landing URLs:
+  - `/en`
+  - `/ar`
+- Alias URLs:
+  - `/en/homepage`
+  - `/ar/homepage`
+- Runaway URLs like `/en/homepage/homepage/...` are normalized to `/en/homepage`.
+
+## Translations
+
+- Main page content is in [`src/lib/landing/content.ts`](./src/lib/landing/content.ts).
+- Additional UI copy is in [`src/lib/landing/ui-copy.ts`](./src/lib/landing/ui-copy.ts).
 
 ## Scripts
 
