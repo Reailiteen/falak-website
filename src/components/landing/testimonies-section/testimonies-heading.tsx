@@ -1,11 +1,12 @@
 export function TestimoniesHeading() {
   return (
-    <div className="text-center mb-12 px-4">
-      <h2 className="text-[36px] lg:text-[52px] font-semibold leading-tight text-[#0F172A]">
-        <span className="bg-gradient-to-r from-[#557BF4] to-[#8B5CF6] bg-clip-text text-transparent">
-          200k+
-        </span>{" "}
-        people they have forgotten to forget
+    <div className="text-center mb-6 md:mb-12">
+      <h2 className="text-4xl md:text-6xl mb-4">
+        <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#557BF4] to-[#FF66C4]">
+          200k+ people
+        </span>
+        <br />
+        <span className="text-[#01214F] font-semibold">they have forgotten to forget</span>
       </h2>
     </div>
   );

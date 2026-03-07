@@ -45,6 +45,7 @@ export interface PricingPlan {
 export interface TestimonialItem {
   name: string;
   role: string;
+  title: string;
   quote: string;
   photo: string;
 }

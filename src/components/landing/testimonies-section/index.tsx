@@ -4,25 +4,25 @@ import { ViewMorePill } from "./view-more-pill";
 
 export function TestimoniesSection() {
   return (
-    <section className="w-full py-20 lg:py-32 px-4 bg-white">
-      <div className="max-w-7xl mx-auto md:px-20">
-        <TestimoniesHeading />
-        <TestimonialsGrid />
-        <ViewMorePill />
+    <div className="animate-up" id="testimonies">
+      <div className="w-full py-16 px-4 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <TestimoniesHeading />
+          <TestimonialsGrid />
+          <ViewMorePill />
 
-        {/* Mobile CTA */}
-        <div className="md:hidden mt-8 flex justify-center">
-          <button
-            type="button"
-            className="rounded-full px-8 py-4 text-white font-semibold text-[16px]"
-            style={{
-              background: "linear-gradient(135deg, #557BF4 0%, #8B5CF6 100%)",
-            }}
-          >
-            Try for free →
-          </button>
+          {/* Mobile CTA */}
+          <div className="mt-12 flex justify-center md:hidden">
+            <button
+              type="button"
+              className="w-[320px] px-6 py-3 rounded-full bg-gradient-to-r from-[#557BF4] to-[#FF66C4] text-white text-2xl font-semibold flex items-center justify-center gap-2 shadow-sm active:scale-95 transition-transform"
+            >
+              <span>Try for free</span>
+              <span aria-hidden="true">→</span>
+            </button>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
