@@ -11,7 +11,20 @@ function scrollToId(id: string) {
   if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
-export function Navbar() {
+type NavbarProps = {
+  visible?: boolean;
+  isInHero?: boolean;
+};
+
+function Chevron() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="ml-0.5 opacity-60">
+      <path d="M6 9l6 6 6-6" />
+    </svg>
+  );
+}
+
+export function Navbar({ visible = true, isInHero = false }: NavbarProps) {
   const [activeMenu, setActiveMenu] = useState<NavMenu>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -32,21 +45,44 @@ export function Navbar() {
     scrollToId(id);
   };
 
+  const pillClass = isInHero ? "falak-nav-pill-hero" : "falak-nav-pill";
+
   return (
     <>
-      <header className="sticky top-2 z-40 px-3 md:top-3" onMouseLeave={() => setActiveMenu(null)}>
-        <div className="mx-auto max-w-[1300px]">
-          <div className="falak-nav-pill">
-            <a href="#top">
-              <img src={MEDIA.logoHome} alt="Memorae" className="h-7 object-contain" />
+      <header
+        className="fixed left-0 right-0 top-0 z-40 px-4 pt-2 transition-transform duration-300 ease-out md:pt-3"
+        style={{ transform: visible ? "translateY(0)" : "translateY(-100%)" }}
+        onMouseLeave={() => setActiveMenu(null)}
+      >
+        <div className="mx-auto max-w-[1120px]">
+          <div className={pillClass}>
+            {/* Logo */}
+            <a href="#top" className="flex-shrink-0">
+              <img
+                src={MEDIA.logoDark}
+                alt="Memorae"
+                className="h-7 object-contain"
+                onError={(e) => {
+                  (e.currentTarget as HTMLImageElement).src = MEDIA.memoraeLogo;
+                }}
+              />
             </a>
 
-            <nav className="hidden items-center gap-7 text-sm font-medium text-white/85 lg:flex">
-              <button type="button" className="falak-nav-link cursor-pointer" onMouseEnter={() => setActiveMenu("superpowers")}>
-                Superpowers
+            {/* Desktop nav links */}
+            <nav className="hidden items-center gap-6 text-sm font-medium text-[#1a1a2e]/80 lg:flex">
+              <button
+                type="button"
+                className="falak-nav-link flex cursor-pointer items-center gap-0.5"
+                onMouseEnter={() => setActiveMenu("superpowers")}
+              >
+                Superpowers <Chevron />
               </button>
-              <button type="button" className="falak-nav-link cursor-pointer" onMouseEnter={() => setActiveMenu("channels")}>
-                Channels
+              <button
+                type="button"
+                className="falak-nav-link flex cursor-pointer items-center gap-0.5"
+                onMouseEnter={() => setActiveMenu("channels")}
+              >
+                Channels <Chevron />
               </button>
               <button type="button" className="falak-nav-link cursor-pointer" onClick={() => handleNav("faq")}>
                 Support
@@ -57,16 +93,28 @@ export function Navbar() {
               <a href="#" className="falak-nav-link">Log in</a>
             </nav>
 
+            {/* Right side */}
             <div className="flex items-center gap-2">
-              <button type="button" className="cta-primary hidden cursor-pointer px-5 py-2.5 text-sm sm:inline-flex" onClick={() => handleNav("pricing")}>
+              <button
+                type="button"
+                className="cta-primary hidden cursor-pointer px-5 py-2.5 text-sm sm:inline-flex"
+                onClick={() => handleNav("pricing")}
+              >
                 {NAV.ctaTryFree}
               </button>
-              <button type="button" className="lg:hidden" onClick={() => setMobileMenuOpen(true)} aria-label="Open menu">
-                <img src={MEDIA.menuIcon} alt="" className="h-6 w-6 invert" />
+              {/* Hamburger */}
+              <button
+                type="button"
+                className="flex h-9 w-9 items-center justify-center rounded-full bg-black/5 lg:hidden"
+                onClick={() => setMobileMenuOpen(true)}
+                aria-label="Open menu"
+              >
+                <img src={MEDIA.menuIcon} alt="" className="h-5 w-5" />
               </button>
             </div>
           </div>
 
+          {/* Mega menus */}
           {activeMenu && (
             <div className="falak-mega-menu hidden lg:block" onMouseEnter={() => setActiveMenu(activeMenu)}>
               {activeMenu === "superpowers" ? (
@@ -110,6 +158,7 @@ export function Navbar() {
         </div>
       </header>
 
+      {/* Mobile menu overlay */}
       {mobileMenuOpen && (
         <div className="memo-mobile-menu">
           <button type="button" className="absolute right-6 top-6 text-2xl text-white" onClick={() => setMobileMenuOpen(false)} aria-label="Close menu">

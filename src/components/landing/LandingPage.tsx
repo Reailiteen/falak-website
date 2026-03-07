@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { trackLandingEvent } from "@/lib/landing/analytics";
 import type { Locale } from "@/lib/landing/types";
 
@@ -15,9 +15,15 @@ import { TestimoniesSection } from "@/components/landing/testimonies-section";
 import { FaqSection } from "@/components/landing/faq-section";
 import { FooterSection } from "@/components/landing/footer-section";
 
+const SCROLL_THRESHOLD = 8;
+
 export function LandingPage({ locale }: { locale: Locale }) {
   const viewedRef = useRef(false);
   const depthRef = useRef({ half: false, nearEnd: false });
+  const heroRef = useRef<HTMLDivElement>(null);
+  const lastScrollY = useRef(0);
+  const [navVisible, setNavVisible] = useState(true);
+  const [isInHero, setIsInHero] = useState(true);
 
   useEffect(() => {
     document.documentElement.lang = "en";
@@ -30,8 +36,21 @@ export function LandingPage({ locale }: { locale: Locale }) {
 
   useEffect(() => {
     const onScroll = () => {
+      const y = window.scrollY;
+      const heroHeight = heroRef.current?.offsetHeight ?? window.innerHeight;
+      setIsInHero(y < heroHeight);
+
+      const delta = y - lastScrollY.current;
+      if (Math.abs(delta) >= SCROLL_THRESHOLD) {
+        setNavVisible(delta <= 0);
+        lastScrollY.current = y;
+      }
+      if (y <= 0) {
+        setNavVisible(true);
+      }
+
       const pageHeight = document.documentElement.scrollHeight;
-      const viewportBottom = window.scrollY + window.innerHeight;
+      const viewportBottom = y + window.innerHeight;
       const depth = (viewportBottom / pageHeight) * 100;
       if (!depthRef.current.half && depth >= 50) {
         depthRef.current.half = true;
@@ -48,11 +67,13 @@ export function LandingPage({ locale }: { locale: Locale }) {
   }, [locale]);
 
   return (
-    <div className="relative min-h-screen overflow-x-clip bg-white text-[#18313b]">
-      <Navbar />
+    <div className="relative min-h-screen overflow-x-clip bg-white text-[#18313b] pt-0 pb-0">
+      <Navbar visible={navVisible} isInHero={isInHero} />
 
       <main id="top" className="relative">
-        <HeroSection />
+        <div ref={heroRef}>
+          <HeroSection />
+        </div>
         <ProblemStatement />
         <SuperpowersSection />
         <FeaturesSection />

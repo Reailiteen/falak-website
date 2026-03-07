@@ -9,7 +9,7 @@ function scrollToId(id: string) {
 
 export function HeroSection() {
   return (
-    <section className="memo-hero-bg relative overflow-hidden px-4 pb-10 pt-6 md:pt-8 md:pb-16">
+    <section className="memo-hero-bg relative overflow-hidden px-4 pb-10 pt-20 md:pt-24 md:pb-16">
       <div className="container-shell relative">
         {/* Floating 6-new chip */}
         <div className="pointer-events-none absolute bottom-20 left-16 hidden lg:left-[90%] lg:top-[20%] lg:flex">

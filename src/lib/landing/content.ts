@@ -22,6 +22,7 @@ export const MEDIA = {
 
   logoWhite: "https://cdn.memorae.ai/l3/MemoraeLogoWhite.png",
   logoHome: "https://cdn.memorae.ai/l3/Memorae_logo_home_white.png",
+  logoDark: "https://cdn.memorae.ai/l3/Memorae_logo_home_dark.png",
   memoraeLogo: "https://cdn.memorae.ai/l4/MemoraeLogo.webp",
 
   note1: "https://cdn.memorae.ai/l3/image%20290.png",
