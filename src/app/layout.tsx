@@ -8,23 +8,23 @@ import {
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Falak | Calm quest and rewards app for families",
+  title: "Memorae | Your personal memory assistant",
   description:
-    "Falak helps parents and children build healthy habits with quests, rewards, and calm weekly progress tracking.",
-  metadataBase: new URL("https://falak.app"),
+    "Memorae helps you remember, organize, and act. Unlimited reminders, smart lists, and AI-powered memory across WhatsApp, Telegram, email, and the Memorae App.",
+  metadataBase: new URL("https://memorae.ai"),
   openGraph: {
-    title: "Falak",
+    title: "Memorae",
     description:
-      "Guide healthy habits with less pressure and more consistency through quests and rewards.",
-    url: "https://falak.app",
-    siteName: "Falak",
+      "You are not designed to remember everything. Memorae is.",
+    url: "https://memorae.ai",
+    siteName: "Memorae",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Falak",
+    title: "Memorae",
     description:
-      "A calm parent-child app for quests, habits, and rewards with reliable weekly progress tracking.",
+      "Your personal memory assistant. Unlimited reminders, smart lists, and AI-powered memory.",
   },
 };
 

@@ -1,23 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  --background: #fffef9;
+  --background: #ffffff;
   --foreground: #18313b;
-  --falak-primary: #7ccfd6;
-  --falak-primary-strong: #2f9ca8;
-  --falak-accent: #f5c27d;
-  --falak-bg: #fffef9;
-  --falak-surface-alt: #f2fafb;
-  --falak-text: #18313b;
-  --falak-text-muted: #516c74;
-  --falak-border: #cde7eb;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: "Avenir Next", "Avenir", "SF Pro Text", "Segoe UI", "Noto Sans Arabic", "Tahoma", sans-serif;
-  --font-mono: "SF Mono", "Menlo", "Monaco", "Cascadia Mono", "Roboto Mono", monospace;
+  --font-sans: "Inter", "SF Pro Text", "Segoe UI", sans-serif;
+  --font-mono: "SF Mono", "Menlo", "Monaco", monospace;
 }
 
 * {
@@ -35,8 +27,9 @@ body {
   margin: 0;
   background: var(--background);
   color: var(--foreground);
-  font-family: "Avenir Next", "Avenir", "SF Pro Text", "Segoe UI", "Noto Sans Arabic", "Tahoma", sans-serif;
+  font-family: "Inter", "SF Pro Text", "Segoe UI", sans-serif;
   text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
 a {
@@ -61,13 +54,8 @@ a {
   letter-spacing: -0.02em;
 }
 
-.section-band {
-  border-block: 1px solid color-mix(in srgb, var(--falak-border) 80%, white 20%);
-  background:
-    linear-gradient(180deg, color-mix(in srgb, var(--falak-surface-alt) 70%, white 30%), rgba(255, 255, 255, 0.5));
-}
-
-.falak-hero-bg {
+/* ── Hero background ── */
+.memo-hero-bg {
   background-image: linear-gradient(180deg, rgba(8, 13, 28, 0.58), rgba(8, 13, 28, 0.64)),
     url("https://cdn.memorae.ai/l3/Mobile-2.webp");
   background-position: center;
@@ -75,6 +63,7 @@ a {
   background-size: cover;
 }
 
+/* ── Sticky nav pill ── */
 .falak-nav-pill {
   display: flex;
   align-items: center;
@@ -105,6 +94,7 @@ a {
   transform: translateY(-1px);
 }
 
+/* ── Mega menu ── */
 .falak-mega-menu {
   margin-inline: auto;
   margin-top: 0.75rem;
@@ -130,27 +120,24 @@ a {
   box-shadow: 0 12px 26px rgba(38, 72, 129, 0.18);
 }
 
-.falak-hero-orb {
+/* ── Hero orbs ── */
+.memo-hero-orb {
   width: 56px;
   height: 56px;
   border-radius: 999px;
 }
 
-.falak-hero-orb-ring {
-  border: 4px solid rgba(255, 255, 255, 0.85);
-  box-shadow: 0 8px 24px rgba(10, 24, 56, 0.35);
-}
-
-.falak-hero-orb-bubble {
-  background: radial-gradient(circle at 30% 30%, #ffffff 8%, #8fdcff 48%, #557bf4 100%);
-  box-shadow: 0 8px 24px rgba(10, 24, 56, 0.35);
-}
-
-.falak-chaos-zone {
+/* ── Dark sections ── */
+.memo-dark-zone {
   background: radial-gradient(circle at 82% 18%, rgba(86, 122, 244, 0.22), transparent 40%), #0b1b38;
 }
 
-.falak-chaos-card {
+.memo-channel-zone {
+  background: radial-gradient(circle at 14% 18%, rgba(85, 123, 244, 0.3), transparent 38%), #0c1a35;
+}
+
+/* ── Chaos cards ── */
+.memo-chaos-card {
   min-height: 280px;
   border-radius: 24px;
   border: 1px solid rgba(255, 255, 255, 0.18);
@@ -160,116 +147,100 @@ a {
   box-shadow: 0 20px 40px rgba(3, 7, 20, 0.35);
 }
 
-.falak-forget-card {
-  min-height: 280px;
-  border-radius: 24px;
-  border: 1px solid rgba(255, 255, 255, 0.24);
-  background-position: center;
-  background-size: cover;
-  padding: 1.5rem;
-  box-shadow: 0 18px 32px rgba(8, 22, 43, 0.22);
-}
-
-.falak-multicards-zone {
-  background-image: linear-gradient(180deg, rgba(8, 16, 32, 0.62), rgba(8, 16, 32, 0.74)),
-    url("https://memorae.ai/_next/image/?url=https%3A%2F%2Fcdn.memorae.ai%2Fl3%2Fmulticards1_bg_2.webp&w=1920&q=75");
-  background-position: center;
-  background-size: cover;
-}
-
-.falak-multicard {
-  border-radius: 18px;
-  border: 1px solid rgba(255, 255, 255, 0.26);
-  background: rgba(255, 255, 255, 0.08);
-  box-shadow: 0 14px 30px rgba(7, 13, 29, 0.22);
-  backdrop-filter: blur(9px);
-  -webkit-backdrop-filter: blur(9px);
-}
-
-.falak-plan-card {
+/* ── Superpowers grid card ── */
+.memo-sp-card {
   border-radius: 20px;
-  border: 1px solid color-mix(in srgb, var(--falak-border) 80%, white 20%);
-  background: linear-gradient(170deg, rgba(255, 255, 255, 0.97), rgba(238, 244, 255, 0.94));
-  box-shadow: 0 16px 28px rgba(28, 58, 104, 0.12);
-  padding: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  overflow: hidden;
+  transition: transform 220ms ease, box-shadow 220ms ease;
 }
 
-.falak-channel-zone {
-  background: radial-gradient(circle at 14% 18%, rgba(85, 123, 244, 0.3), transparent 38%), #0c1a35;
+.memo-sp-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 32px rgba(5, 12, 30, 0.28);
 }
 
-.falak-channel-card {
+/* ── Chat demo bubble ── */
+.memo-chat-card {
+  min-width: 300px;
+  max-width: 340px;
   border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  background: rgba(255, 255, 255, 0.08);
-  padding: 0.75rem;
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid #e8edf6;
+  background: #ffffff;
+  padding: 1.25rem;
+  box-shadow: 0 8px 24px rgba(24, 52, 80, 0.08);
+  flex-shrink: 0;
 }
 
-.falak-pricing-card {
+.memo-chat-user {
+  border-radius: 16px 16px 4px 16px;
+  background: linear-gradient(135deg, #557bf4 0%, #7c5cf5 100%);
+  color: #ffffff;
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.memo-chat-bot {
+  border-radius: 4px 16px 16px 16px;
+  background: #f4f6fb;
+  color: #333333;
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+/* ── Pricing card ── */
+.memo-pricing-card {
   border-radius: 22px;
   border: 1px solid #d9e4f8;
   background: linear-gradient(170deg, #ffffff, #f4f8ff);
   box-shadow: 0 18px 30px rgba(33, 64, 115, 0.11);
-  padding: 0.9rem;
+  padding: 1.25rem;
+  position: relative;
 }
 
-.falak-trust-zone {
-  background: radial-gradient(circle at 16% 18%, rgba(124, 207, 214, 0.22), transparent 36%), #122640;
+.memo-pricing-popular {
+  border: 2px solid #557bf4;
 }
 
-.falak-trust-item {
-  border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.24);
-  background: rgba(255, 255, 255, 0.09);
-  color: rgba(255, 255, 255, 0.94);
+/* ── Testimonial card ── */
+.memo-testimonial-card {
+  min-width: 320px;
+  max-width: 360px;
+  border-radius: 20px;
+  border: 1px solid #e8edf6;
+  background: #ffffff;
+  padding: 1.5rem;
+  box-shadow: 0 8px 24px rgba(24, 52, 80, 0.08);
+  flex-shrink: 0;
 }
 
-.falak-faq-zone {
+/* ── FAQ ── */
+.memo-faq-zone {
   background: radial-gradient(circle at 82% 18%, rgba(85, 123, 244, 0.3), transparent 38%), #09142a;
 }
 
-.falak-faq-item {
+.memo-faq-item {
   border-radius: 16px;
   border: 1px solid rgba(255, 255, 255, 0.2);
   background: rgba(255, 255, 255, 0.08);
 }
 
-.glass-card {
-  border-radius: 20px;
-  border: 1px solid color-mix(in srgb, var(--falak-border) 82%, white 18%);
-  background: linear-gradient(160deg, rgba(255, 255, 255, 0.94), rgba(242, 250, 251, 0.8));
-  box-shadow:
-    0 2px 3px rgba(24, 49, 59, 0.03),
-    0 20px 30px rgba(17, 67, 77, 0.07);
+/* ── Stats counter ── */
+.memo-stat-number {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 700;
+  background: linear-gradient(90deg, #557bf4, #ff66c4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-.chip,
-.chip-light {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  border-radius: 999px;
-  font-weight: 600;
-  font-size: 0.79rem;
-  line-height: 1;
-}
-
-.chip {
-  padding: 0.55rem 0.95rem;
-  background: color-mix(in srgb, var(--falak-primary) 24%, white 76%);
-  color: var(--falak-primary-strong);
-  border: 1px solid color-mix(in srgb, var(--falak-primary) 42%, white 58%);
-}
-
-.chip-light {
-  padding: 0.55rem 0.82rem;
-  color: var(--falak-text-muted);
-  border: 1px solid color-mix(in srgb, var(--falak-border) 88%, white 12%);
-  background: rgba(255, 255, 255, 0.75);
-}
-
+/* ── CTA buttons ── */
 .cta-primary,
 .cta-secondary,
 .cta-outline-light {
@@ -277,12 +248,11 @@ a {
   align-items: center;
   border-radius: 999px;
   font-weight: 600;
+  cursor: pointer;
   transition:
     transform 220ms ease,
     box-shadow 220ms ease,
-    background-color 220ms ease,
-    color 220ms ease,
-    border-color 220ms ease;
+    background-color 220ms ease;
 }
 
 .cta-primary {
@@ -292,8 +262,8 @@ a {
 }
 
 .cta-secondary {
-  color: var(--falak-primary-strong);
-  border: 1px solid color-mix(in srgb, var(--falak-border) 85%, white 15%);
+  color: #557bf4;
+  border: 1px solid #d9e4f8;
   background: rgba(255, 255, 255, 0.92);
 }
 
@@ -314,13 +284,13 @@ a {
 .cta-secondary:focus-visible,
 .cta-outline-light:focus-visible,
 summary:focus-visible,
-button:focus-visible,
-input:focus-visible {
+button:focus-visible {
   outline: 3px solid color-mix(in srgb, #557bf4 72%, white 28%);
   outline-offset: 2px;
 }
 
-.falak-app-side-card {
+/* ── Floating app side card ── */
+.memo-app-card {
   border-radius: 16px;
   border: 0.5px solid rgba(255, 255, 255, 0.92);
   background: rgba(255, 255, 255, 0.2);
@@ -333,18 +303,12 @@ input:focus-visible {
   transition: transform 220ms ease;
 }
 
-.falak-app-side-card:hover {
+.memo-app-card:hover {
   transform: scale(1.02);
 }
 
-.falak-message-stack {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-  align-items: center;
-}
-
-.falak-message-line {
+/* ── Message lines ── */
+.memo-message-line {
   text-align: center;
   font-size: clamp(1.375rem, 2.7vw, 2.125rem);
   line-height: 1.18;
@@ -352,101 +316,98 @@ input:focus-visible {
   font-weight: 600;
 }
 
-.falak-memory-title {
-  text-align: center;
-  margin-inline: auto;
-  max-width: 1400px;
-  font-size: clamp(3.5rem, 12vw, 15.9rem);
-  line-height: 1;
-  font-weight: 700;
-  color: #333333;
-  letter-spacing: -0.025em;
+/* ── Notification mock ── */
+.memo-notif-mock {
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 1rem 1.25rem;
+  max-width: 380px;
 }
 
-.falak-floating-tags {
-  position: relative;
-  min-height: 200px;
-  margin-top: 2.25rem;
-}
-
-.falak-float-tag {
-  position: absolute;
-  border-radius: 999px;
-  border: 1px solid color-mix(in srgb, var(--falak-border) 84%, white 16%);
-  background: linear-gradient(140deg, rgba(255, 255, 255, 0.95), rgba(236, 246, 249, 0.9));
-  color: #27434c;
-  font-size: 0.82rem;
-  font-weight: 600;
-  padding: 0.5rem 0.85rem;
-  box-shadow: 0 12px 24px rgba(22, 62, 71, 0.1);
-  animation: float-gentle 4.8s ease-in-out infinite;
-}
-
-.falak-float-tag-1 {
-  left: 4%;
-  top: 14%;
-}
-
-.falak-float-tag-2 {
-  left: 24%;
-  top: 2%;
-  animation-delay: 0.4s;
-}
-
-.falak-float-tag-3 {
-  left: 42%;
-  top: 22%;
-  animation-delay: 0.8s;
-}
-
-.falak-float-tag-4 {
-  right: 24%;
-  top: 8%;
-  animation-delay: 0.2s;
-}
-
-.falak-float-tag-5 {
-  right: 7%;
-  top: 30%;
-  animation-delay: 1s;
-}
-
-.falak-float-tag-6 {
-  left: 55%;
-  top: 47%;
-  animation-delay: 1.4s;
-}
-
-.device-frame {
-  display: grid;
-  place-items: center;
+/* ── Glass card ── */
+.glass-card {
   border-radius: 20px;
-  border: 1px solid color-mix(in srgb, var(--falak-border) 82%, white 18%);
-  background:
-    linear-gradient(170deg, rgba(255, 255, 255, 0.98), rgba(205, 231, 235, 0.18)),
-    repeating-linear-gradient(
-      90deg,
-      rgba(124, 207, 214, 0.08) 0,
-      rgba(124, 207, 214, 0.08) 10px,
-      rgba(255, 255, 255, 0.4) 10px,
-      rgba(255, 255, 255, 0.4) 20px
-    );
-  color: var(--falak-text-muted);
-  font-size: 0.8rem;
+  border: 1px solid #e8edf6;
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.94), rgba(242, 248, 255, 0.8));
+  box-shadow:
+    0 2px 3px rgba(24, 49, 59, 0.03),
+    0 20px 30px rgba(17, 67, 77, 0.07);
+}
+
+/* ── Chip ── */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border-radius: 999px;
   font-weight: 600;
+  font-size: 0.79rem;
+  line-height: 1;
+  padding: 0.55rem 0.95rem;
 }
 
-.cta-panel {
-  border: 1px solid color-mix(in srgb, var(--falak-border) 85%, white 15%);
-  border-radius: 28px;
-  padding: clamp(1.5rem, 3vw, 2.5rem);
-  background:
-    radial-gradient(circle at 82% 20%, rgba(124, 207, 214, 0.35), transparent 45%),
-    radial-gradient(circle at 12% 90%, rgba(245, 194, 125, 0.22), transparent 42%),
-    linear-gradient(160deg, rgba(242, 250, 251, 0.9), rgba(255, 255, 255, 0.95));
-  box-shadow: 0 20px 38px rgba(23, 72, 84, 0.11);
+/* ── Carousel scroll ── */
+.memo-carousel {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding-bottom: 1rem;
 }
 
+.memo-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.memo-carousel > * {
+  scroll-snap-align: start;
+}
+
+/* ── Guarantee badge ── */
+.memo-guarantee {
+  border-radius: 20px;
+  border: 1px solid #e0e8f4;
+  background: linear-gradient(170deg, #f8faff, #ffffff);
+  padding: 1.5rem;
+}
+
+/* ── Billing toggle ── */
+.memo-billing-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  border-radius: 999px;
+  background: #eaf0f8;
+  padding: 0.25rem;
+}
+
+.memo-billing-btn {
+  border-radius: 999px;
+  padding: 0.5rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 180ms ease;
+}
+
+.memo-billing-btn-active {
+  background: #ffffff;
+  color: #2b3a66;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.memo-billing-btn-inactive {
+  background: transparent;
+  color: #5e6a85;
+}
+
+/* ── Animations ── */
 .mascot-float {
   animation: float-gentle 4.2s ease-in-out infinite;
 }
@@ -461,38 +422,58 @@ input:focus-visible {
   }
 }
 
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease both;
+}
+
+/* ── Mobile hamburger ── */
+.memo-mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(7, 14, 28, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.memo-mobile-menu a,
+.memo-mobile-menu button {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* ── Responsive ── */
 @media (max-width: 768px) {
   .falak-nav-pill {
     max-width: none;
     width: 100%;
   }
 
-  .falak-hero-orb {
+  .memo-hero-orb {
     width: 46px;
     height: 46px;
-  }
-
-  .falak-memory-title {
-    line-height: 1.04;
-  }
-
-  .falak-float-tag {
-    position: static;
-    margin: 0.25rem;
-    display: inline-flex;
-  }
-
-  .falak-floating-tags {
-    min-height: 0;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 1.25rem;
   }
 }
 
 @media (min-width: 1024px) {
-  .falak-hero-bg {
+  .memo-hero-bg {
     background-image: linear-gradient(180deg, rgba(8, 13, 28, 0.5), rgba(8, 13, 28, 0.62)),
       url("https://cdn.memorae.ai/l3/Homepage-new-desktop.webp");
   }

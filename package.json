@@ -6,6 +6,7 @@
     "clean": "rm -rf .next",
     "clean:hard": "rm -rf .next .turbo",
     "dev": "next dev",
+    "dev:no-open": "BROWSER=none next dev",
     "dev:local": "next dev --hostname 127.0.0.1",
     "build": "next build",
     "start": "next start",

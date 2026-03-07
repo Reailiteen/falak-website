@@ -1,4 +1,13 @@
-import type { Locale, MascotConfig } from "@/lib/landing/types";
+import type { Locale } from "@/lib/landing/types";
+
+type MascotConfig = {
+  characterId: string;
+  pose: "wave" | "point" | "celebrate-soft" | "listen" | "calm";
+  expression: "warm" | "reassuring" | "confident" | "gentle";
+  size: "sm" | "md" | "lg";
+  placement: "hero" | "steps" | "cta" | "ambient";
+  localeVariant: "mirrored" | "default";
+};
 
 type MascotGuideProps = {
   config: MascotConfig;
