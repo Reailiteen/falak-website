@@ -90,7 +90,7 @@ export function PricingCards({ isAnnual, locale, activeCardId, onCardHover }: Pr
   };
 
   return (
-    <section className="w-full relative overflow-hidden bg-transparent">
+    <section className="w-full relative bg-transparent">
       {/* Desktop: 3-column grid */}
       <div className="hidden lg:block relative z-10">
         <div className="max-w-6xl mx-auto px-4">
@@ -111,7 +111,7 @@ export function PricingCards({ isAnnual, locale, activeCardId, onCardHover }: Pr
       </div>
 
       {/* Mobile: snap carousel */}
-      <div className="lg:hidden">
+      <div className="lg:hidden overflow-hidden">
         <div
           ref={carouselRef}
           aria-roledescription="carousel"

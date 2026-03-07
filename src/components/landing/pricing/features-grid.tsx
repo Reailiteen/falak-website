@@ -12,18 +12,54 @@ const BIG_BANG_FEATURES = [
   { label: "Long-term memory", icon: "https://cdn.memorae.ai/l3/neurology.png" },
   { label: "Daily briefing", icon: "https://cdn.memorae.ai/l3/Group%202147203028-2.png" },
   { label: "Image actions", icon: "https://cdn.memorae.ai/l3/Group%2037158-2.png" },
-  { label: "Full control dashboard", icon: "https://cdn.memorae.ai/l3/Group%2037157-2.png" },
-  { label: "Priority support", icon: "https://cdn.memorae.ai/l3/Group%2037160-2.png" },
+  { label: "Full control dashboard", icon: "https://cdn.memorae.ai/l3/Group%2037160-2.png" },
+  { label: "Priority support", icon: "https://cdn.memorae.ai/l3/Group%2037157-2.png" },
   { label: "Google Workspace integration", icon: "https://cdn.memorae.ai/l3/Group.png" },
   { label: "Automatic Inbox Organizer", icon: "https://cdn.memorae.ai/l3/Group%202147203040.png" },
   { label: "Automatic Email Drafting", icon: "https://cdn.memorae.ai/l3/Group%202147203057-3.png" },
 ];
 
-function FeatureTile({ label, icon }: { label: string; icon: string }) {
+const PLAN_TILE_CONFIG: Record<string, { accentColor: string; iconFilter?: string }> = {
+  origin:   { accentColor: "#557BF4", iconFilter: "hue-rotate(180deg) brightness(0.75)" },
+  supernova:{ accentColor: "#ec4899", iconFilter: "hue-rotate(270deg) saturate(1.3) brightness(0.75)" },
+  bigbang:  { accentColor: "#FAB115" },
+};
+
+function FeatureTile({
+  label,
+  icon,
+  accentColor,
+  iconFilter,
+}: {
+  label: string;
+  icon: string;
+  accentColor: string;
+  iconFilter?: string;
+}) {
+  const [hovered, setHovered] = useState(false);
+
   return (
-    <div className="w-[107px] h-[81px] rounded-2xl bg-gradient-to-r from-[#121619] to-[#0C1013] pt-1 flex flex-col items-center shadow-lg transition-all duration-300 cursor-pointer relative z-10 hover:-translate-y-2 hover:z-20 hover:border hover:border-[#FAB115]">
+    <div
+      className="w-[107px] h-[81px] rounded-2xl bg-gradient-to-r from-[#121619] to-[#0C1013] pt-1 flex flex-col items-center shadow-lg transition-all duration-300 cursor-pointer border"
+      style={{
+        borderColor: hovered ? accentColor : "transparent",
+        transform: hovered ? "translateY(-8px)" : undefined,
+        zIndex: hovered ? 20 : 10,
+        position: "relative",
+      }}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
       <div className="w-10 h-10 rounded-xl flex items-center justify-center text-lg">
-        <img alt={label} loading="lazy" width="32" height="32" src={icon} />
+        <img
+          alt={label}
+          loading="lazy"
+          width="32"
+          height="32"
+          src={icon}
+          className="transition-[filter] duration-300"
+          style={iconFilter ? { filter: iconFilter } : undefined}
+        />
       </div>
       <div className="text-center leading-tight">
         <div className="text-[10px] px-2 text-white font-medium pb-2">{label}</div>
@@ -45,6 +81,8 @@ export function FeaturesGrid({ activePlanId }: { activePlanId: string }) {
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
 
+  const { accentColor, iconFilter } = PLAN_TILE_CONFIG[activePlanId] ?? PLAN_TILE_CONFIG.bigbang;
+
   const updateScrollState = () => {
     const el = scrollRef.current;
     if (!el) return;
@@ -60,7 +98,6 @@ export function FeaturesGrid({ activePlanId }: { activePlanId: string }) {
     return () => el.removeEventListener("scroll", updateScrollState);
   }, []);
 
-  // Reset scroll to start when active plan changes
   useEffect(() => {
     const el = scrollRef.current;
     if (!el) return;
@@ -74,25 +111,38 @@ export function FeaturesGrid({ activePlanId }: { activePlanId: string }) {
 
   return (
     <>
-      {/* Mobile: 3-col grid */}
-      <div className="mt-5 grid grid-cols-3 max-w-sm mx-auto gap-3 lg:hidden">
+      {/* Mobile: 3-col grid, centered */}
+      <div className="mt-5 grid grid-cols-3 w-fit mx-auto gap-3 lg:hidden">
         {features.map((f) => (
-          <FeatureTile key={f.label} label={f.label} icon={f.icon} />
+          <FeatureTile
+            key={f.label}
+            label={f.label}
+            icon={f.icon}
+            accentColor={accentColor}
+            iconFilter={iconFilter}
+          />
         ))}
       </div>
 
-      {/* Desktop: horizontally scrollable row */}
+      {/* Desktop: scrollable row, centered when content fits */}
       <div className="hidden lg:block mt-5 relative w-full">
         <div className="w-full max-w-[1800px] mx-auto">
           <div
             ref={scrollRef}
-            className="flex gap-2 overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden px-16 pt-2 pb-4 w-full"
+            className="overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden pt-2 pb-4"
           >
-            {features.map((f) => (
-              <div key={f.label} className="w-[107px] h-[81px] flex-shrink-0">
-                <FeatureTile label={f.label} icon={f.icon} />
-              </div>
-            ))}
+            <div className="flex gap-2 w-max mx-auto px-4">
+              {features.map((f) => (
+                <div key={f.label} className="w-[107px] h-[81px] flex-shrink-0">
+                  <FeatureTile
+                    label={f.label}
+                    icon={f.icon}
+                    accentColor={accentColor}
+                    iconFilter={iconFilter}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
