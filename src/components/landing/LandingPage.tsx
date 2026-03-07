@@ -8,7 +8,7 @@ import { Navbar } from "@/components/landing/navbar";
 import { HeroSection } from "@/components/landing/hero";
 import { ProblemStatement } from "@/components/landing/problem";
 import { SolutionSection } from "@/components/landing/solution-section";
-import { SuperpowersSection } from "@/components/landing/superpowers-section";
+import { SuperpowersSection } from "@/components/landing/superpowers";
 import { FeaturesSection } from "@/components/landing/features-section";
 import { PlansSection } from "@/components/landing/plans-section";
 import { CompetitiveAdvantage } from "@/components/landing/competitive-advantage";

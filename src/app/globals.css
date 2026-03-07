@@ -371,8 +371,14 @@ button:focus-visible {
   padding-bottom: 1rem;
 }
 
-.memo-carousel::-webkit-scrollbar {
+.memo-carousel::-webkit-scrollbar,
+.scrollbar-hide::-webkit-scrollbar {
   display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .memo-carousel > * {
