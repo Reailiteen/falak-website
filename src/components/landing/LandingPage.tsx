@@ -9,7 +9,7 @@ import { HeroSection } from "@/components/landing/hero";
 import { ProblemStatement } from "@/components/landing/problem";
 import { SolutionSection } from "@/components/landing/solution-section";
 import { SuperpowersSection } from "@/components/landing/superpowers";
-import { FeaturesSection } from "@/components/landing/features-section";
+import { FeaturesSection } from "@/components/landing/features";
 import { PlansSection } from "@/components/landing/plans-section";
 import { CompetitiveAdvantage } from "@/components/landing/competitive-advantage";
 import { TestimoniesSection } from "@/components/landing/testimonies-section";
