@@ -10,7 +10,7 @@ import { ProblemStatement } from "@/components/landing/problem";
 import { SolutionSection } from "@/components/landing/solution-section";
 import { SuperpowersSection } from "@/components/landing/superpowers";
 import { FeaturesSection } from "@/components/landing/features";
-import { PlansSection } from "@/components/landing/plans-section";
+import { PricingSection } from "@/components/landing/pricing";
 import { CompetitiveAdvantage } from "@/components/landing/competitive-advantage";
 import { TestimoniesSection } from "@/components/landing/testimonies-section";
 import { FaqSection } from "@/components/landing/faq-section";
@@ -79,7 +79,7 @@ export function LandingPage({ locale }: { locale: Locale }) {
         <SolutionSection />
         <SuperpowersSection />
         <FeaturesSection />
-        <PlansSection locale={locale} />
+        <PricingSection locale={locale} />
         <CompetitiveAdvantage />
         <TestimoniesSection />
         <FaqSection locale={locale} />
