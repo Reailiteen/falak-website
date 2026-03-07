@@ -7,6 +7,7 @@ import type { Locale } from "@/lib/landing/types";
 import { Navbar } from "@/components/landing/navbar";
 import { HeroSection } from "@/components/landing/hero";
 import { ProblemStatement } from "@/components/landing/problem";
+import { SolutionSection } from "@/components/landing/solution-section";
 import { SuperpowersSection } from "@/components/landing/superpowers-section";
 import { FeaturesSection } from "@/components/landing/features-section";
 import { PlansSection } from "@/components/landing/plans-section";
@@ -75,6 +76,7 @@ export function LandingPage({ locale }: { locale: Locale }) {
           <HeroSection />
         </div>
         <ProblemStatement />
+        <SolutionSection />
         <SuperpowersSection />
         <FeaturesSection />
         <PlansSection locale={locale} />
