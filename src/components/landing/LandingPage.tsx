@@ -13,8 +13,8 @@ import { FeaturesSection } from "@/components/landing/features";
 import { PricingSection } from "@/components/landing/pricing";
 import { CompetitiveAdvantage } from "@/components/landing/competitive-advantage";
 import { TestimoniesSection } from "@/components/landing/testimonies-section";
-import { FaqSection } from "@/components/landing/faq-section";
-import { FooterSection } from "@/components/landing/footer-section";
+import { FaqSection } from "@/components/landing/faq";
+import { FooterSection } from "@/components/landing/footer";
 
 const SCROLL_THRESHOLD = 8;
 
