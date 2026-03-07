@@ -5,8 +5,8 @@ import { trackLandingEvent } from "@/lib/landing/analytics";
 import type { Locale } from "@/lib/landing/types";
 
 import { Navbar } from "@/components/landing/navbar";
-import { HeroSection } from "@/components/landing/hero-section";
-import { ProblemStatement } from "@/components/landing/problem-statement";
+import { HeroSection } from "@/components/landing/hero";
+import { ProblemStatement } from "@/components/landing/problem";
 import { SuperpowersSection } from "@/components/landing/superpowers-section";
 import { FeaturesSection } from "@/components/landing/features-section";
 import { PlansSection } from "@/components/landing/plans-section";
