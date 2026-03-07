@@ -74,6 +74,8 @@ export const MEDIA = {
   appPromo: "https://cdn.memorae.ai/l3/Frame%2014.png",
   appStoreIcon: "https://cdn.memorae.ai/l3/Appstore%20Icon.png",
   appStoreBadge: "https://cdn.memorae.ai/l3/logos_apple-app-store.png",
+  googlePlayBadge: "https://cdn.memorae.ai/l3/logos_google-play.png",
+  videoPlaceholder: "https://www.youtube.com/embed/dQw4w9WgXcQ",
 
   human1: "https://cdn.memorae.ai/l3/human1_testimonial.webp",
   human2: "https://cdn.memorae.ai/l3/human2_testimonial.webp",

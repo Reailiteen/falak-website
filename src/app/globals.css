@@ -56,11 +56,20 @@ a {
 
 /* ── Hero background ── */
 .memo-hero-bg {
-  background-image: linear-gradient(180deg, rgba(8, 13, 28, 0.58), rgba(8, 13, 28, 0.64)),
-    url("https://cdn.memorae.ai/l3/Mobile-2.webp");
+  background-image: url("https://cdn.memorae.ai/l3/Mobile-2.webp");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+/* ── Video embed ── */
+.memo-video-embed {
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  aspect-ratio: 16/9;
+  max-width: 740px;
+  margin: 0 auto;
 }
 
 /* ── Sticky nav pill ── */
@@ -122,8 +131,8 @@ a {
 
 /* ── Hero orbs ── */
 .memo-hero-orb {
-  width: 56px;
-  height: 56px;
+  width: 72px;
+  height: 72px;
   border-radius: 999px;
 }
 
@@ -467,15 +476,19 @@ button:focus-visible {
   }
 
   .memo-hero-orb {
-    width: 46px;
-    height: 46px;
+    width: 52px;
+    height: 52px;
   }
 }
 
 @media (min-width: 1024px) {
   .memo-hero-bg {
-    background-image: linear-gradient(180deg, rgba(8, 13, 28, 0.5), rgba(8, 13, 28, 0.62)),
-      url("https://cdn.memorae.ai/l3/Homepage-new-desktop.webp");
+    background-image: url("https://cdn.memorae.ai/l3/Homepage-new-desktop.webp");
+  }
+
+  .memo-hero-orb {
+    width: 112px;
+    height: 112px;
   }
 }
 
