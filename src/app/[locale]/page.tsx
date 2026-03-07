@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { LandingPage } from "@/components/landing/LandingPage";
+import { LandingPage } from "@/components/landing/landing-page";
 import { SEO } from "@/lib/landing/content";
 import { LOCALES, isLocale } from "@/i18n/config";
 

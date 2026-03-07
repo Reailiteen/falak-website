@@ -7,7 +7,7 @@ import type { Locale } from "@/lib/landing/types";
 import { Navbar } from "@/components/landing/navbar";
 import { HeroSection } from "@/components/landing/hero";
 import { ProblemStatement } from "@/components/landing/problem";
-import { SolutionSection } from "@/components/landing/solution-section";
+import { SolutionSection } from "@/components/landing/solution/solution-section";
 import { SuperpowersSection } from "@/components/landing/superpowers";
 import { FeaturesSection } from "@/components/landing/features";
 import { PricingSection } from "@/components/landing/pricing";
