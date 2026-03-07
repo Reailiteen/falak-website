@@ -29,10 +29,22 @@ function ChevronIcon({ open }: { open: boolean }) {
   );
 }
 
+const PROMO_CARDS = [
+  {
+    image: "https://cdn.memorae.ai/l3/Frame%202147238449-3.webp",
+    title: "Google Workspace Integration",
+  },
+  {
+    image: "https://cdn.memorae.ai/l3/Frame%202147238450.webp",
+    title: "Automatic Email drafting",
+  },
+];
+
 export function Navbar({ visible = true }: NavbarProps) {
   const [activeMenu, setActiveMenu] = useState<NavMenu>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [isOnLightBg, setIsOnLightBg] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -45,46 +57,11 @@ export function Navbar({ visible = true }: NavbarProps) {
     return () => window.removeEventListener("keydown", onKey);
   }, []);
 
-  const navWrapperRef = useRef<HTMLDivElement>(null);
-
   useEffect(() => {
-    const checkLightBg = () => {
-      const x = window.innerWidth / 2;
-      const y = 50;
-      const elements = document.elementsFromPoint(x, y);
-
-      for (const el of elements) {
-        if (navWrapperRef.current?.contains(el as Node)) continue;
-
-        const style = window.getComputedStyle(el as Element);
-        const bgImage = style.backgroundImage;
-
-        // Gradient or image bg → treat as non-light (dark hero, pricing, etc.)
-        if (bgImage && bgImage !== "none") {
-          setIsOnLightBg(false);
-          return;
-        }
-
-        const match = style.backgroundColor.match(
-          /rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/
-        );
-        if (!match) continue;
-
-        const a = match[4] !== undefined ? Number(match[4]) : 1;
-        if (a < 0.1) continue; // transparent — keep walking down
-
-        const luminance =
-          (0.299 * Number(match[1]) + 0.587 * Number(match[2]) + 0.114 * Number(match[3])) / 255;
-        setIsOnLightBg(luminance > 0.85);
-        return;
-      }
-
-      setIsOnLightBg(false);
-    };
-
-    window.addEventListener("scroll", checkLightBg, { passive: true });
-    checkLightBg();
-    return () => window.removeEventListener("scroll", checkLightBg);
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   const handleNav = (id: string) => {
@@ -93,11 +70,16 @@ export function Navbar({ visible = true }: NavbarProps) {
     scrollToId(id);
   };
 
+  const scrollPanel = (dir: "left" | "right") => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({ left: dir === "right" ? 320 : -320, behavior: "smooth" });
+    }
+  };
+
   return (
     <>
       {/* Fixed hide-on-scroll wrapper */}
       <div
-        ref={navWrapperRef}
         className="fixed left-0 right-0 top-0 z-[101] transition-transform duration-300 ease-out"
         style={{ transform: visible ? "translateY(0)" : "translateY(-110%)" }}
       >
@@ -108,9 +90,9 @@ export function Navbar({ visible = true }: NavbarProps) {
             <header
               className="relative mx-auto mt-5 max-w-fit rounded-full border px-3 py-4 backdrop-blur-xl transition-all duration-300"
               style={{
-                background: isOnLightBg ? "rgba(35, 40, 60, 0.78)" : "rgba(255, 255, 255, 0.12)",
-                borderColor: isOnLightBg ? "rgba(255, 255, 255, 0.12)" : "rgba(255, 255, 255, 0.2)",
-                boxShadow: isOnLightBg ? "rgba(15, 23, 42, 0.25) 0px 18px 40px" : "rgba(15, 23, 42, 0.12) 0px 18px 40px",
+                background: scrolled ? "rgba(25, 30, 48, 0.82)" : "rgba(255, 255, 255, 0.12)",
+                borderColor: scrolled ? "rgba(255, 255, 255, 0.10)" : "rgba(255, 255, 255, 0.2)",
+                boxShadow: scrolled ? "rgba(15, 23, 42, 0.30) 0px 18px 40px" : "rgba(15, 23, 42, 0.12) 0px 18px 40px",
                 transition: "background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease",
               }}
             >
@@ -199,44 +181,310 @@ export function Navbar({ visible = true }: NavbarProps) {
                   className="absolute left-1/2 top-full z-50 mt-2 -translate-x-1/2"
                   onMouseEnter={() => setActiveMenu(activeMenu)}
                 >
-                  <div className="falak-mega-menu w-[720px]">
-                    {activeMenu === "superpowers" ? (
-                      <>
-                        <div className="mb-4 flex items-center justify-between">
-                          <h3 className="text-2xl font-semibold text-[#333]">Superpowers</h3>
-                          <button type="button" className="text-sm font-semibold text-[#557BF4]" onClick={() => setActiveMenu(null)}>{NAV.close}</button>
+                  {activeMenu === "superpowers" ? (
+                    /* ── Superpowers mega menu ── */
+                    <div
+                      style={{
+                        width: "1227px",
+                        minHeight: "370px",
+                        background: "#ffffff",
+                        borderRadius: "32px",
+                        border: "1px solid rgba(255,255,255,0.2)",
+                        boxShadow: "0 22px 46px rgba(12,22,44,0.22)",
+                        padding: "32px",
+                        display: "flex",
+                        gap: "16px",
+                      }}
+                    >
+                      {/* Left: 2 tall promo cards */}
+                      <div style={{ display: "flex", gap: "16px", flexShrink: 0 }}>
+                        {PROMO_CARDS.map((card) => (
+                          <button
+                            key={card.title}
+                            type="button"
+                            className="cursor-pointer"
+                            onClick={() => handleNav("superpowers")}
+                            style={{
+                              width: "236px",
+                              height: "320px",
+                              borderRadius: "20px",
+                              overflow: "hidden",
+                              position: "relative",
+                              backgroundImage: `url(${card.image})`,
+                              backgroundSize: "cover",
+                              backgroundPosition: "center",
+                              border: "none",
+                              padding: 0,
+                              flexShrink: 0,
+                            }}
+                          >
+                            {/* Badge + title at top */}
+                            <div
+                              style={{
+                                position: "absolute",
+                                top: "16px",
+                                left: "16px",
+                                right: "16px",
+                                display: "flex",
+                                flexDirection: "column",
+                                gap: "8px",
+                                alignItems: "flex-start",
+                              }}
+                            >
+                              <span
+                                style={{
+                                  background: "#557BF4",
+                                  color: "white",
+                                  fontSize: "10px",
+                                  fontWeight: 700,
+                                  letterSpacing: "0.08em",
+                                  padding: "3px 10px",
+                                  borderRadius: "20px",
+                                  textTransform: "uppercase",
+                                }}
+                              >
+                                NEW SUPERPOWER
+                              </span>
+                              <p
+                                style={{
+                                  color: "white",
+                                  fontSize: "16px",
+                                  fontWeight: 700,
+                                  lineHeight: 1.3,
+                                  textAlign: "left",
+                                  margin: 0,
+                                }}
+                              >
+                                {card.title}
+                              </p>
+                            </div>
+
+                            {/* Discover now button at bottom */}
+                            <div
+                              style={{
+                                position: "absolute",
+                                bottom: "16px",
+                                left: "16px",
+                              }}
+                            >
+                              <span
+                                style={{
+                                  display: "inline-flex",
+                                  alignItems: "center",
+                                  background: "linear-gradient(90deg, #557BF4 0%, #FF66C4 100%)",
+                                  color: "white",
+                                  fontSize: "13px",
+                                  fontWeight: 600,
+                                  padding: "8px 18px",
+                                  borderRadius: "20px",
+                                }}
+                              >
+                                Discover now
+                              </span>
+                            </div>
+                          </button>
+                        ))}
+                      </div>
+
+                      {/* Right: scrollable superpowers panel */}
+                      <div
+                        style={{
+                          flex: 1,
+                          background: "#EAF2F1",
+                          borderRadius: "16px",
+                          padding: "20px",
+                          display: "flex",
+                          flexDirection: "column",
+                          minWidth: 0,
+                        }}
+                      >
+                        {/* Panel header */}
+                        <div
+                          style={{
+                            display: "flex",
+                            justifyContent: "space-between",
+                            alignItems: "center",
+                            marginBottom: "16px",
+                            flexShrink: 0,
+                          }}
+                        >
+                          <h3 style={{ fontSize: "20px", fontWeight: 700, color: "#172f39", margin: 0 }}>
+                            Superpowers
+                          </h3>
+                          <div style={{ display: "flex", gap: "8px" }}>
+                            <button
+                              type="button"
+                              onClick={() => scrollPanel("left")}
+                              className="flex h-9 w-9 items-center justify-center rounded-full bg-white shadow transition hover:shadow-md"
+                            >
+                              <svg className="h-4 w-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                              </svg>
+                            </button>
+                            <button
+                              type="button"
+                              onClick={() => scrollPanel("right")}
+                              className="flex h-9 w-9 items-center justify-center rounded-full bg-white shadow transition hover:shadow-md"
+                            >
+                              <svg className="h-4 w-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                              </svg>
+                            </button>
+                          </div>
                         </div>
-                        <div className="grid grid-cols-3 gap-4">
-                          {SUPERPOWERS.slice(0, 6).map((sp) => (
-                            <button key={sp.id} type="button" className="falak-mega-card cursor-pointer" onClick={() => handleNav("superpowers")}>
-                              <img src={sp.image} alt={sp.title} className="h-44 w-full rounded-2xl object-cover" loading="lazy" />
-                              <p className="mt-3 text-left text-base font-semibold text-[#172f39]">{sp.title}</p>
+
+                        {/* Horizontally scrollable cards */}
+                        <div
+                          ref={scrollRef}
+                          style={{
+                            display: "flex",
+                            gap: "12px",
+                            overflowX: "auto",
+                            scrollbarWidth: "none",
+                            msOverflowStyle: "none",
+                          }}
+                          className="[&::-webkit-scrollbar]:hidden"
+                        >
+                          {SUPERPOWERS.map((sp) => (
+                            <button
+                              key={sp.id}
+                              type="button"
+                              className="group cursor-pointer border-none bg-transparent p-0 text-left"
+                              onClick={() => handleNav("superpowers")}
+                              style={{ flexShrink: 0 }}
+                            >
+                              <div
+                                style={{
+                                  width: "168px",
+                                  height: "211px",
+                                  borderRadius: "16px",
+                                  overflow: "hidden",
+                                  background: "#fff",
+                                  border: "1px solid #e6edf8",
+                                  transition: "transform 180ms ease, box-shadow 180ms ease",
+                                }}
+                                className="group-hover:-translate-y-1 group-hover:shadow-lg"
+                              >
+                                <img
+                                  src={sp.image}
+                                  alt={sp.title}
+                                  className="h-full w-full object-cover"
+                                  loading="lazy"
+                                />
+                              </div>
+                              <p
+                                style={{
+                                  marginTop: "8px",
+                                  fontSize: "12px",
+                                  fontWeight: 600,
+                                  color: "#172f39",
+                                  maxWidth: "168px",
+                                  lineHeight: 1.3,
+                                }}
+                              >
+                                {sp.title}
+                              </p>
                             </button>
                           ))}
                         </div>
-                      </>
-                    ) : (
-                      <>
-                        <div className="mb-4 flex items-center justify-between">
-                          <h3 className="text-2xl font-semibold text-[#333]">Channels</h3>
-                          <button type="button" className="text-sm font-semibold text-[#557BF4]" onClick={() => setActiveMenu(null)}>{NAV.close}</button>
-                        </div>
-                        <div className="grid grid-cols-4 gap-4">
-                          {[
-                            { title: "WhatsApp", icon: MEDIA.groupIcon },
-                            { title: "Telegram", icon: MEDIA.image318 },
-                            { title: "Email", icon: MEDIA.image10 },
-                            { title: "Memorae App", icon: MEDIA.appStoreIcon },
-                          ].map((ch) => (
-                            <button key={ch.title} type="button" className="falak-mega-card flex cursor-pointer flex-col items-center gap-2 p-4" onClick={() => handleNav("channels")}>
-                              <img src={ch.icon} alt={ch.title} className="h-12 w-12 object-contain" loading="lazy" />
-                              <p className="text-sm font-semibold text-[#172f39]">{ch.title}</p>
-                            </button>
-                          ))}
-                        </div>
-                      </>
-                    )}
-                  </div>
+                      </div>
+                    </div>
+                  ) : (
+                    /* ── Channels mega menu ── */
+                    <div
+                      style={{
+                        background: "#ffffff",
+                        borderRadius: "32px",
+                        boxShadow: "0 22px 46px rgba(12,22,44,0.22)",
+                        padding: "28px",
+                        width: "760px",
+                      }}
+                    >
+                      <h3 style={{ fontSize: "22px", fontWeight: 700, color: "#111", margin: "0 0 20px 0" }}>
+                        Channels
+                      </h3>
+                      <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "14px" }}>
+                        {[
+                          { title: "WhatsApp", bg: "linear-gradient(135deg, #25D366 0%, #128C5E 100%)", icon: MEDIA.groupIcon },
+                          { title: "Telegram", bg: "linear-gradient(135deg, #5BA7E0 0%, #2F80C4 100%)", icon: MEDIA.image318 },
+                          { title: "Email", bg: "linear-gradient(135deg, #F5A623 0%, #E08A00 100%)", icon: MEDIA.image10 },
+                          { title: "App", bg: "linear-gradient(135deg, #E91E8C 0%, #C0126E 100%)", icon: MEDIA.appStoreIcon },
+                        ].map((ch) => (
+                          <button
+                            key={ch.title}
+                            type="button"
+                            onClick={() => handleNav("channels")}
+                            style={{
+                              background: ch.bg,
+                              borderRadius: "20px",
+                              height: "200px",
+                              position: "relative",
+                              overflow: "hidden",
+                              border: "none",
+                              cursor: "pointer",
+                              padding: 0,
+                              display: "flex",
+                              flexDirection: "column",
+                            }}
+                          >
+                            {/* Channel name */}
+                            <span
+                              style={{
+                                position: "absolute",
+                                top: "14px",
+                                left: "14px",
+                                color: "white",
+                                fontWeight: 700,
+                                fontSize: "15px",
+                                zIndex: 2,
+                              }}
+                            >
+                              {ch.title}
+                            </span>
+
+                            {/* Mascot */}
+                            <img
+                              src={MEDIA.mascot}
+                              alt={ch.title}
+                              style={{
+                                position: "absolute",
+                                bottom: "0",
+                                left: "50%",
+                                transform: "translateX(-50%)",
+                                height: "130px",
+                                width: "auto",
+                                objectFit: "contain",
+                              }}
+                              loading="lazy"
+                            />
+
+                            {/* Plus button */}
+                            <div
+                              style={{
+                                position: "absolute",
+                                bottom: "12px",
+                                right: "12px",
+                                width: "30px",
+                                height: "30px",
+                                borderRadius: "50%",
+                                background: "rgba(255,255,255,0.9)",
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                fontSize: "20px",
+                                fontWeight: 400,
+                                color: "#333",
+                                lineHeight: 1,
+                                zIndex: 2,
+                              }}
+                            >
+                              +
+                            </div>
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
               )}
             </header>
@@ -249,8 +497,8 @@ export function Navbar({ visible = true }: NavbarProps) {
               style={{
                 height: "60px",
                 borderRadius: "50px",
-                background: isOnLightBg ? "rgba(35, 40, 60, 0.85)" : "rgba(255, 255, 255, 0.35)",
-                boxShadow: isOnLightBg ? "rgba(13, 28, 67, 0.3) 0px 8px 24px" : "rgba(13, 28, 67, 0.15) 0px 8px 24px",
+                background: scrolled ? "rgba(25, 30, 48, 0.85)" : "rgba(255, 255, 255, 0.35)",
+                boxShadow: scrolled ? "rgba(13, 28, 67, 0.30) 0px 8px 24px" : "rgba(13, 28, 67, 0.15) 0px 8px 24px",
                 backdropFilter: "blur(12px)",
                 transition: "background 0.3s ease, box-shadow 0.3s ease",
               }}
