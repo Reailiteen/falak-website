@@ -18,6 +18,7 @@ const CARD_CONFIGS: Record<string, CardVisualConfig> = {
     nameClassName: "text-[28px] lg:text-[24px]",
     annualTextColor: "text-gray-400",
     ctaTextSize: "text-2xl",
+    glowColor: "rgba(85, 123, 244, 0.5)",
   },
   supernova: {
     bgImage: MEDIA.frame369458,
@@ -31,6 +32,7 @@ const CARD_CONFIGS: Record<string, CardVisualConfig> = {
     nameClassName: "text-[24px]",
     annualTextColor: "text-gray-300",
     ctaTextSize: "text-xl lg:text-2xl",
+    glowColor: "linear-gradient(135deg, rgba(92, 123, 243, 0.5) 0%, rgba(255, 102, 196, 0.5) 100%)",
   },
   bigbang: {
     bgImage: MEDIA.frame2147238144,
@@ -44,15 +46,18 @@ const CARD_CONFIGS: Record<string, CardVisualConfig> = {
     annualTextColor: "text-gray-400",
     ctaTextSize: "text-2xl",
     accentClassName: "ring-2 ring-[#f9b31c]",
+    glowColor: "rgba(250, 177, 21, 0.5)",
   },
 };
 
 interface PricingCardsProps {
   isAnnual: boolean;
   locale: Locale;
+  activeCardId: string;
+  onCardHover: (id: string) => void;
 }
 
-export function PricingCards({ isAnnual, locale }: PricingCardsProps) {
+export function PricingCards({ isAnnual, locale, activeCardId, onCardHover }: PricingCardsProps) {
   const carouselRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -97,6 +102,8 @@ export function PricingCards({ isAnnual, locale }: PricingCardsProps) {
                 isAnnual={isAnnual}
                 locale={locale}
                 config={CARD_CONFIGS[plan.id]}
+                isActive={activeCardId === plan.id}
+                onHover={() => onCardHover(plan.id)}
               />
             ))}
           </div>
@@ -128,6 +135,8 @@ export function PricingCards({ isAnnual, locale }: PricingCardsProps) {
                 isAnnual={isAnnual}
                 locale={locale}
                 config={CARD_CONFIGS[plan.id]}
+                isActive={activeCardId === plan.id}
+                onHover={() => onCardHover(plan.id)}
               />
             </div>
           ))}

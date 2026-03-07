@@ -22,6 +22,7 @@ export interface CardVisualConfig {
   annualTextColor: string;
   ctaTextSize: string;
   accentClassName?: string;
+  glowColor: string;
 }
 
 interface CardContentProps {
@@ -121,9 +122,11 @@ export interface PricingCardProps {
   isAnnual: boolean;
   locale: Locale;
   config: CardVisualConfig;
+  isActive: boolean;
+  onHover: () => void;
 }
 
-export function PricingCard({ plan, isAnnual, locale, config }: PricingCardProps) {
+export function PricingCard({ plan, isAnnual, locale, config, isActive, onHover }: PricingCardProps) {
   const bgImage = (
     <img
       alt=""
@@ -135,7 +138,15 @@ export function PricingCard({ plan, isAnnual, locale, config }: PricingCardProps
 
   if (plan.popular) {
     return (
-      <div className="w-full cursor-pointer transition-transform duration-200 hover:scale-[1.02]">
+      <div
+        className="w-full cursor-pointer transition-transform duration-200 hover:scale-[1.02] relative"
+        onMouseEnter={onHover}
+      >
+        {/* Per-card glow (desktop only) */}
+        <div
+          className={`hidden lg:block absolute inset-x-4 top-6 bottom-0 blur-3xl pointer-events-none transition-opacity duration-500 ${isActive ? "opacity-100" : "opacity-0"}`}
+          style={{ background: config.glowColor }}
+        />
         <div className="relative w-[95%] lg:max-w-md mx-auto mt-6 transition-all duration-300 hover:-translate-y-1">
           <div className="rounded-3xl transition-all duration-300">
             <div className="rounded-3xl bg-black">
@@ -168,7 +179,15 @@ export function PricingCard({ plan, isAnnual, locale, config }: PricingCardProps
   }
 
   return (
-    <div className="w-full cursor-pointer transition-transform duration-200 hover:scale-[1.02]">
+    <div
+      className="w-full cursor-pointer transition-transform duration-200 hover:scale-[1.02] relative"
+      onMouseEnter={onHover}
+    >
+      {/* Per-card glow (desktop only) */}
+      <div
+        className={`hidden lg:block absolute inset-x-4 top-10 bottom-0 blur-3xl pointer-events-none transition-opacity duration-500 ${isActive ? "opacity-100" : "opacity-0"}`}
+        style={{ background: config.glowColor }}
+      />
       <div
         className={`mx-auto bg-[#090D10] rounded-4xl p-6 w-[95%] lg:max-w-md relative mt-10 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(255,102,196,0.15)] ${config.accentClassName ?? ""}`}
       >

@@ -1,0 +1,47 @@
+import { MEDIA } from "@/lib/landing/content";
+
+export function CardShift({ mobile }: { mobile?: boolean }) {
+  const bgStyle: React.CSSProperties = {
+    position: "absolute",
+    height: "100%",
+    width: "100%",
+    inset: "0px",
+    objectFit: "cover",
+  };
+
+  if (mobile) {
+    return (
+      <div className="bg-[#EC4899] h-[560px] rounded-4xl p-6 relative overflow-hidden flex flex-col">
+        <img alt="background" loading="lazy" className="absolute inset-0 object-cover z-0" src={MEDIA.forget3Mob} style={bgStyle} />
+        <div className="relative z-10 pt-4 flex-1 overflow-y-auto pb-6">
+          <h2 className="text-[34px] leading-tight font-semibold text-white mb-6 max-w-[300px]">
+            We're not just an app. We're a shift in logic.
+          </h2>
+          <div className="space-y-4 text-white text-base max-w-[250px]">
+            <p>
+              We don't design for you to look at it. We design it so you barely notice it. Memorae doesn't seek
+              attention — it acts when you need it and disappears afterward.
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="bg-[#EC4899] rounded-3xl p-8 relative overflow-hidden">
+      <img alt="background" loading="lazy" className="absolute inset-0 object-cover z-0" src={MEDIA.forget3} style={bgStyle} />
+      <div className="relative z-10 top-[35%]">
+        <h2 className="text-[36px] leading-tight font-semibold text-white mb-3 max-w-[300px]">
+          We're not just an app. We're a shift in logic.
+        </h2>
+        <div className="space-y-2 text-white leading-tight">
+          <p>
+            We don't design for you to look at it. We design it so you barely notice it. Memorae doesn't seek
+            attention — it acts when you need it and disappears afterward.
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}

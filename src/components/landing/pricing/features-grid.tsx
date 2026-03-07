@@ -32,7 +32,15 @@ function FeatureTile({ label, icon }: { label: string; icon: string }) {
   );
 }
 
-export function FeaturesGrid() {
+const PLAN_FEATURE_COUNTS: Record<string, number> = {
+  origin: 6,
+  supernova: 11,
+  bigbang: 14,
+};
+
+export function FeaturesGrid({ activePlanId }: { activePlanId: string }) {
+  const count = PLAN_FEATURE_COUNTS[activePlanId] ?? 14;
+  const features = BIG_BANG_FEATURES.slice(0, count);
   const scrollRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
@@ -52,6 +60,14 @@ export function FeaturesGrid() {
     return () => el.removeEventListener("scroll", updateScrollState);
   }, []);
 
+  // Reset scroll to start when active plan changes
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    el.scrollLeft = 0;
+    updateScrollState();
+  }, [activePlanId]);
+
   const scroll = (dir: 1 | -1) => {
     scrollRef.current?.scrollBy({ left: dir * 250, behavior: "smooth" });
   };
@@ -60,7 +76,7 @@ export function FeaturesGrid() {
     <>
       {/* Mobile: 3-col grid */}
       <div className="mt-5 grid grid-cols-3 max-w-sm mx-auto gap-3 lg:hidden">
-        {BIG_BANG_FEATURES.map((f) => (
+        {features.map((f) => (
           <FeatureTile key={f.label} label={f.label} icon={f.icon} />
         ))}
       </div>
@@ -72,7 +88,7 @@ export function FeaturesGrid() {
             ref={scrollRef}
             className="flex gap-2 overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden px-16 pt-2 pb-4 w-full"
           >
-            {BIG_BANG_FEATURES.map((f) => (
+            {features.map((f) => (
               <div key={f.label} className="w-[107px] h-[81px] flex-shrink-0">
                 <FeatureTile label={f.label} icon={f.icon} />
               </div>

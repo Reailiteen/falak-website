@@ -10,6 +10,7 @@ import { FeaturesGrid } from "./features-grid";
 
 export function PricingSection({ locale }: { locale: Locale }) {
   const [billingCycle, setBillingCycle] = useState<"monthly" | "annual">("annual");
+  const [activeCardId, setActiveCardId] = useState("bigbang");
   const isAnnual = billingCycle === "annual";
 
   return (
@@ -24,18 +25,46 @@ export function PricingSection({ locale }: { locale: Locale }) {
           <div className="pricing-gradient-bg" />
           <div className="hero-shadow-overlay" />
 
+          {/* Section-level background glows — desktop only, crossfade on active card change */}
+          <div
+            className="hidden lg:block absolute inset-0 pointer-events-none transition-opacity duration-700 z-0"
+            style={{
+              background: "radial-gradient(ellipse 55% 90% at 18% 65%, rgba(85, 123, 244, 0.22) 0%, transparent 70%)",
+              opacity: activeCardId === "origin" ? 1 : 0,
+            }}
+          />
+          <div
+            className="hidden lg:block absolute inset-0 pointer-events-none transition-opacity duration-700 z-0"
+            style={{
+              background: "radial-gradient(ellipse 60% 90% at 50% 65%, rgba(140, 80, 230, 0.18) 0%, transparent 70%)",
+              opacity: activeCardId === "supernova" ? 1 : 0,
+            }}
+          />
+          <div
+            className="hidden lg:block absolute inset-0 pointer-events-none transition-opacity duration-700 z-0"
+            style={{
+              background: "radial-gradient(ellipse 55% 90% at 82% 65%, rgba(250, 177, 21, 0.18) 0%, transparent 70%)",
+              opacity: activeCardId === "bigbang" ? 1 : 0,
+            }}
+          />
+
           <BillingToggle billingCycle={billingCycle} onChange={setBillingCycle} />
 
           <div className="relative z-10">
-            <PricingCards isAnnual={isAnnual} locale={locale} />
+            <PricingCards
+              isAnnual={isAnnual}
+              locale={locale}
+              activeCardId={activeCardId}
+              onCardHover={setActiveCardId}
+            />
           </div>
 
           <div
             id="feature-section"
             className="relative z-30 mt-8 px-4 lg:px-0 max-w-4xl lg:max-w-none mx-auto text-center lg:w-full lg:bg-transparent"
           >
-            <GuaranteeBanner />
-            <FeaturesGrid />
+            <GuaranteeBanner activePlanId={activeCardId} />
+            <FeaturesGrid activePlanId={activeCardId} />
           </div>
         </div>
       </div>

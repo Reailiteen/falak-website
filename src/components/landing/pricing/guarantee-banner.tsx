@@ -1,6 +1,23 @@
 import { MEDIA } from "@/lib/landing/content";
 
-export function GuaranteeBanner() {
+const PLAN_ACCENTS: Record<string, { name: string; className: string }> = {
+  origin: {
+    name: "Origin",
+    className: "text-[#557BF4]",
+  },
+  supernova: {
+    name: "Supernova",
+    className: "bg-gradient-to-r bg-clip-text text-transparent from-[#5C7BF3] to-[#FF66C4]",
+  },
+  bigbang: {
+    name: "Big Bang",
+    className: "bg-gradient-to-r bg-clip-text text-transparent from-[#FAB115] to-white",
+  },
+};
+
+export function GuaranteeBanner({ activePlanId }: { activePlanId: string }) {
+  const accent = PLAN_ACCENTS[activePlanId] ?? PLAN_ACCENTS.bigbang;
+
   return (
     <div className="lg:max-w-[850px] lg:mx-auto lg:px-4">
       <div className="text-sm text-[#23CF67] bg-[#23CF67]/15 border border-emerald-400/30 rounded-xl px-4 py-3 text-left flex gap-3 items-center">
@@ -23,7 +40,7 @@ export function GuaranteeBanner() {
 
       <h3 className="mt-6 text-2xl font-semibold text-white">
         Everything you can unlock with the{" "}
-        <span className="bg-gradient-to-r bg-clip-text text-transparent from-[#FAB115] to-white">Big Bang</span>
+        <span className={accent.className}>{accent.name}</span>
       </h3>
     </div>
   );
