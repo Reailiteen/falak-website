@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { MEDIA, SUPERPOWERS } from "@/lib/landing/content";
 import { NAV, UI } from "@/lib/landing/ui-copy";
 
@@ -32,6 +32,7 @@ function ChevronIcon({ open }: { open: boolean }) {
 export function Navbar({ visible = true }: NavbarProps) {
   const [activeMenu, setActiveMenu] = useState<NavMenu>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isOnLightBg, setIsOnLightBg] = useState(false);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -44,6 +45,48 @@ export function Navbar({ visible = true }: NavbarProps) {
     return () => window.removeEventListener("keydown", onKey);
   }, []);
 
+  const navWrapperRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const checkLightBg = () => {
+      const x = window.innerWidth / 2;
+      const y = 50;
+      const elements = document.elementsFromPoint(x, y);
+
+      for (const el of elements) {
+        if (navWrapperRef.current?.contains(el as Node)) continue;
+
+        const style = window.getComputedStyle(el as Element);
+        const bgImage = style.backgroundImage;
+
+        // Gradient or image bg → treat as non-light (dark hero, pricing, etc.)
+        if (bgImage && bgImage !== "none") {
+          setIsOnLightBg(false);
+          return;
+        }
+
+        const match = style.backgroundColor.match(
+          /rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/
+        );
+        if (!match) continue;
+
+        const a = match[4] !== undefined ? Number(match[4]) : 1;
+        if (a < 0.1) continue; // transparent — keep walking down
+
+        const luminance =
+          (0.299 * Number(match[1]) + 0.587 * Number(match[2]) + 0.114 * Number(match[3])) / 255;
+        setIsOnLightBg(luminance > 0.85);
+        return;
+      }
+
+      setIsOnLightBg(false);
+    };
+
+    window.addEventListener("scroll", checkLightBg, { passive: true });
+    checkLightBg();
+    return () => window.removeEventListener("scroll", checkLightBg);
+  }, []);
+
   const handleNav = (id: string) => {
     setActiveMenu(null);
     setMobileMenuOpen(false);
@@ -54,6 +97,7 @@ export function Navbar({ visible = true }: NavbarProps) {
     <>
       {/* Fixed hide-on-scroll wrapper */}
       <div
+        ref={navWrapperRef}
         className="fixed left-0 right-0 top-0 z-[101] transition-transform duration-300 ease-out"
         style={{ transform: visible ? "translateY(0)" : "translateY(-110%)" }}
       >
@@ -64,9 +108,10 @@ export function Navbar({ visible = true }: NavbarProps) {
             <header
               className="relative mx-auto mt-5 max-w-fit rounded-full border px-3 py-4 backdrop-blur-xl transition-all duration-300"
               style={{
-                background: "rgba(255, 255, 255, 0.12)",
-                borderColor: "rgba(255, 255, 255, 0.2)",
-                boxShadow: "rgba(15, 23, 42, 0.12) 0px 18px 40px",
+                background: isOnLightBg ? "rgba(35, 40, 60, 0.78)" : "rgba(255, 255, 255, 0.12)",
+                borderColor: isOnLightBg ? "rgba(255, 255, 255, 0.12)" : "rgba(255, 255, 255, 0.2)",
+                boxShadow: isOnLightBg ? "rgba(15, 23, 42, 0.25) 0px 18px 40px" : "rgba(15, 23, 42, 0.12) 0px 18px 40px",
+                transition: "background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease",
               }}
             >
               <div className="flex items-center justify-between">
@@ -204,9 +249,10 @@ export function Navbar({ visible = true }: NavbarProps) {
               style={{
                 height: "60px",
                 borderRadius: "50px",
-                background: "rgba(255, 255, 255, 0.35)",
-                boxShadow: "rgba(13, 28, 67, 0.15) 0px 8px 24px",
+                background: isOnLightBg ? "rgba(35, 40, 60, 0.85)" : "rgba(255, 255, 255, 0.35)",
+                boxShadow: isOnLightBg ? "rgba(13, 28, 67, 0.3) 0px 8px 24px" : "rgba(13, 28, 67, 0.15) 0px 8px 24px",
                 backdropFilter: "blur(12px)",
+                transition: "background 0.3s ease, box-shadow 0.3s ease",
               }}
             >
               <img src={MEDIA.logoHome} alt="Memorae" className="h-9 w-auto cursor-pointer" />
