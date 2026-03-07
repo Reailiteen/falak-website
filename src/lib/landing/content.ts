@@ -87,6 +87,9 @@ export const MEDIA = {
   human7: "https://cdn.memorae.ai/l3/human7_testimonial.webp",
   human8: "https://cdn.memorae.ai/l3/human8_testimonial.webp",
   human9: "https://cdn.memorae.ai/l3/human9_testimonial.webp",
+  human10: "https://cdn.memorae.ai/l3/human10_testimonial.webp",
+  human11: "https://cdn.memorae.ai/l3/human11_testimonial.webp",
+  human12: "https://cdn.memorae.ai/l3/human12_testimonial.webp",
   Human1: "https://cdn.memorae.ai/l3/Human1.webp",
   Human2: "https://cdn.memorae.ai/l3/Human2.webp",
   Human3: "https://cdn.memorae.ai/l3/Human3.webp",
@@ -434,6 +437,27 @@ export const TESTIMONIALS: TestimonialItem[] = [
     title: "This is brilliant!",
     quote: "At first I was a little hesitant, and in fact my first real test was asking Memorae to remind me to cancel my subscription the day before the trial period ended. Obviously, that was the most useless reminder ever. This is brilliant!",
     photo: MEDIA.human9,
+  },
+  {
+    name: "Vineet Relia",
+    role: "Crisis Manager",
+    title: "Speechless",
+    quote: "I used to keep sending text and voice notes to myself all the time. This has really changed that for me and also a lot of embarrassment asking her to remind me personal things.",
+    photo: MEDIA.human10,
+  },
+  {
+    name: "Chuks Dibigbo",
+    role: "Photographer",
+    title: "How could I live without it?",
+    quote: "Gosh, this tool has been incredible. It's been such a lifesaver in a short space of time.",
+    photo: MEDIA.human11,
+  },
+  {
+    name: "Shayrah Phillips",
+    role: "Doctor",
+    title: "Simply phenomenal",
+    quote: "Life changer. It just makes my life so much easier. Forever grateful to the creators. I even call it 'Memo' now, that's how close we are. And with everything new that's coming... it's simply phenomenal 🤩",
+    photo: MEDIA.human12,
   },
 ];
 

@@ -1,15 +1,20 @@
+"use client";
+
+import { useState } from "react";
 import { TestimoniesHeading } from "./testimonies-heading";
 import { TestimonialsGrid } from "./testimonials-grid";
 import { ViewMorePill } from "./view-more-pill";
 
 export function TestimoniesSection() {
+  const [expanded, setExpanded] = useState(false);
+
   return (
     <div className="animate-up" id="testimonies">
       <div className="w-full py-16 px-4 bg-white">
         <div className="max-w-7xl mx-auto">
           <TestimoniesHeading />
-          <TestimonialsGrid />
-          <ViewMorePill />
+          <TestimonialsGrid expanded={expanded} />
+          <ViewMorePill expanded={expanded} onToggle={() => setExpanded((v) => !v)} />
 
           {/* Mobile CTA */}
           <div className="mt-12 flex justify-center md:hidden">

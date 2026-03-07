@@ -2,15 +2,26 @@ import { MEDIA } from "@/lib/landing/content";
 
 const AVATARS = [MEDIA.Human1, MEDIA.Human2, MEDIA.Human3, MEDIA.Human4];
 
-function PlusIcon() {
+function ToggleIcon({ expanded }: { expanded: boolean }) {
   return (
     <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+      {expanded ? (
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 12H4" />
+      ) : (
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+      )}
     </svg>
   );
 }
 
-export function ViewMorePill() {
+interface ViewMorePillProps {
+  expanded: boolean;
+  onToggle: () => void;
+}
+
+export function ViewMorePill({ expanded, onToggle }: ViewMorePillProps) {
+  const label = expanded ? "View less" : "View more";
+
   return (
     <>
       {/* Desktop pill */}
@@ -41,11 +52,12 @@ export function ViewMorePill() {
             <div className="w-px h-6 bg-[#333333]" />
             <button
               type="button"
+              onClick={onToggle}
               className="flex items-center gap-3 text-gray-700 cursor-pointer hover:text-gray-400 transition-colors"
             >
-              <span className="font-medium text-base">View more</span>
+              <span className="font-medium text-base">{label}</span>
               <div className="w-8 h-8 rounded-full bg-gray-600 flex items-center justify-center hover:scale-105 transition-transform">
-                <PlusIcon />
+                <ToggleIcon expanded={expanded} />
               </div>
             </button>
           </div>
@@ -78,11 +90,12 @@ export function ViewMorePill() {
             <div className="py-2">
               <button
                 type="button"
+                onClick={onToggle}
                 className="flex items-center gap-3 cursor-pointer text-gray-700 hover:text-gray-900 transition-colors"
               >
-                <span className="font-medium text-lg text-[#333333]">View more</span>
+                <span className="font-medium text-lg text-[#333333]">{label}</span>
                 <div className="w-8 h-8 rounded-full bg-gray-600 flex items-center justify-center">
-                  <PlusIcon />
+                  <ToggleIcon expanded={expanded} />
                 </div>
               </button>
             </div>
