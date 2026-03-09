@@ -16,7 +16,7 @@ export function CardDecompress({ mobile }: { mobile?: boolean }) {
         <img alt="background" loading="lazy" className="absolute inset-0 object-cover z-0" src={MEDIA.forget2} style={bgStyle} />
         <div className="relative z-10">
           <NotificationStrip compact />
-          <h2 className="text-[36px] leading-tight font-semibold text-white mb-4 px-6 pt-3">
+          <h2 className="text-[36px] leading-tight text-white mb-4 px-6 pt-3">
             We don't organize lives: we decompress them.
           </h2>
           <div className="space-y-3 text-lg text-white px-6 mb-6">
@@ -34,7 +34,7 @@ export function CardDecompress({ mobile }: { mobile?: boolean }) {
       <div className="relative z-10">
         <NotificationStrip />
         <div className="p-8 pt-0">
-          <h2 className="text-[40px] font-semibold leading-tight text-white mb-6 pt-10">
+          <h2 className="text-[40px] leading-tight text-white mb-6 pt-10">
             We don't organize lives: we decompress them.
           </h2>
           <div className="space-y-4 text-white">

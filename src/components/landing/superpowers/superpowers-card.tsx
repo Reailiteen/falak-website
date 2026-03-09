@@ -17,7 +17,7 @@ export function SuperpowersCard({ title, image, isNew }: CardData) {
         <div className="relative z-10 flex flex-col h-full p-6 justify-between">
           <div>
             {isNew && <CardNewBadge />}
-            <h3 className="text-white text-3xl font-bold leading-tight max-w-[90%] drop-shadow-md">{title}</h3>
+            <h3 className="text-white text-3xl leading-tight max-w-[90%] drop-shadow-md">{title}</h3>
           </div>
           <div className="self-end">
             <CardPlusButton />

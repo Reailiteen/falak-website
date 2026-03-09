@@ -46,7 +46,7 @@ export function TestimonialCard({ testimonial }: { testimonial: TestimonialItem 
       </div>
 
       {/* Title */}
-      <h3 className="text-2xl font-semibold text-[#121C28] relative z-10">{testimonial.title}</h3>
+      <h3 className="text-2xl text-[#121C28] relative z-10">{testimonial.title}</h3>
 
       {/* Quote */}
       <p className="text-[#333333] leading-relaxed relative z-10">{testimonial.quote}</p>

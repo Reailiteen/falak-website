@@ -5,7 +5,7 @@ export function CardApp({ mobile }: { mobile?: boolean }) {
     return (
       <div className="bg-[#B6DEDE] rounded-4xl overflow-hidden">
         <div className="p-6">
-          <h2 className="text-[36px] leading-tight font-semibold text-[#121C28] mb-6">
+          <h2 className="text-[36px] leading-tight text-[#121C28] mb-6">
             We're not here to create just another app
           </h2>
           <div className="leading-tight text-base text-[#121C28]">
@@ -25,7 +25,7 @@ export function CardApp({ mobile }: { mobile?: boolean }) {
   return (
     <div className="bg-[#B6DEDE] rounded-3xl overflow-hidden">
       <div className="p-8">
-        <h2 className="text-[36px] leading-tight font-semibold text-gray-800 mb-6">
+        <h2 className="text-[36px] leading-tight text-gray-800 mb-6">
           We're not here to create just another app
         </h2>
         <div className="leading-normal text-base text-gray-700">

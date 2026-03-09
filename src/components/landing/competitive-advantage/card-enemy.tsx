@@ -8,7 +8,7 @@ export function CardEnemy({ mobile }: { mobile?: boolean }) {
           </p>
           <p className="text-xs text-gray-500 text-right">17:45</p>
         </div>
-        <h2 className="text-[36px] font-semibold leading-tight text-[#01214F] mb-6 pt-5">Chaos is our enemy.</h2>
+        <h2 className="text-[36px] leading-tight text-[#01214F] mb-6 pt-5">Chaos is our enemy.</h2>
         <div className="space-y-3 text-gray-700 mb-2 text-[16px] leading-tight">
           <p>
             We don't compete with other apps. We compete with what escapes you. With the important things that never
@@ -28,7 +28,7 @@ export function CardEnemy({ mobile }: { mobile?: boolean }) {
         </p>
         <p className="text-xs text-gray-500 text-right pb-1">17:45</p>
       </div>
-      <h2 className="text-[40px] font-semibold leading-tight text-[#01214F] mb-6 pt-10">Chaos is our enemy.</h2>
+      <h2 className="text-[40px] leading-tight text-[#01214F] mb-6 pt-10">Chaos is our enemy.</h2>
       <div className="space-y-4 text-gray-700">
         <p>
           We don't compete with other apps. We compete with what escapes you. With the important things that never

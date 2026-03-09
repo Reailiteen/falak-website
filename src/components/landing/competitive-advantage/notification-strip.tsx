@@ -34,7 +34,7 @@ function MeetingCard({ compact }: { compact?: boolean }) {
           MEETING
         </span>
       </div>
-      <div className={`text-[#0c254c] leading-tight font-medium ${compact ? "text-[1rem]" : "text-[1.3rem]"} mb-2 px-3`}>
+      <div className={`text-[#0c254c] leading-tight ${compact ? "text-[1rem]" : "text-[1.3rem]"} mb-2 px-3`}>
         Meeting with<br />new client
       </div>
       <div className={`flex items-center justify-around text-[#8498ad] ${compact ? "text-sm" : "text-base"} mt-1 gap-7 font-normal pb-4 px-3`}>
@@ -61,7 +61,7 @@ function ListsCard({ compact }: { compact?: boolean }) {
         <ListIcon className="w-4 h-4 text-[#557BF4]" />
         <span className="text-[10px] font-bold text-[#557BF4] tracking-wider">LISTS</span>
       </div>
-      <div className={`text-[#1A3556] leading-tight font-medium ${compact ? "text-base" : "text-lg"} px-4 mt-2`}>
+      <div className={`text-[#1A3556] leading-tight ${compact ? "text-base" : "text-lg"} px-4 mt-2`}>
         Your pending tasks:
       </div>
       <ul className="mt-1 flex flex-col gap-1 text-sm ml-8 mb-2 list-disc">
@@ -89,7 +89,7 @@ function ReminderCard({ compact }: { compact?: boolean }) {
         <CalendarIcon className="w-4 h-4 text-[#35C38C]" />
         <span className="text-[10px] font-bold text-[#23CF67] tracking-wider">REMINDER</span>
       </div>
-      <div className={`text-[#0c254c] leading-tight font-medium ${compact ? "text-[1rem]" : "text-[1.15rem]"} px-2 mt-2`}>
+      <div className={`text-[#0c254c] leading-tight ${compact ? "text-[1rem]" : "text-[1.15rem]"} px-2 mt-2`}>
         Call the dentist<br />and make an appointment
       </div>
       <div className="flex items-center px-2 gap-4 text-[#8498ad] text-sm font-normal pb-4 pt-2">

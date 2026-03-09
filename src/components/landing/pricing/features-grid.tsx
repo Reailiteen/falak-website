@@ -62,7 +62,7 @@ function FeatureTile({
         />
       </div>
       <div className="text-center leading-tight">
-        <div className="text-[10px] px-2 text-white font-medium pb-2">{label}</div>
+        <div className="text-[10px] px-2 text-white pb-2">{label}</div>
       </div>
     </div>
   );

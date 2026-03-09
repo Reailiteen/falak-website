@@ -39,7 +39,7 @@ export function FooterDesktop() {
           {/* Headline + subtitle — center left */}
           <div className="absolute left-12 top-1/2 transform -translate-y-1/2">
             <div className="max-w-2xl">
-              <h1 className="text-5xl font-semibold mb-4 leading-tight text-white">
+              <h1 className="text-5xl mb-4 leading-tight text-white">
                 You just live.<br />Memorae remembers for you.
               </h1>
               <p className="text-lg text-gray-300 max-w-md leading-relaxed">

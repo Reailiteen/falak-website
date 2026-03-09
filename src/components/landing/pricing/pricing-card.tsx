@@ -49,7 +49,7 @@ function CardContent({ plan, isAnnual, locale, config }: CardContentProps) {
           {plan.name}
         </h2>
         {isAnnual && (
-          <span className="px-1 py-1 text-[11px] rounded-sm font-semibold inline text-[#090D10] bg-green-500">
+          <span className="px-1 py-1 text-[11px] rounded-sm inline text-[#090D10] bg-green-500">
             6 MONTHS FREE
           </span>
         )}
@@ -58,7 +58,7 @@ function CardContent({ plan, isAnnual, locale, config }: CardContentProps) {
       {/* Price */}
       <div className="mb-3">
         <div className="flex items-baseline gap-2 mb-2">
-          <span className={`${config.priceClassName} font-semibold text-white whitespace-nowrap`}>
+          <span className={`${config.priceClassName} text-white whitespace-nowrap`}>
             {isAnnual ? plan.annualPrice : plan.monthlyPrice}
           </span>
           {isAnnual && (
@@ -94,9 +94,9 @@ function CardContent({ plan, isAnnual, locale, config }: CardContentProps) {
           </div>
         </div>
         <div className="text-left flex-1 min-h-[64px] flex items-center">
-          <p className="text-[13px] font-semibold text-gray-800 leading-tight">
+          <p className="text-[13px] text-gray-800 leading-tight">
             Watch{" "}
-            <span className="bg-gradient-to-r from-[#9734E6] to-[#E5469F] bg-clip-text text-transparent font-medium text-[13px] inline">
+            <span className="bg-gradient-to-r from-[#9734E6] to-[#E5469F] bg-clip-text text-transparent text-[13px] inline">
               {plan.name}
             </span>{" "}
             in action
@@ -107,7 +107,7 @@ function CardContent({ plan, isAnnual, locale, config }: CardContentProps) {
       {/* CTA button */}
       <button
         type="button"
-        className={`w-full text-white ${config.ctaTextSize} font-semibold py-[11px] rounded-full flex items-center justify-center gap-2 hover:opacity-90 transition-all cursor-pointer hover:-translate-y-0.5 ${config.buttonClassName}`}
+        className={`w-full text-white ${config.ctaTextSize} py-[11px] rounded-full flex items-center justify-center gap-2 hover:opacity-90 transition-all cursor-pointer hover:-translate-y-0.5 ${config.buttonClassName}`}
         style={config.buttonStyle}
         onClick={() => trackLandingEvent("cta_primary_click", { locale, section: `pricing_${plan.id}` })}
       >
@@ -152,7 +152,7 @@ export function PricingCard({ plan, isAnnual, locale, config, isActive, onHover 
             <div className="rounded-3xl bg-black">
               <div className="rounded-3xl bg-gradient-to-r from-[#5C7BF3] to-[#FF66C4] relative z-10">
                 <div
-                  className="text-center py-1.5 text-white font-semibold text-lg rounded-t-3xl"
+                  className="text-center py-1.5 text-white text-lg rounded-t-3xl"
                   style={{ background: "linear-gradient(135deg, rgb(99, 102, 241) 0%, rgb(236, 72, 153) 100%)" }}
                 >
                   Most Popular

@@ -24,7 +24,7 @@ export function FooterStoreBadges({ compact = false, containerClass }: FooterSto
         </svg>
         <div className="flex flex-col">
           <span className={`${labelSize} text-white/70 leading-none`}>Download on the</span>
-          <span className={`${titleSize} font-semibold text-white leading-tight`}>App Store</span>
+          <span className={`${titleSize}  text-white leading-tight`}>App Store</span>
         </div>
       </a>
 
@@ -43,7 +43,7 @@ export function FooterStoreBadges({ compact = false, containerClass }: FooterSto
         </svg>
         <div className="flex flex-col">
           <span className={`${labelSize} text-white/70 leading-none`}>Get it on</span>
-          <span className={`${titleSize} font-semibold text-white leading-tight`}>Google Play</span>
+          <span className={`${titleSize}  text-white leading-tight`}>Google Play</span>
         </div>
       </a>
     </div>

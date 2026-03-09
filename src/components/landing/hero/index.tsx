@@ -61,12 +61,12 @@ export function HeroSection() {
             </div>
 
             {/* H1 — mobile */}
-            <h1 className="mt-2 md:hidden font-semibold z-30 text-center pt-4 md:pt-8 text-[48px] md:text-[3.5rem] lg:text-[6rem] leading-[99%] lg:leading-[6rem] md:leading-[4.5rem] text-white relative">
+            <h1 className="mt-2 md:hidden z-30 text-center pt-4 md:pt-8 text-[48px] md:text-[3.5rem] lg:text-[6rem] leading-[99%] lg:leading-[6rem] md:leading-[4.5rem] text-white relative">
               You are <br />not designed <br />to remember everything.<br />Memorae is.
             </h1>
 
             {/* H1 — desktop */}
-            <h1 className="hidden md:block font-semibold z-30 text-center pt-4 md:pt-8 text-[47px] md:text-[3.5rem] lg:text-[6rem] lg:leading-[6rem] leading-[4rem] md:leading-[4.5rem] text-white relative">
+            <h1 className="hidden md:block z-30 text-center pt-4 md:pt-8 text-[47px] md:text-[3.5rem] lg:text-[6rem] lg:leading-[6rem] leading-[4rem] md:leading-[4.5rem] text-white relative">
               You are not designed <br />to remember everything.<br />Memorae is.
             </h1>
           </div>

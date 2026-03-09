@@ -16,7 +16,7 @@ export function FeaturesCard({ title, userMessage, botReply }: FeatureCardData) 
         style={{ backgroundImage: `url("${MEDIA.frame2147238407}")` }}
       >
         <div className="relative flex flex-col gap-4 w-full h-full">
-          <h3 className="text-[24px] leading-[120%] font-semibold text-[#01214F] text-center mb-4">{title}</h3>
+          <h3 className="text-[24px] leading-[120%] text-[#01214F] text-center mb-4">{title}</h3>
           <ChatUserBubble message={userMessage} />
           <ChatBotBubble reply={botReply} />
         </div>

@@ -24,7 +24,7 @@ export function FooterMobile() {
 
         {/* Headline + subtitle */}
         <div className="mb-12 relative">
-          <h1 className="text-4xl sm:text-5xl font-semibold mb-4 leading-tight">
+          <h1 className="text-4xl sm:text-5xl mb-4 leading-tight">
             You just live.<br />Memorae remembers for you.
           </h1>
           <p className="text-lg md:text-xl text-gray-300 max-w-md leading-tight">

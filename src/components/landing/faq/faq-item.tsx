@@ -13,7 +13,7 @@ export function FaqItem({ question, answer, isOpen, onToggle, textSizeClass }: F
       onClick={onToggle}
     >
       <button className="w-full px-6 py-5 text-left flex items-center justify-between focus:outline-none cursor-pointer">
-        <span className={`font-medium ${textSizeClass} pr-4`}>{question}</span>
+        <span className={`${textSizeClass} pr-4`}>{question}</span>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"

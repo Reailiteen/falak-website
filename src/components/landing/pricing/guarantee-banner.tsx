@@ -30,7 +30,7 @@ export function GuaranteeBanner({ activePlanId }: { activePlanId: string }) {
           />
         </div>
         <div className="flex-1">
-          <span className="font-semibold">14-day money-back guarantee.</span>{" "}
+          <span className="">14-day money-back guarantee.</span>{" "}
           <span>
             Try it for free. Then you have a full 14 days to request a complete refund. No questions, no forms, just
             your money back.
@@ -38,7 +38,7 @@ export function GuaranteeBanner({ activePlanId }: { activePlanId: string }) {
         </div>
       </div>
 
-      <h3 className="mt-6 text-2xl font-semibold text-white">
+      <h3 className="mt-6 text-2xl text-white">
         Everything you can unlock with the{" "}
         <span className={accent.className}>{accent.name}</span>
       </h3>

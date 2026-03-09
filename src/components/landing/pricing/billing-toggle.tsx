@@ -16,18 +16,18 @@ export function BillingToggle({ billingCycle, onChange }: BillingToggleProps) {
         />
         <button
           type="button"
-          className="cursor-pointer relative z-10 px-4 py-2 h-full rounded-full text-sm font-medium transition-colors duration-300 text-white"
+          className="cursor-pointer relative z-10 px-4 py-2 h-full rounded-full text-sm transition-colors duration-300 text-white"
           onClick={() => onChange("monthly")}
         >
           Monthly
         </button>
         <button
           type="button"
-          className="cursor-pointer relative z-10 px-4 py-2 rounded-full text-sm font-medium transition-colors duration-300 flex items-center gap-2 text-white"
+          className="cursor-pointer relative z-10 px-4 py-2 rounded-full text-sm transition-colors duration-300 flex items-center gap-2 text-white"
           onClick={() => onChange("annual")}
         >
           Annual
-          <span className="bg-[#23CF67] text-white text-xs px-2 py-1 rounded-full font-semibold">-50%</span>
+          <span className="bg-[#23CF67] text-white text-xs px-2 py-1 rounded-full ">-50%</span>
         </button>
       </div>
     </div>

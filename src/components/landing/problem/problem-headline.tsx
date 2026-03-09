@@ -15,7 +15,7 @@ function WordSpan({ word, className }: { word: string; className: string }) {
 export function ProblemHeadline() {
   return (
     <h1
-      className="text-[12vw] md:text-[100px] lg:text-[200px] xl:text-[255px] mt-40 font-bold text-[#333333] leading-none text-center z-10 select-none flex flex-nowrap justify-center whitespace-nowrap"
+      className="text-[12vw] md:text-[100px] lg:text-[200px] xl:text-[255px] mt-40 text-[#333333] leading-none text-center z-10 select-none flex flex-nowrap justify-center whitespace-nowrap"
       style={{ lineHeight: 1 }}
     >
       <WordSpan word={WORDS[0]} className="inline-block" />

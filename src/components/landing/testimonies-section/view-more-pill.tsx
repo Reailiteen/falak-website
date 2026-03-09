@@ -45,7 +45,7 @@ export function ViewMorePill({ expanded, onToggle }: ViewMorePillProps) {
                 </div>
               ))}
             </div>
-            <span className="text-gray-700 font-medium text-base">200k+ users love Memorae</span>
+            <span className="text-gray-700 text-base">200k+ users love Memorae</span>
           </div>
 
           <div className="flex items-center gap-4">
@@ -55,7 +55,7 @@ export function ViewMorePill({ expanded, onToggle }: ViewMorePillProps) {
               onClick={onToggle}
               className="flex items-center gap-3 text-gray-700 cursor-pointer hover:text-gray-400 transition-colors"
             >
-              <span className="font-medium text-base">{label}</span>
+              <span className="text-base">{label}</span>
               <div className="w-8 h-8 rounded-full bg-gray-600 flex items-center justify-center hover:scale-105 transition-transform">
                 <ToggleIcon expanded={expanded} />
               </div>
@@ -85,7 +85,7 @@ export function ViewMorePill({ expanded, onToggle }: ViewMorePillProps) {
                 </div>
               ))}
             </div>
-            <span className="text-[#333333] font-medium text-lg pb-4">200k+ users love Memorae</span>
+            <span className="text-[#333333] text-lg pb-4">200k+ users love Memorae</span>
             <div className="h-px w-[95%] bg-[#333333] mx-auto" />
             <div className="py-2">
               <button
@@ -93,7 +93,7 @@ export function ViewMorePill({ expanded, onToggle }: ViewMorePillProps) {
                 onClick={onToggle}
                 className="flex items-center gap-3 cursor-pointer text-gray-700 hover:text-gray-900 transition-colors"
               >
-                <span className="font-medium text-lg text-[#333333]">{label}</span>
+                <span className="text-lg text-[#333333]">{label}</span>
                 <div className="w-8 h-8 rounded-full bg-gray-600 flex items-center justify-center">
                   <ToggleIcon expanded={expanded} />
                 </div>

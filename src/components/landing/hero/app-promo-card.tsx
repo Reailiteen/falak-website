@@ -29,7 +29,7 @@ export function AppPromoCard({ variant }: Props) {
       </div>
       <div className="flex flex-col">
         <span
-          className="mb-1 px-2 py-[2px] rounded-md font-semibold text-[10px]"
+          className="mb-1 px-2 py-[2px] rounded-md text-[10px]"
           style={
             isDesktop
               ? { color: "rgb(255, 102, 196)", background: "rgba(255, 102, 196, 0.15)", width: "max-content" }
@@ -38,7 +38,7 @@ export function AppPromoCard({ variant }: Props) {
         >
           AVAILABLE NOW
         </span>
-        <h2 className="font-semibold text-left text-black">Memorae App</h2>
+        <h2 className="text-left text-black">Memorae App</h2>
         <div className="flex items-center gap-2 shrink-0">
           <p className={`font-normal text-[#898F91] ${isDesktop ? "text-[14px]" : ""}`}>Available on:</p>
           <img alt="App Store" className="w-4 h-4" src={MEDIA.appStoreBadge} />

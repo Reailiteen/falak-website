@@ -17,10 +17,10 @@ export function ChatBotBubble({ reply }: Props) {
         <div className="h-[14px] w-[14px] rounded-full bg-white grid place-items-center">
           <img alt="Memorae logo" src={MEDIA.memoraeLogo} width={20} height={20} className="object-contain" loading="lazy" />
         </div>
-        <span className="text-[10px] font-semibold uppercase tracking-wide text-[#557BF4]">Memorae</span>
+        <span className="text-[10px] uppercase tracking-wide text-[#557BF4]">Memorae</span>
       </div>
 
-      <p className="text-sm font-medium leading-[136%] text-[#01214F] text-left">{reply}</p>
+      <p className="text-sm leading-[136%] text-[#01214F] text-left">{reply}</p>
     </div>
   );
 }

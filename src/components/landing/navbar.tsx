@@ -98,12 +98,12 @@ export function Navbar({ visible = true }: NavbarProps) {
             >
               <div className="flex items-center justify-between">
                 {/* Logo */}
-                <a href="#top" className="ml-4 mr-10 flex-shrink-0 text-white text-2xl font-bold">
+                <a href="#top" className="ml-4 mr-10 flex-shrink-0 text-white text-2xl">
                   <img src={MEDIA.logoHome} alt="Memorae" className="h-10 w-36 cursor-pointer object-contain" />
                 </a>
 
                 {/* Nav links */}
-                <nav className="flex items-center space-x-8 text-sm font-medium text-white">
+                <nav className="flex items-center space-x-8 text-sm text-white">
                   {/* Superpowers */}
                   <div className="relative z-[110] flex items-center space-x-1">
                     <button
@@ -170,7 +170,7 @@ export function Navbar({ visible = true }: NavbarProps) {
                     onClick={() => handleNav("pricing")}
                   >
                     <span className="absolute inset-0 scale-105 bg-[radial-gradient(circle,rgba(255,255,255,0.25),transparent)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                    <span className="relative z-10 font-medium">Try for Free</span>
+                    <span className="relative z-10">Try for Free</span>
                   </button>
                 </nav>
               </div>
@@ -249,7 +249,7 @@ export function Navbar({ visible = true }: NavbarProps) {
                                 style={{
                                   color: "white",
                                   fontSize: "16px",
-                                  fontWeight: 700,
+                                  fontWeight: 400,
                                   lineHeight: 1.3,
                                   textAlign: "left",
                                   margin: 0,
@@ -308,7 +308,7 @@ export function Navbar({ visible = true }: NavbarProps) {
                             flexShrink: 0,
                           }}
                         >
-                          <h3 style={{ fontSize: "20px", fontWeight: 700, color: "#172f39", margin: 0 }}>
+                          <h3 style={{ fontSize: "20px", fontWeight: 400, color: "#172f39", margin: 0 }}>
                             Superpowers
                           </h3>
                           <div style={{ display: "flex", gap: "8px" }}>
@@ -376,7 +376,7 @@ export function Navbar({ visible = true }: NavbarProps) {
                                 style={{
                                   marginTop: "8px",
                                   fontSize: "12px",
-                                  fontWeight: 600,
+                                  fontWeight: 400,
                                   color: "#172f39",
                                   maxWidth: "168px",
                                   lineHeight: 1.3,
@@ -400,7 +400,7 @@ export function Navbar({ visible = true }: NavbarProps) {
                         width: "760px",
                       }}
                     >
-                      <h3 style={{ fontSize: "22px", fontWeight: 700, color: "#111", margin: "0 0 20px 0" }}>
+                      <h3 style={{ fontSize: "22px", fontWeight: 400, color: "#111", margin: "0 0 20px 0" }}>
                         Channels
                       </h3>
                       <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "14px" }}>
@@ -434,7 +434,7 @@ export function Navbar({ visible = true }: NavbarProps) {
                                 top: "14px",
                                 left: "14px",
                                 color: "white",
-                                fontWeight: 700,
+                                fontWeight: 400,
                                 fontSize: "15px",
                                 zIndex: 2,
                               }}

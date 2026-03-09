@@ -20,7 +20,7 @@ export function TestimoniesSection() {
           <div className="mt-12 flex justify-center md:hidden">
             <button
               type="button"
-              className="w-[320px] px-6 py-3 rounded-full bg-gradient-to-r from-[#557BF4] to-[#FF66C4] text-white text-2xl font-semibold flex items-center justify-center gap-2 shadow-sm active:scale-95 transition-transform"
+              className="w-[320px] px-6 py-3 rounded-full bg-gradient-to-r from-[#557BF4] to-[#FF66C4] text-white text-2xl flex items-center justify-center gap-2 shadow-sm active:scale-95 transition-transform"
             >
               <span>Try for free</span>
               <span aria-hidden="true">→</span>

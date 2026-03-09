@@ -13,7 +13,7 @@ function Img({ src, alt }: { src: string; alt: string }) {
   );
 }
 
-const lineClass = "leading-tight text-[#333333] font-semibold w-full flex justify-center text-[22px] md:text-[34px]";
+const lineClass = "leading-tight text-[#333333] w-full flex justify-center text-[22px] md:text-[34px]";
 
 export function SolutionSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
