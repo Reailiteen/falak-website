@@ -1,6 +1,10 @@
-import { MEDIA, HERO } from "@/lib/landing/content";
+"use client";
+
+import { useTranslations } from "next-intl";
+import { MEDIA } from "@/lib/landing/content";
 
 export function AppReview() {
+  const t = useTranslations("hero");
   return (
     <div className="z-10 text-white text-base md:mt-10 md:text-lg mb-2">
       <div className="flex flex-row items-center justify-center md:justify-start gap-1 md:space-x-2 text-[13px] md:text-base">
@@ -10,11 +14,11 @@ export function AppReview() {
               <img key={i} alt="star" className="h-4 w-4 md:h-5 md:w-5" src={MEDIA.starHome} />
             ))}
           </span>
-          <span>{HERO.rating}</span>
+          <span>{t("rating")}</span>
         </div>
         <div className="mt-0 text-center md:text-left">
           <span className="md:inline">| </span>
-          <span>{HERO.badge}</span>
+          <span>{t("badge")}</span>
         </div>
       </div>
     </div>

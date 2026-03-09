@@ -1,3 +1,7 @@
+"use client";
+
+import { useTranslations } from "next-intl";
+
 function CalendarIcon({ className }: { className?: string }) {
   return (
     <svg className={className} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -16,7 +20,7 @@ function ListIcon({ className }: { className?: string }) {
   );
 }
 
-function MeetingCard({ compact }: { compact?: boolean }) {
+function MeetingCard({ compact, t }: { compact?: boolean; t: (k: string) => string }) {
   return (
     <div
       className={`flex flex-col flex-shrink-0 ${compact ? "h-32" : ""}`}
@@ -28,10 +32,10 @@ function MeetingCard({ compact }: { compact?: boolean }) {
         maxWidth: "300px",
       }}
     >
-      <div className="flex items-center bg-[#FFD6E5]/70 px-3 py-1 rounded-sm w-max mt-3 ml-3 mb-2">
-        <CalendarIcon className="w-4 h-4 mr-1 text-[#F0589E]" />
+      <div className="flex items-center bg-[#FFD6E5]/70 px-3 py-1 rounded-sm w-max mt-3 ms-3 mb-2">
+        <CalendarIcon className="w-4 h-4 me-1 text-[#F0589E]" />
         <span className="uppercase text-[10px] font-bold text-[#F0589E] tracking-wider" style={{ letterSpacing: "0.08em" }}>
-          MEETING
+          {t("labelMeeting")}
         </span>
       </div>
       <div className={`text-[#0c254c] leading-tight ${compact ? "text-[1rem]" : "text-[1.3rem]"} mb-2 px-3`}>
@@ -45,7 +49,7 @@ function MeetingCard({ compact }: { compact?: boolean }) {
   );
 }
 
-function ListsCard({ compact }: { compact?: boolean }) {
+function ListsCard({ compact, t }: { compact?: boolean; t: (k: string) => string }) {
   return (
     <div
       className={`flex flex-col flex-shrink-0 ${compact ? "h-32" : ""}`}
@@ -57,14 +61,14 @@ function ListsCard({ compact }: { compact?: boolean }) {
         maxWidth: "300px",
       }}
     >
-      <div className="flex items-center bg-[#ECF1FE] px-3 py-[2px] rounded-sm w-max mt-4 ml-4 gap-1">
+      <div className="flex items-center bg-[#ECF1FE] px-3 py-[2px] rounded-sm w-max mt-4 ms-4 gap-1">
         <ListIcon className="w-4 h-4 text-[#557BF4]" />
-        <span className="text-[10px] font-bold text-[#557BF4] tracking-wider">LISTS</span>
+        <span className="text-[10px] font-bold text-[#557BF4] tracking-wider">{t("labelLists")}</span>
       </div>
       <div className={`text-[#1A3556] leading-tight ${compact ? "text-base" : "text-lg"} px-4 mt-2`}>
         Your pending tasks:
       </div>
-      <ul className="mt-1 flex flex-col gap-1 text-sm ml-8 mb-2 list-disc">
+      <ul className="mt-1 flex flex-col gap-1 text-sm ms-8 mb-2 list-disc">
         <li className="text-[#989BAB]">Walk Paco 🐶</li>
         {!compact && <li className="text-[#989BAB] text-sm">Do the grocery shopping</li>}
         <li className="text-[#989BAB] text-sm">Send a quote</li>
@@ -73,7 +77,7 @@ function ListsCard({ compact }: { compact?: boolean }) {
   );
 }
 
-function ReminderCard({ compact }: { compact?: boolean }) {
+function ReminderCard({ compact, t }: { compact?: boolean; t: (k: string) => string }) {
   return (
     <div
       className={`flex flex-col flex-shrink-0 px-2 ${compact ? "h-32" : ""}`}
@@ -85,9 +89,9 @@ function ReminderCard({ compact }: { compact?: boolean }) {
         maxWidth: "300px",
       }}
     >
-      <div className="flex items-center bg-[#23CF67]/10 px-2 py-[2px] rounded-sm w-max mt-3 ml-1 gap-1">
+      <div className="flex items-center bg-[#23CF67]/10 px-2 py-[2px] rounded-sm w-max mt-3 ms-1 gap-1">
         <CalendarIcon className="w-4 h-4 text-[#35C38C]" />
-        <span className="text-[10px] font-bold text-[#23CF67] tracking-wider">REMINDER</span>
+        <span className="text-[10px] font-bold text-[#23CF67] tracking-wider">{t("labelReminder")}</span>
       </div>
       <div className={`text-[#0c254c] leading-tight ${compact ? "text-[1rem]" : "text-[1.15rem]"} px-2 mt-2`}>
         Call the dentist<br />and make an appointment
@@ -101,18 +105,19 @@ function ReminderCard({ compact }: { compact?: boolean }) {
 }
 
 export function NotificationStrip({ compact }: { compact?: boolean }) {
+  const t = useTranslations("notificationStrip");
   return (
     <div
       className={`overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden ${compact ? "mt-6" : "mt-8 p-8"}`}
     >
       <div className="flex gap-4 pb-4" style={{ width: "max-content" }}>
-        <MeetingCard compact={compact} />
-        <ListsCard compact={compact} />
-        <ReminderCard compact={compact} />
+        <MeetingCard compact={compact} t={t} />
+        <ListsCard compact={compact} t={t} />
+        <ReminderCard compact={compact} t={t} />
         {!compact && (
           <>
-            <MeetingCard />
-            <ListsCard />
+            <MeetingCard t={t} />
+            <ListsCard t={t} />
           </>
         )}
       </div>

@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { MEDIA } from "@/lib/landing/content";
 import { AppReview } from "./app-review";
 import { HeroCTAs } from "./hero-ctas";
@@ -7,6 +8,7 @@ import { AppPromoCard } from "./app-promo-card";
 import { HeroVideo } from "./hero-video";
 
 export function HeroSection() {
+  const t = useTranslations("hero");
   return (
     <section className="memo-hero-bg relative overflow-hidden">
       <div
@@ -19,7 +21,7 @@ export function HeroSection() {
         </div>
 
         {/* 6-new floating chip */}
-        <div className="hidden md:flex flex-col absolute left-16 bottom-20 lg:left-[90%] md:top-[20%] px-4">
+        <div className="hidden md:flex flex-col absolute start-16 bottom-20 lg:start-[90%] md:top-[20%] px-4">
           <img
             alt="whatsapp"
             src={MEDIA.sixNew}
@@ -37,7 +39,7 @@ export function HeroSection() {
             <AppReview />
 
             {/* Ring orb */}
-            <div className="absolute -left-5 mt-[22%] md:mt-[10%] -translate-y-1/2 z-10">
+            <div className="absolute -start-5 mt-[22%] md:mt-[10%] -translate-y-1/2 z-10">
               <img
                 alt="logo"
                 src={MEDIA.ring}
@@ -49,7 +51,7 @@ export function HeroSection() {
             </div>
 
             {/* Bubble orb */}
-            <div className="hidden md:block absolute -right-6 mt-[22%] -translate-y-1/2 z-10">
+            <div className="hidden md:block absolute -end-6 mt-[22%] -translate-y-1/2 z-10">
               <img
                 alt="logo"
                 src={MEDIA.bubble}
@@ -62,17 +64,17 @@ export function HeroSection() {
 
             {/* H1 — mobile */}
             <h1 className="mt-2 md:hidden z-30 text-center pt-4 md:pt-8 text-[48px] md:text-[3.5rem] lg:text-[6rem] leading-[99%] lg:leading-[6rem] md:leading-[4.5rem] text-white relative">
-              You are <br />not designed <br />to remember everything.<br />Memorae is.
+              {t("titleLine1")}<br />{t("titleLine2")}<br />{t("titleLine3")}
             </h1>
 
             {/* H1 — desktop */}
             <h1 className="hidden md:block z-30 text-center pt-4 md:pt-8 text-[47px] md:text-[3.5rem] lg:text-[6rem] lg:leading-[6rem] leading-[4rem] md:leading-[4.5rem] text-white relative">
-              You are not designed <br />to remember everything.<br />Memorae is.
+              {t("titleLine1")}<br />{t("titleLine2")}<br />{t("titleLine3")}
             </h1>
           </div>
 
           {/* Background orb */}
-          <div className="-mt-[95%] -ml-[75%] md:mr-0 md:left-[20%] md:-mt-[40%] absolute md:-rotate-12 md:rotate-12 md:w-40 md:h-40 inline-flex items-center justify-center">
+          <div className="-mt-[95%] -ms-[75%] md:me-0 md:start-[20%] md:-mt-[40%] absolute md:-rotate-12 md:rotate-12 md:w-40 md:h-40 inline-flex items-center justify-center">
             <img
               alt="logo"
               src={MEDIA.orb}

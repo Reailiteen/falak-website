@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { useTranslations } from "next-intl";
 import { MEDIA, SUPERPOWERS } from "@/lib/landing/content";
-import { NAV, UI } from "@/lib/landing/ui-copy";
 
 type NavMenu = "superpowers" | "channels" | null;
 
@@ -30,17 +30,12 @@ function ChevronIcon({ open }: { open: boolean }) {
 }
 
 const PROMO_CARDS = [
-  {
-    image: "https://cdn.memorae.ai/l3/Frame%202147238449-3.webp",
-    title: "Google Workspace Integration",
-  },
-  {
-    image: "https://cdn.memorae.ai/l3/Frame%202147238450.webp",
-    title: "Automatic Email drafting",
-  },
+  { image: "https://cdn.memorae.ai/l3/Frame%202147238449-3.webp", titleKey: "promoCard1" as const },
+  { image: "https://cdn.memorae.ai/l3/Frame%202147238450.webp", titleKey: "promoCard2" as const },
 ];
 
 export function Navbar({ visible = true }: NavbarProps) {
+  const t = useTranslations("nav");
   const [activeMenu, setActiveMenu] = useState<NavMenu>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -98,7 +93,7 @@ export function Navbar({ visible = true }: NavbarProps) {
             >
               <div className="flex items-center justify-between">
                 {/* Logo */}
-                <a href="#top" className="ml-4 mr-10 flex-shrink-0 text-white text-2xl">
+                <a href="#top" className="ms-4 me-10 flex-shrink-0 text-white text-2xl">
                   <img src={MEDIA.logoHome} alt="Memorae" className="h-10 w-36 cursor-pointer object-contain" />
                 </a>
 
@@ -111,7 +106,7 @@ export function Navbar({ visible = true }: NavbarProps) {
                       className="cursor-pointer border-none bg-transparent p-0 text-white transition-all duration-200 hover:scale-105 hover:text-blue-200 hover:underline"
                       onMouseEnter={() => setActiveMenu("superpowers")}
                     >
-                      Superpowers
+                      {t("superpowers")}
                     </button>
                     <button
                       type="button"
@@ -130,7 +125,7 @@ export function Navbar({ visible = true }: NavbarProps) {
                       className="cursor-pointer border-none bg-transparent p-0 text-white transition-all duration-200 hover:scale-105 hover:text-blue-200 hover:underline"
                       onMouseEnter={() => setActiveMenu("channels")}
                     >
-                      Channels
+                      {t("channels")}
                     </button>
                     <button
                       type="button"
@@ -147,20 +142,20 @@ export function Navbar({ visible = true }: NavbarProps) {
                     className="cursor-pointer text-white transition-all duration-200 hover:scale-105 hover:text-blue-200 hover:underline"
                     onClick={() => handleNav("faq")}
                   >
-                    Support
+                    {t("support")}
                   </button>
                   <button
                     type="button"
                     className="cursor-pointer text-white transition-all duration-200 hover:scale-105 hover:text-blue-200 hover:underline"
                     onClick={() => handleNav("pricing")}
                   >
-                    Pricing
+                    {t("pricing")}
                   </button>
                   <button
                     type="button"
                     className="cursor-pointer text-white transition-all duration-200 hover:scale-105 hover:text-blue-200 hover:underline"
                   >
-                    Log in
+                    {t("logIn")}
                   </button>
 
                   {/* CTA button */}
@@ -170,7 +165,7 @@ export function Navbar({ visible = true }: NavbarProps) {
                     onClick={() => handleNav("pricing")}
                   >
                     <span className="absolute inset-0 scale-105 bg-[radial-gradient(circle,rgba(255,255,255,0.25),transparent)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                    <span className="relative z-10">Try for Free</span>
+                    <span className="relative z-10">{t("ctaTryFree")}</span>
                   </button>
                 </nav>
               </div>
@@ -200,7 +195,7 @@ export function Navbar({ visible = true }: NavbarProps) {
                       <div style={{ display: "flex", gap: "16px", flexShrink: 0 }}>
                         {PROMO_CARDS.map((card) => (
                           <button
-                            key={card.title}
+                            key={card.titleKey}
                             type="button"
                             className="cursor-pointer"
                             onClick={() => handleNav("superpowers")}
@@ -243,7 +238,7 @@ export function Navbar({ visible = true }: NavbarProps) {
                                   textTransform: "uppercase",
                                 }}
                               >
-                                NEW SUPERPOWER
+                                {t("newSuperpower")}
                               </span>
                               <p
                                 style={{
@@ -255,7 +250,7 @@ export function Navbar({ visible = true }: NavbarProps) {
                                   margin: 0,
                                 }}
                               >
-                                {card.title}
+                                {t(card.titleKey)}
                               </p>
                             </div>
 
@@ -279,7 +274,7 @@ export function Navbar({ visible = true }: NavbarProps) {
                                   borderRadius: "20px",
                                 }}
                               >
-                                Discover now
+                                {t("discoverNow")}
                               </span>
                             </div>
                           </button>
@@ -309,7 +304,7 @@ export function Navbar({ visible = true }: NavbarProps) {
                           }}
                         >
                           <h3 style={{ fontSize: "20px", fontWeight: 400, color: "#172f39", margin: 0 }}>
-                            Superpowers
+                            {t("superpowers")}
                           </h3>
                           <div style={{ display: "flex", gap: "8px" }}>
                             <button
@@ -401,7 +396,7 @@ export function Navbar({ visible = true }: NavbarProps) {
                       }}
                     >
                       <h3 style={{ fontSize: "22px", fontWeight: 400, color: "#111", margin: "0 0 20px 0" }}>
-                        Channels
+                        {t("channels")}
                       </h3>
                       <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "14px" }}>
                         {[
@@ -520,16 +515,16 @@ export function Navbar({ visible = true }: NavbarProps) {
       {/* Mobile menu overlay */}
       {mobileMenuOpen && (
         <div className="memo-mobile-menu">
-          <button type="button" className="absolute right-6 top-6 text-2xl text-white" onClick={() => setMobileMenuOpen(false)} aria-label="Close menu">
+          <button type="button" className="absolute end-6 top-6 text-2xl text-white" onClick={() => setMobileMenuOpen(false)} aria-label={t("close")}>
             &#x2715;
           </button>
-          <button type="button" onClick={() => handleNav("superpowers")}>Superpowers</button>
-          <button type="button" onClick={() => handleNav("channels")}>Channels</button>
-          <button type="button" onClick={() => handleNav("faq")}>Support</button>
-          <button type="button" onClick={() => handleNav("pricing")}>Pricing</button>
-          <a href="#">Log in</a>
+          <button type="button" onClick={() => handleNav("superpowers")}>{t("superpowers")}</button>
+          <button type="button" onClick={() => handleNav("channels")}>{t("channels")}</button>
+          <button type="button" onClick={() => handleNav("faq")}>{t("support")}</button>
+          <button type="button" onClick={() => handleNav("pricing")}>{t("pricing")}</button>
+          <a href="#">{t("logIn")}</a>
           <button type="button" className="cta-primary px-8 py-3 text-base" onClick={() => handleNav("pricing")}>
-            {UI.tryFree}
+            {t("ctaTryFree")}
           </button>
         </div>
       )}

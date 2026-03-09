@@ -1,4 +1,9 @@
+"use client";
+
+import { useTranslations } from "next-intl";
+
 export function TestimoniesHeading() {
+  const t = useTranslations("testimonies");
   return (
     <div className="text-center mb-6 md:mb-12">
       <h2 className="text-4xl md:text-6xl mb-4">
@@ -13,10 +18,10 @@ export function TestimoniesHeading() {
             WebkitBoxDecorationBreak: "clone",
           }}
         >
-          200k+ people
+          {t("peopleCount")}
         </span>
         <br />
-        <span className="text-[#01214F] ">they have forgotten to forget</span>
+        <span className="text-[#01214F]">{t("heading")}</span>
       </h2>
     </div>
   );

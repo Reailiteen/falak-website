@@ -1,6 +1,10 @@
+"use client";
+
+import { useTranslations } from "next-intl";
 import { MEDIA } from "@/lib/landing/content";
 
 export function CardShift({ mobile }: { mobile?: boolean }) {
+  const t = useTranslations("chaos");
   const bgStyle: React.CSSProperties = {
     position: "absolute",
     height: "100%",
@@ -15,7 +19,7 @@ export function CardShift({ mobile }: { mobile?: boolean }) {
         <img alt="background" loading="lazy" className="absolute inset-0 object-cover z-0" src={MEDIA.forget3Mob} style={bgStyle} />
         <div className="relative z-10 pt-4 flex-1 overflow-y-auto pb-6">
           <h2 className="text-[34px] leading-tight text-white mb-6 max-w-[300px]">
-            We're not just an app. We're a shift in logic.
+            {t("card3")}
           </h2>
           <div className="space-y-4 text-white text-base max-w-[250px]">
             <p>
@@ -33,7 +37,7 @@ export function CardShift({ mobile }: { mobile?: boolean }) {
       <img alt="background" loading="lazy" className="absolute inset-0 object-cover z-0" src={MEDIA.forget3} style={bgStyle} />
       <div className="relative z-10 top-[35%]">
         <h2 className="text-[36px] leading-tight text-white mb-3 max-w-[300px]">
-          We're not just an app. We're a shift in logic.
+          {t("card3")}
         </h2>
         <div className="space-y-2 text-white leading-tight">
           <p>

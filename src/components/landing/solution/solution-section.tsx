@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { useTranslations } from "next-intl";
 import { MEDIA } from "@/lib/landing/content";
 
 function Img({ src, alt }: { src: string; alt: string }) {
@@ -16,6 +17,7 @@ function Img({ src, alt }: { src: string; alt: string }) {
 const lineClass = "leading-tight text-[#333333] w-full flex justify-center text-[22px] md:text-[34px]";
 
 export function SolutionSection() {
+  const t = useTranslations("solution");
   const sectionRef = useRef<HTMLDivElement>(null);
   const [blurAmt, setBlurAmt] = useState(0);
 
@@ -25,7 +27,6 @@ export function SolutionSection() {
       if (!el) return;
       const top = el.getBoundingClientRect().top;
       const vh = window.innerHeight;
-      // Blur is 1 when section top is at viewport bottom, 0 when section top reaches 75% vh
       if (top > vh || top < vh * 0.75) {
         setBlurAmt(top > vh ? 1 : 0);
         return;
@@ -44,30 +45,29 @@ export function SolutionSection() {
         <div className={lineClass}>
           <div className="text-center w-full">
             <span className="bg-gradient-to-r from-[#557BF4] to-[#FF66C4] bg-clip-text text-transparent font-bold">Memorae</span>{" "}
-            <Img src={MEDIA.orb} alt="orb" /> takes care of remembering, organizing, and executing{" "}
-            <Img src={MEDIA.brainImage} alt="brain" /> for you.
+            <Img src={MEDIA.orb} alt="orb" /> {t("line1")}
           </div>
         </div>
 
         <div className={lineClass}>
           <div className="text-center w-full">
-            You write <Img src={MEDIA.writingImage} alt="writing" /> what you need.
+            {t("line2")} <Img src={MEDIA.writingImage} alt="writing" />
           </div>
         </div>
 
         <div className={lineClass}>
           <div className="text-center w-full">
-            Memorae saves it, organizes it, and acts when it is time.
+            {t("line3")}
           </div>
         </div>
 
         <div className={lineClass}>
           <div className="text-center w-full">
-            In the channel you already use:{" "}
-            <Img src={MEDIA.notifIcon1} alt="whatsapp" /> WhatsApp,{" "}
-            <Img src={MEDIA.notifIcon2} alt="telegram" /> Telegram,{" "}
-            <Img src={MEDIA.image10} alt="email" /> email, or the{" "}
-            <Img src={MEDIA.appStoreIcon} alt="Memorae App" /> Memorae App.
+            {t("channelsIntro")}{" "}
+            <Img src={MEDIA.notifIcon1} alt="whatsapp" />{" "}
+            <Img src={MEDIA.notifIcon2} alt="telegram" />{" "}
+            <Img src={MEDIA.image10} alt="email" />{" "}
+            <Img src={MEDIA.appStoreIcon} alt="Memorae App" />
           </div>
         </div>
 

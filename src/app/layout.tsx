@@ -40,7 +40,9 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} dir={direction}>
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        {children}
+      </body>
     </html>
   );
 }

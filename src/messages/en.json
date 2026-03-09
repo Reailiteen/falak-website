@@ -1,0 +1,98 @@
+{
+  "hero": {
+    "badge": "200k+ already forgot to forget",
+    "rating": "4.8",
+    "titleLine1": "You are not designed",
+    "titleLine2": "to remember everything.",
+    "titleLine3": "Memorae is.",
+    "ctaTryFree": "Try for Free",
+    "ctaTalk": "Talk to Memorae"
+  },
+  "problem": {
+    "word1": "It's",
+    "word2": "overload",
+    "line1": "Your mind never stops. And yet, you still forget things.",
+    "line2": "It's not a lack of discipline."
+  },
+  "solution": {
+    "line1": "takes care of remembering, organizing, and executing for you.",
+    "line2": "You write what you need.",
+    "line3": "Memorae saves it, organizes it, and acts when it is time.",
+    "channelsIntro": "In the channel you already use: WhatsApp, Telegram, email, or the Memorae App."
+  },
+  "nav": {
+    "logo": "Memorae",
+    "superpowers": "Superpowers",
+    "channels": "Channels",
+    "support": "Support",
+    "pricing": "Pricing",
+    "logIn": "Log in",
+    "ctaTryFree": "Try for Free",
+    "close": "Close",
+    "discoverNow": "Discover now",
+    "newSuperpower": "NEW SUPERPOWER",
+    "promoCard1": "Google Workspace Integration",
+    "promoCard2": "Automatic Email drafting"
+  },
+  "ui": {
+    "tryFree": "Try for Free",
+    "talkToMemorae": "Talk to Memorae",
+    "discoverSuperpowers": "Discover all the superpowers",
+    "monthly": "Monthly",
+    "annual": "Annual",
+    "fiftyOff": "-50%",
+    "sixMonthsFree": "6 MONTHS FREE",
+    "mostPopular": "Most Popular",
+    "perMonth": "per month",
+    "perYear": "/yr",
+    "videoDemo": "Watch demo",
+    "guarantee": "14-day money-back guarantee",
+    "guaranteeDesc": "Try Memorae risk-free. If you're not satisfied within 14 days, we'll refund your payment. No questions asked.",
+    "supernovaHeading": "Everything you can unlock with the Supernova",
+    "viewMore": "View more",
+    "viewLess": "View less",
+    "usersLove": "200k+ users love Memorae",
+    "faqHeading": "Frequently Asked Questions",
+    "faqSubheading": "Have questions? We answer them here.",
+    "chatDemoHeading": "How you'll stop forgetting forever",
+    "peacefulMinds": "people with peaceful minds",
+    "remindersSent": "reminders sent",
+    "forgotToForget": "already forgot to forget"
+  },
+  "chaos": {
+    "heading": "Chaos won't win twice.",
+    "subheading": "We're not here to create just another app.",
+    "card1": "We don't organize lives: we decompress them.",
+    "card2": "Chaos is our enemy.",
+    "card3": "We're not just an app. We're a shift in logic.",
+    "card4": "What we are creating doesn't exist."
+  },
+  "notificationStrip": {
+    "labelMeeting": "MEETING",
+    "labelLists": "LISTS",
+    "labelReminder": "REMINDER"
+  },
+  "footer": {
+    "tagline": "You just live. Memorae remembers for you.",
+    "taglineLine1": "You just live.",
+    "taglineLine2": "Memorae remembers for you.",
+    "subtitle": "Your to-do list asked us for help. Here we are.",
+    "privacyPolicy": "Privacy Policy",
+    "termsAndConditions": "Terms and Conditions",
+    "cookieSettings": "Cookie Settings",
+    "legalNotice": "Legal Notice",
+    "communicationChannels": "Communication Channels",
+    "refundsAndReturns": "Refunds and Returns Policy",
+    "copyright": "2026 Memorae Inc. All rights reserved.",
+    "appStore": "App Store",
+    "googlePlay": "Google Play"
+  },
+  "seo": {
+    "title": "Memorae | Your personal memory assistant",
+    "description": "Memorae helps you remember, organize, and act. Unlimited reminders, smart lists, and AI-powered memory across WhatsApp, Telegram, email, and the Memorae App."
+  },
+  "testimonies": {
+    "heading": "they have forgotten to forget",
+    "peopleCount": "200k+ people"
+  }
+}

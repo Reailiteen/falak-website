@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { getLocaleDirection } from "@/i18n/config";
 import { trackLandingEvent } from "@/lib/landing/analytics";
 import type { Locale } from "@/lib/landing/types";
 
@@ -27,8 +28,8 @@ export function LandingPage({ locale }: { locale: Locale }) {
   const [isInHero, setIsInHero] = useState(true);
 
   useEffect(() => {
-    document.documentElement.lang = "en";
-    document.documentElement.dir = "ltr";
+    document.documentElement.lang = locale;
+    document.documentElement.dir = getLocaleDirection(locale);
     if (!viewedRef.current) {
       trackLandingEvent("landing_view", { locale, section: "page" });
       viewedRef.current = true;

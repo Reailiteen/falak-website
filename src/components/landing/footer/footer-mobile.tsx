@@ -1,3 +1,6 @@
+"use client";
+
+import { useTranslations } from "next-intl";
 import { MEDIA } from "@/lib/landing/content";
 import { FooterTryButton } from "./footer-try-button";
 import { FooterSocialIcons } from "./footer-social-icons";
@@ -5,6 +8,7 @@ import { FooterStoreBadges } from "./footer-store-badges";
 import { FooterLinks } from "./footer-links";
 
 export function FooterMobile() {
+  const t = useTranslations("footer");
   return (
     <div className="xl:hidden">
       <div className="flex justify-center mb-10 mt-0">
@@ -12,23 +16,20 @@ export function FooterMobile() {
       </div>
 
       <div className="relative bg-[#000729] rounded-3xl mx-2 p-8 md:p-12 text-white overflow-hidden min-h-[600px]">
-        {/* Ring decoration */}
-        <div className="absolute -top-8 -right-10 w-32 h-32 rounded-full">
+        <div className="absolute -top-8 -end-10 w-32 h-32 rounded-full">
           <img alt="memo" loading="lazy" width={140} height={140} src={MEDIA.ring} style={{ color: "transparent" }} />
         </div>
 
-        {/* Logo */}
         <div className="mb-8 relative">
           <img alt="memorae-logo" loading="lazy" width={140} height={140} src={MEDIA.logoWhite} style={{ color: "transparent" }} />
         </div>
 
-        {/* Headline + subtitle */}
         <div className="mb-12 relative">
           <h1 className="text-4xl sm:text-5xl mb-4 leading-tight">
-            You just live.<br />Memorae remembers for you.
+            {t("tagline")}
           </h1>
           <p className="text-lg md:text-xl text-gray-300 max-w-md leading-tight">
-            Your to-do list asked us for help. Here we are.
+            {t("subtitle")}
           </p>
         </div>
 
@@ -41,11 +42,10 @@ export function FooterMobile() {
         {/* Footer links */}
         <FooterLinks layout="vertical" />
 
-        {/* Copyright */}
-        <div className="text-sm text-gray-400 relative">© 2026 Memorae Inc. All rights reserved.</div>
+        <div className="text-sm text-gray-400 relative">{t("copyright")}</div>
 
         {/* Inspirational mascot */}
-        <div className="absolute bottom-20 -right-28 sm:-right-32 w-72 h-72">
+        <div className="absolute bottom-20 -end-28 sm:-end-32 w-72 h-72">
           <div className="relative w-full h-full">
             <img alt="memo" loading="lazy" width={250} height={250} src={MEDIA.memoraeInspirational} style={{ color: "transparent" }} />
           </div>

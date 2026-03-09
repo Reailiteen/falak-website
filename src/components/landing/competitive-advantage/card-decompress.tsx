@@ -1,7 +1,11 @@
+"use client";
+
+import { useTranslations } from "next-intl";
 import { MEDIA } from "@/lib/landing/content";
 import { NotificationStrip } from "./notification-strip";
 
 export function CardDecompress({ mobile }: { mobile?: boolean }) {
+  const t = useTranslations("chaos");
   const bgStyle: React.CSSProperties = {
     position: "absolute",
     height: "100%",
@@ -17,7 +21,7 @@ export function CardDecompress({ mobile }: { mobile?: boolean }) {
         <div className="relative z-10">
           <NotificationStrip compact />
           <h2 className="text-[36px] leading-tight text-white mb-4 px-6 pt-3">
-            We don't organize lives: we decompress them.
+            {t("card1")}
           </h2>
           <div className="space-y-3 text-lg text-white px-6 mb-6">
             <p>Chaos isn't solved with more tools. It's removed by taking away friction.</p>
@@ -35,7 +39,7 @@ export function CardDecompress({ mobile }: { mobile?: boolean }) {
         <NotificationStrip />
         <div className="p-8 pt-0">
           <h2 className="text-[40px] leading-tight text-white mb-6 pt-10">
-            We don't organize lives: we decompress them.
+            {t("card1")}
           </h2>
           <div className="space-y-4 text-white">
             <p>Chaos isn't solved with more tools. It's removed by taking away friction.</p>

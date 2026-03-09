@@ -1,3 +1,6 @@
+"use client";
+
+import { useTranslations } from "next-intl";
 import { MEDIA } from "@/lib/landing/content";
 
 const AVATARS = [MEDIA.Human1, MEDIA.Human2, MEDIA.Human3, MEDIA.Human4];
@@ -20,7 +23,8 @@ interface ViewMorePillProps {
 }
 
 export function ViewMorePill({ expanded, onToggle }: ViewMorePillProps) {
-  const label = expanded ? "View less" : "View more";
+  const t = useTranslations("ui");
+  const label = expanded ? t("viewLess") : t("viewMore");
 
   return (
     <>
@@ -45,7 +49,7 @@ export function ViewMorePill({ expanded, onToggle }: ViewMorePillProps) {
                 </div>
               ))}
             </div>
-            <span className="text-gray-700 text-base">200k+ users love Memorae</span>
+            <span className="text-gray-700 text-base">{t("usersLove")}</span>
           </div>
 
           <div className="flex items-center gap-4">
@@ -85,7 +89,7 @@ export function ViewMorePill({ expanded, onToggle }: ViewMorePillProps) {
                 </div>
               ))}
             </div>
-            <span className="text-[#333333] text-lg pb-4">200k+ users love Memorae</span>
+            <span className="text-[#333333] text-lg pb-4">{t("usersLove")}</span>
             <div className="h-px w-[95%] bg-[#333333] mx-auto" />
             <div className="py-2">
               <button
