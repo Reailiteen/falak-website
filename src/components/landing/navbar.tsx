@@ -83,7 +83,7 @@ export function Navbar({ visible = true }: NavbarProps) {
           {/* ── Desktop ── */}
           <div className="hidden lg:block" onMouseLeave={() => setActiveMenu(null)}>
             <header
-              className="relative mx-auto mt-5 max-w-fit rounded-full border px-3 py-4 backdrop-blur-xl transition-all duration-300"
+              className="relative mx-auto mt-5 max-w-fit rounded-full border px-3 py-1 overflow-hidden backdrop-blur-xl transition-all duration-300"
               style={{
                 background: scrolled ? "rgba(25, 30, 48, 0.82)" : "rgba(255, 255, 255, 0.12)",
                 borderColor: scrolled ? "rgba(255, 255, 255, 0.10)" : "rgba(255, 255, 255, 0.2)",
@@ -94,7 +94,7 @@ export function Navbar({ visible = true }: NavbarProps) {
               <div className="flex items-center justify-between">
                 {/* Logo */}
                 <a href="#top" className="ms-4 me-10 flex-shrink-0 text-white text-2xl">
-                  <img src={MEDIA.logoHome} alt="Memorae" className="h-10 w-36 cursor-pointer object-contain" />
+                  <img src={MEDIA.logoHome} alt="Memorae" className="h-[4rem] w-[8rem] cursor-pointer object-contain" />
                 </a>
 
                 {/* Nav links */}
@@ -490,7 +490,7 @@ export function Navbar({ visible = true }: NavbarProps) {
             <div
               className="mx-auto mt-5 flex max-w-[380px] items-center justify-between px-4"
               style={{
-                height: "60px",
+                height: "46px",
                 borderRadius: "50px",
                 background: scrolled ? "rgba(25, 30, 48, 0.85)" : "rgba(255, 255, 255, 0.35)",
                 boxShadow: scrolled ? "rgba(13, 28, 67, 0.30) 0px 8px 24px" : "rgba(13, 28, 67, 0.15) 0px 8px 24px",
@@ -498,7 +498,7 @@ export function Navbar({ visible = true }: NavbarProps) {
                 transition: "background 0.3s ease, box-shadow 0.3s ease",
               }}
             >
-              <img src={MEDIA.logoHome} alt="Memorae" className="h-9 w-auto cursor-pointer" />
+              <img src={MEDIA.logoHome} alt="Memorae" className="h-[3.375rem] w-auto cursor-pointer" />
               <button
                 aria-label="Toggle menu"
                 className="flex items-center justify-center rounded-full p-2 text-white transition hover:bg-white/20"

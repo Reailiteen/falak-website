@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import { useTranslations, useLocale } from "next-intl";
 import { ProblemText } from "./problem-text";
 import { ProblemNotes } from "./problem-notes";
 import { ProblemMascot } from "./problem-mascot";
@@ -9,6 +10,10 @@ import { ProblemCanvas } from "./problem-canvas";
 
 export function ProblemStatement() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const t = useTranslations("problem");
+  const locale = useLocale();
+  const isArabic = locale === "ar";
+  const chips = [t("chip0"), t("chip1"), t("chip2"), t("chip3"), t("chip4"), t("chip5")];
 
   return (
     <div>
@@ -20,7 +25,7 @@ export function ProblemStatement() {
         <ProblemNotes />
         <ProblemMascot />
         <ProblemHeadline />
-        <ProblemCanvas containerRef={containerRef} />
+        <ProblemCanvas containerRef={containerRef} chips={chips} isArabic={isArabic} />
       </div>
     </div>
   );

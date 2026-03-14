@@ -2,17 +2,6 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
-import { MEDIA } from "@/lib/landing/content";
-
-function Img({ src, alt }: { src: string; alt: string }) {
-  return (
-    <img
-      alt={alt}
-      src={src}
-      className="inline-block -mt-1 align-middle w-[30px] h-[30px] md:w-[50px] md:h-[50px]"
-    />
-  );
-}
 
 const lineClass = "leading-tight text-[#333333] w-full flex justify-center text-[22px] md:text-[34px]";
 
@@ -44,14 +33,15 @@ export function SolutionSection() {
 
         <div className={lineClass}>
           <div className="text-center w-full">
-            <span className="bg-gradient-to-r from-[#557BF4] to-[#FF66C4] bg-clip-text text-transparent font-bold">Memorae</span>{" "}
-            <Img src={MEDIA.orb} alt="orb" /> {t("line1")}
+            <span className="bg-gradient-to-r from-[#557BF4] to-[#FF66C4] bg-clip-text text-transparent font-bold">Falak</span>{" "}
+            <img src="/falak-mascot-no-bg.png" alt="falak mascot" className="inline-block -mt-1 align-middle w-auto h-[45px] md:h-[70px] object-contain" /> {t("line1")}
           </div>
         </div>
 
         <div className={lineClass}>
           <div className="text-center w-full">
-            {t("line2")} <Img src={MEDIA.writingImage} alt="writing" />
+            {t("line2")}{" "}
+            <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f3af.png" alt="intention" className="inline-block -mt-1 align-middle w-[30px] h-[30px] md:w-[50px] md:h-[50px]" />
           </div>
         </div>
 
@@ -62,12 +52,12 @@ export function SolutionSection() {
         </div>
 
         <div className={lineClass}>
-          <div className="text-center w-full">
-            {t("channelsIntro")}{" "}
-            <Img src={MEDIA.notifIcon1} alt="whatsapp" />{" "}
-            <Img src={MEDIA.notifIcon2} alt="telegram" />{" "}
-            <Img src={MEDIA.image10} alt="email" />{" "}
-            <Img src={MEDIA.appStoreIcon} alt="Memorae App" />
+          <div className="flex items-center justify-center gap-2 md:gap-3">
+            <span>{t("channelsIntro")}</span>
+            <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f331.png" alt="habits" className="w-[30px] h-[30px] md:w-[50px] md:h-[50px] flex-shrink-0" />
+            <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f3c6.png" alt="milestones" className="w-[30px] h-[30px] md:w-[50px] md:h-[50px] flex-shrink-0" />
+            <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f49b.png" alt="values" className="w-[30px] h-[30px] md:w-[50px] md:h-[50px] flex-shrink-0" />
+            <img src="/falak-mascot.png" alt="Falak" className="w-[30px] h-[30px] md:w-[50px] md:h-[50px] rounded-xl object-cover flex-shrink-0" />
           </div>
         </div>
 

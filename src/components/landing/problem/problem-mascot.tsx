@@ -7,7 +7,7 @@ export function ProblemMascot() {
       </div>
 
       {/* Desktop — bottom right */}
-      <div className="absolute hidden md:block -bottom-[15rem] -right-[15rem] w-[1000px] h-[1000px] z-10">
+      <div className="absolute hidden md:block -bottom-[15rem] -right-[14rem] w-[1000px] h-[1000px] z-10">
         <img alt="mascot" src="/falak-mascot-crying.png" width={856} height={856} className="w-full h-full object-contain" loading="lazy" />
       </div>
     </>

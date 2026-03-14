@@ -1,14 +1,48 @@
 @import "tailwindcss";
 
+/* ─────────────────────────────────────────────────────────────────
+   TYPOGRAPHY SYSTEM
+   ─────────────────────────────────────────────────────────────────
+   Two font tokens control all text in the project:
+
+     --font-primary   the default font (Latin, English, etc.)
+     --font-arabic    Arabic-only font — always "GE SS Two Bold"
+
+   To change the global font, update --font-primary in :root below.
+   When the page locale is Arabic (html[lang="ar"]), --font-primary
+   is automatically overridden to --font-arabic. No other changes
+   needed — everything that inherits font-family updates instantly.
+
+   Font file:
+     public/fonts/GESSTwoBold.otf
+   ───────────────────────────────────────────────────────────────── */
+
+@font-face {
+  font-family: "GE SS Two";
+  src: url("/fonts/GESSTwoBold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #18313b;
+
+  /* ── Font tokens — swap --font-primary to change the default font ── */
+  --font-primary: "Inter", "SF Pro Text", "Segoe UI", sans-serif;
+  --font-arabic:  "GE SS Two", Arial, sans-serif;
+}
+
+/* Arabic locale — override the active font to GE SS Two Bold */
+html:lang(ar) {
+  --font-primary: var(--font-arabic);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: "Inter", "SF Pro Text", "Segoe UI", sans-serif;
+  --font-sans: var(--font-primary);
   --font-mono: "SF Mono", "Menlo", "Monaco", monospace;
   --radius-4xl: 2rem;
 }
@@ -29,7 +63,7 @@ body {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: "Inter", "SF Pro Text", "Segoe UI", sans-serif;
+  font-family: var(--font-primary);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }

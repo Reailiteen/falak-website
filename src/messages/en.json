@@ -2,23 +2,29 @@
   "hero": {
     "badge": "200k+ already forgot to forget",
     "rating": "4.8",
-    "titleLine1": "You are not designed",
-    "titleLine2": "to remember everything.",
-    "titleLine3": "Memorae is.",
+    "titleLine1": "Raising children",
+    "titleLine2": "shouldn't feel chaotic.",
+    "titleLine3": "Falak brings clarity.",
     "ctaTryFree": "Try for Free",
-    "ctaTalk": "Talk to Memorae"
+    "ctaTalk": "Guide with Falak"
   },
   "problem": {
     "word1": "It's",
     "word2": "overload",
-    "line1": "Your mind never stops. And yet, you still forget things.",
-    "line2": "It's not a lack of discipline."
+    "line1": "Your child is growing every day.",
+    "line2": "And yet, the important things slip by. It's not bad parenting.",
+    "chip0": "Inconsistent Habits",
+    "chip1": "Screen Time Gravity",
+    "chip2": "No Clear System",
+    "chip3": "Delayed Consequences",
+    "chip4": "Weak Feedback Loops",
+    "chip5": "Value Drift"
   },
   "solution": {
-    "line1": "takes care of remembering, organizing, and executing for you.",
-    "line2": "You write what you need.",
-    "line3": "Memorae saves it, organizes it, and acts when it is time.",
-    "channelsIntro": "In the channel you already use: WhatsApp, Telegram, email, or the Memorae App."
+    "line1": "guides your child's growth, one day at a time.",
+    "line2": "You set the intention.",
+    "line3": "Falak builds the routine, tracks progress, and nudges you when it counts.",
+    "channelsIntro": "Habits, milestones, and values."
   },
   "nav": {
     "logo": "Memorae",
@@ -36,7 +42,7 @@
   },
   "ui": {
     "tryFree": "Try for Free",
-    "talkToMemorae": "Talk to Memorae",
+    "talkToMemorae": "Guide with Falak",
     "discoverSuperpowers": "Discover all the superpowers",
     "monthly": "Monthly",
     "annual": "Annual",

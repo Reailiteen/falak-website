@@ -3,15 +3,6 @@
 import { useEffect, useRef } from "react";
 import Matter from "matter-js";
 
-const CHIPS = [
-  "Too many lists",
-  "Forgot again",
-  "Brain overload",
-  "Everything slips",
-  "Missed deadline",
-  "Memory fog",
-];
-
 const CHIP_COLOR = { bg: "#EBEBEB", border: "#CCCCCC", text: "#555555" };
 
 function drawRoundRect(
@@ -31,7 +22,25 @@ function drawRoundRect(
   ctx.closePath();
 }
 
-export function ProblemCanvas({ containerRef }: { containerRef: React.RefObject<HTMLDivElement | null> }) {
+/** Normalize angle to [-PI/2, PI/2] so chip text is never upside-down */
+function readableAngle(a: number): number {
+  let angle = a % (2 * Math.PI);
+  if (angle > Math.PI) angle -= 2 * Math.PI;
+  if (angle < -Math.PI) angle += 2 * Math.PI;
+  if (angle > Math.PI / 2) return angle - Math.PI;
+  if (angle < -Math.PI / 2) return angle + Math.PI;
+  return angle;
+}
+
+export function ProblemCanvas({
+  containerRef,
+  chips,
+  isArabic,
+}: {
+  containerRef: React.RefObject<HTMLDivElement | null>;
+  chips: string[];
+  isArabic: boolean;
+}) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const hasRun = useRef(false);
 
@@ -45,14 +54,14 @@ export function ProblemCanvas({ containerRef }: { containerRef: React.RefObject<
         if (entries[0].isIntersecting && !hasRun.current) {
           hasRun.current = true;
           observer.disconnect();
-          runSimulation(canvas, container);
+          runSimulation(canvas, container, chips, isArabic);
         }
       },
       { threshold: 0.25 }
     );
     observer.observe(container);
     return () => observer.disconnect();
-  }, [containerRef]);
+  }, [containerRef, chips, isArabic]);
 
   return (
     <canvas
@@ -63,7 +72,12 @@ export function ProblemCanvas({ containerRef }: { containerRef: React.RefObject<
   );
 }
 
-function runSimulation(canvas: HTMLCanvasElement, container: HTMLDivElement) {
+function runSimulation(
+  canvas: HTMLCanvasElement,
+  container: HTMLDivElement,
+  chipLabels: string[],
+  isArabic: boolean
+) {
   const dpr = window.devicePixelRatio || 1;
   const W = container.offsetWidth;
   const H = container.offsetHeight;
@@ -77,11 +91,15 @@ function runSimulation(canvas: HTMLCanvasElement, container: HTMLDivElement) {
   ctx.scale(dpr, dpr);
 
   const CHIP_H = 34;
-  const FONT = `600 13px Inter, sans-serif`;
+  const FONT = isArabic
+    ? `600 13px "GE SS Two", Arial, sans-serif`
+    : `600 13px Inter, sans-serif`;
+
   ctx.font = FONT;
+  if (isArabic) ctx.direction = "rtl";
 
   // Build chip data with measured widths
-  const chips = CHIPS.map((label) => {
+  const chips = chipLabels.map((label) => {
     const tw = ctx.measureText(label).width;
     const w = tw + 28;
     return { label, w, h: CHIP_H, color: CHIP_COLOR };
@@ -98,9 +116,10 @@ function runSimulation(canvas: HTMLCanvasElement, container: HTMLDivElement) {
     Matter.Bodies.rectangle(W + 30, H / 2, 60, H * 3, { isStatic: true, label: "wallR" }),
   ]);
 
-  // Letter bodies — measure each letter span in the headline
+  // Letter bodies — for English: measure each letter span; for Arabic: use word spans
   const containerRect = container.getBoundingClientRect();
-  const letterSpans = container.querySelectorAll<HTMLElement>("h1 span span");
+  const selector = isArabic ? "h1 > span" : "h1 span span";
+  const letterSpans = container.querySelectorAll<HTMLElement>(selector);
 
   letterSpans.forEach((el) => {
     const r = el.getBoundingClientRect();
@@ -140,7 +159,7 @@ function runSimulation(canvas: HTMLCanvasElement, container: HTMLDivElement) {
 
   function draw(chip: typeof chipBodies[0]) {
     const { x, y } = chip.body.position;
-    const a = chip.body.angle;
+    const a = readableAngle(chip.body.angle);
     const hw = chip.w / 2;
     const hh = chip.h / 2;
 
@@ -166,6 +185,7 @@ function runSimulation(canvas: HTMLCanvasElement, container: HTMLDivElement) {
     ctx.font = FONT;
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
+    if (isArabic) ctx.direction = "rtl";
     ctx.fillText(chip.label, 0, 0);
 
     ctx.restore();
@@ -177,7 +197,7 @@ function runSimulation(canvas: HTMLCanvasElement, container: HTMLDivElement) {
     for (const chip of chipBodies) draw(chip);
 
     // Stop once all bodies are resting
-    const atRest = chipBodies.length === CHIPS.length &&
+    const atRest = chipBodies.length === chips.length &&
       chipBodies.every(({ body }) =>
         Matter.Vector.magnitude(body.velocity) < 0.3 &&
         Math.abs(body.angularVelocity) < 0.02
@@ -187,7 +207,6 @@ function runSimulation(canvas: HTMLCanvasElement, container: HTMLDivElement) {
       settled++;
       if (settled > 30) {
         cancelAnimationFrame(raf);
-        // Final static draw
         ctx.clearRect(0, 0, W, H);
         for (const chip of chipBodies) draw(chip);
         return;

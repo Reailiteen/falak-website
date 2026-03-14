@@ -21,7 +21,7 @@ export const MEDIA = {
   sixNew: "https://cdn.memorae.ai/l3/6-new.webp",
 
   logoWhite: "https://cdn.memorae.ai/l3/MemoraeLogoWhite.png",
-  logoHome: "https://cdn.memorae.ai/l3/Memorae_logo_home_white.png",
+  logoHome: "/falak-logo-white.png",
   logoDark: "https://cdn.memorae.ai/l3/Memorae_logo_home_dark.png",
   memoraeLogo: "https://cdn.memorae.ai/l4/MemoraeLogo.webp",
 

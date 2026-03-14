@@ -22,9 +22,9 @@ export function AppPromoCard({ variant }: Props) {
     >
       <div className="rounded-2xl flex md:ml-1 items-center justify-center">
         <img
-          alt="Memorae App"
-          className="w-20 h-20"
-          src={isDesktop ? MEDIA.appStoreIcon : MEDIA.appPromo}
+          alt="Falak App"
+          className="w-20 h-20 object-contain rounded-2xl"
+          src="/falak-mascot.png"
         />
       </div>
       <div className="flex flex-col">
@@ -38,7 +38,7 @@ export function AppPromoCard({ variant }: Props) {
         >
           AVAILABLE NOW
         </span>
-        <h2 className="text-left text-black">Memorae App</h2>
+        <h2 className="text-left text-black">Falak App</h2>
         <div className="flex items-center gap-2 shrink-0">
           <p className={`font-normal text-[#898F91] ${isDesktop ? "text-[14px]" : ""}`}>Available on:</p>
           <img alt="App Store" className="w-4 h-4" src={MEDIA.appStoreBadge} />
