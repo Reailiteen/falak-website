@@ -9,7 +9,7 @@ import type {
 
 export const STORE_LINKS = {
   ios: "https://apps.apple.com/app/id0000000000",
-  android: "https://play.google.com/store/apps/details?id=com.memorae.app",
+  android: "https://play.google.com/store/apps/details?id=com.falak.app",
 };
 
 export const MEDIA = {
@@ -123,9 +123,9 @@ export const MEDIA = {
 export const HERO = {
   badge: "200k+ already forgot to forget",
   rating: "4.8",
-  title: "You are not designed to remember everything. Memorae is.",
+  title: "Raising children shouldn't mean nagging. Falak brings clarity.",
   ctaTryFree: "Try for Free",
-  ctaTalk: "Talk to Memorae",
+  ctaTalk: "Guide with Falak",
 };
 
 export const MESSAGE_LINES = [
@@ -134,9 +134,9 @@ export const MESSAGE_LINES = [
 ];
 
 export const MEMORY_SYSTEM = {
-  heading: "Memorae takes care of remembering, organizing, and executing for you.",
-  line1: "You write what you need.",
-  line2: "Memorae saves it, organizes it, and acts when it is time.",
+  heading: "Falak guides your child's growth, one day at a time.",
+  line1: "You set the intention.",
+  line2: "Falak builds the routine, tracks progress, and nudges you when it counts.",
 };
 
 export const SUPERPOWERS: SuperpowerItem[] = [
@@ -185,7 +185,7 @@ export const SUPERPOWERS: SuperpowerItem[] = [
   {
     id: "image-intelligence",
     title: "Action from Image",
-    description: "Take a photo and Memorae will extract action items.",
+    description: "Take a photo and Falak will extract action items.",
     image: MEDIA.imageIntelligence,
     icon: MEDIA.group2147203024,
     isNew: true,
@@ -200,7 +200,7 @@ export const SUPERPOWERS: SuperpowerItem[] = [
   {
     id: "long-term-memory",
     title: "Long-term memory",
-    description: "Memorae remembers context from past conversations.",
+    description: "Falak remembers context from past conversations.",
     image: MEDIA.prioritySupport5,
     icon: MEDIA.neurology,
   },
@@ -215,7 +215,7 @@ export const SUPERPOWERS: SuperpowerItem[] = [
   {
     id: "inbox-organizer",
     title: "Automatic Inbox Organizer",
-    description: "Memorae categorizes and prioritizes your inbox automatically.",
+    description: "Falak categorizes and prioritizes your inbox automatically.",
     image: MEDIA.googleWorkspace6,
     icon: MEDIA.group2147203028,
     isNew: true,
@@ -223,7 +223,7 @@ export const SUPERPOWERS: SuperpowerItem[] = [
   {
     id: "autopilot-email",
     title: "Autopilot Email Drafting",
-    description: "Let Memorae draft email responses for you.",
+    description: "Let Falak draft email responses for you.",
     image: MEDIA.googleWorkspace7,
     icon: MEDIA.group2147203025,
   },
@@ -504,7 +504,7 @@ export const CHAOS_SECTION = {
   subheading: "We're not here to create just another app.",
   paragraphs: [
     "We believe the real problem isn't organization -- it's mental overload. Every notification, every to-do list, every sticky note adds weight to your mind.",
-    "Memorae was built to decompress that weight. To take the noise and turn it into clarity.",
+    "Falak was built to lift that weight. To take the noise of parenting and turn it into clarity.",
   ],
   cards: [
     { title: "We don't organize lives: we decompress them.", bg: MEDIA.forget2 },
@@ -521,8 +521,8 @@ export const STATS = {
 };
 
 export const FOOTER = {
-  tagline: "You just live. Memorae remembers for you.",
-  subtitle: "Your to-do list asked us for help. Here we are.",
+  tagline: "Raise them right. Falak lights the way.",
+  subtitle: "Your children deserve the best upbringing. We built Falak for that.",
   links: [
     { label: "Privacy Policy", href: "/privacy" },
     { label: "Terms and Conditions", href: "/terms" },
@@ -531,10 +531,10 @@ export const FOOTER = {
     { label: "Communication Channels", href: "#" },
     { label: "Refunds and Returns Policy", href: "#" },
   ],
-  copyright: "2026 Memorae Inc. All rights reserved.",
+  copyright: "© 2026 Falak. All rights reserved.",
 };
 
 export const SEO = {
-  title: "Memorae | Your personal memory assistant",
-  description: "Memorae helps you remember, organize, and act. Unlimited reminders, smart lists, and AI-powered memory -- across WhatsApp, Telegram, email, and the Memorae App.",
+  title: "Falak | Raise children with clarity and purpose",
+  description: "Falak helps families build strong habits, meaningful routines, and lasting values — through quests, rewards, and Tarbiyah insights.",
 };

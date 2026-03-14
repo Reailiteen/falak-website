@@ -15,8 +15,8 @@ export function CardShift({ mobile }: { mobile?: boolean }) {
 
   if (mobile) {
     return (
-      <div className="bg-[#EC4899] h-[560px] rounded-4xl p-6 relative overflow-hidden flex flex-col">
-        <img alt="background" loading="lazy" className="absolute inset-0 object-cover z-0" src={MEDIA.forget3Mob} style={bgStyle} />
+      <div className="bg-[#ff65c5] h-[560px] rounded-4xl p-6 relative overflow-hidden flex flex-col">
+        <img alt="background" loading="lazy" className="absolute inset-0 object-cover z-0" src="/falak-portal-mobile.png" style={bgStyle} />
         <div className="relative z-10 pt-4 flex-1 overflow-y-auto pb-6">
           <h2 className="text-[34px] leading-tight text-white mb-6 max-w-[300px]">
             {t("card3")}
@@ -30,8 +30,8 @@ export function CardShift({ mobile }: { mobile?: boolean }) {
   }
 
   return (
-    <div className="bg-[#EC4899] rounded-3xl p-8 relative overflow-hidden">
-      <img alt="background" loading="lazy" className="absolute inset-0 object-cover z-0" src={MEDIA.forget3} style={bgStyle} />
+    <div className="bg-[#ff65c5] rounded-3xl p-8 relative overflow-hidden">
+      <img alt="background" loading="lazy" className="absolute inset-0 object-cover z-0" src="/falak-portal-desktop.png" style={bgStyle} />
       <div className="relative z-10 top-[35%]">
         <h2 className="text-[36px] leading-tight text-white mb-3 max-w-[300px]">
           {t("card3")}

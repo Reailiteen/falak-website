@@ -33,7 +33,7 @@ export function FooterStoreBadges({ compact = false, containerClass }: FooterSto
       </a>
 
       <a
-        href="https://play.google.com/store/apps/details?id=ai.memorae"
+        href="https://play.google.com/store/apps/details?id=com.falak.app"
         target="_blank"
         rel="noopener noreferrer"
         className={`flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/20 rounded-xl ${padding} transition-all duration-200 ${hoverClass}`}

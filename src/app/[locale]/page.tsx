@@ -18,7 +18,7 @@ export async function generateMetadata({
 }: LocalePageProps): Promise<Metadata> {
   const { locale } = await params;
   if (!isLocale(locale)) {
-    return { title: "Memorae" };
+    return { title: "Falak" };
   }
   const messages = getMessages(locale);
   const title = messages.seo.title;

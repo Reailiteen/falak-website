@@ -8,7 +8,7 @@ export function HeroVideo() {
         <div className="w-full h-full rounded-2xl">
           <iframe
             src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-            title="Memorae Demo"
+            title="Falak Demo"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
             className="w-full h-full"

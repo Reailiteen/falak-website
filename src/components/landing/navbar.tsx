@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
-import { MEDIA, SUPERPOWERS } from "@/lib/landing/content";
+import { MEDIA } from "@/lib/landing/content";
 
 type NavMenu = "superpowers" | "channels" | null;
 
@@ -30,8 +30,21 @@ function ChevronIcon({ open }: { open: boolean }) {
 }
 
 const PROMO_CARDS = [
-  { image: "https://cdn.memorae.ai/l3/Frame%202147238449-3.webp", titleKey: "promoCard1" as const },
-  { image: "https://cdn.memorae.ai/l3/Frame%202147238450.webp", titleKey: "promoCard2" as const },
+  { image: "/falak-superpowers/falak-smart-holding-books.png", titleKey: "promoCard1" as const },
+  { image: "/falak-superpowers/falak-detective.png", titleKey: "promoCard2" as const },
+];
+
+const FALAK_SUPERPOWERS = [
+  { id: "cinema", title: "Cinema Night", image: "/falak-superpowers/falak-cinema.png" },
+  { id: "detective", title: "Detective Mode", image: "/falak-superpowers/falak-detective.png" },
+  { id: "treasure", title: "Discover Rewards", image: "/falak-superpowers/falak-discovers-treasure.png" },
+  { id: "prayer", title: "Peaceful Prayer", image: "/falak-superpowers/falak-praying-peacfully.png" },
+  { id: "rewards", title: "Rewards", image: "/falak-superpowers/falak-rewards-discovers.png" },
+  { id: "quests", title: "Quests", image: "/falak-superpowers/falak-sees-quests.png" },
+  { id: "books", title: "Study Time", image: "/falak-superpowers/falak-smart-holding-books.png" },
+  { id: "space", title: "Space Explorer", image: "/falak-superpowers/falak-space-above-earth.png" },
+  { id: "values", title: "Family Values", image: "/falak-superpowers/falak-value-propositons.png" },
+  { id: "tarbiya", title: "Tarbiya Insights", image: "/falak-superpowers/parents-tarbiya-insights.png" },
 ];
 
 export function Navbar({ visible = true }: NavbarProps) {
@@ -94,7 +107,7 @@ export function Navbar({ visible = true }: NavbarProps) {
               <div className="flex items-center justify-between h-[52px] overflow-hidden">
                 {/* Logo */}
                 <a href="#top" className="ms-4 me-10 flex-shrink-0 text-white text-2xl">
-                  <img src={MEDIA.logoHome} alt="Memorae" className="h-[4rem] w-[8rem] cursor-pointer object-contain" />
+                  <img src={MEDIA.logoHome} alt="Falak" className="h-[4rem] w-[8rem] cursor-pointer object-contain" />
                 </a>
 
                 {/* Nav links */}
@@ -340,7 +353,7 @@ export function Navbar({ visible = true }: NavbarProps) {
                           }}
                           className="[&::-webkit-scrollbar]:hidden"
                         >
-                          {SUPERPOWERS.map((sp) => (
+                          {FALAK_SUPERPOWERS.map((sp) => (
                             <button
                               key={sp.id}
                               type="button"
@@ -350,35 +363,35 @@ export function Navbar({ visible = true }: NavbarProps) {
                             >
                               <div
                                 style={{
-                                  width: "168px",
-                                  height: "211px",
+                                  width: "140px",
+                                  height: "190px",
                                   borderRadius: "16px",
                                   overflow: "hidden",
-                                  background: "#fff",
-                                  border: "1px solid #e6edf8",
+                                  backgroundImage: `url(${sp.image})`,
+                                  backgroundSize: "cover",
+                                  backgroundPosition: "center",
+                                  position: "relative",
                                   transition: "transform 180ms ease, box-shadow 180ms ease",
                                 }}
                                 className="group-hover:-translate-y-1 group-hover:shadow-lg"
                               >
-                                <img
-                                  src={sp.image}
-                                  alt={sp.title}
-                                  className="h-full w-full object-cover"
-                                  loading="lazy"
-                                />
+                                <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 55%)" }} />
+                                <p
+                                  style={{
+                                    position: "absolute",
+                                    bottom: "10px",
+                                    left: "10px",
+                                    right: "10px",
+                                    color: "white",
+                                    fontSize: "11px",
+                                    fontWeight: 500,
+                                    lineHeight: 1.3,
+                                    margin: 0,
+                                  }}
+                                >
+                                  {sp.title}
+                                </p>
                               </div>
-                              <p
-                                style={{
-                                  marginTop: "8px",
-                                  fontSize: "12px",
-                                  fontWeight: 400,
-                                  color: "#172f39",
-                                  maxWidth: "168px",
-                                  lineHeight: 1.3,
-                                }}
-                              >
-                                {sp.title}
-                              </p>
                             </button>
                           ))}
                         </div>
@@ -439,7 +452,7 @@ export function Navbar({ visible = true }: NavbarProps) {
 
                             {/* Mascot */}
                             <img
-                              src={MEDIA.mascot}
+                              src="/falak-mascot-crying.png"
                               alt={ch.title}
                               style={{
                                 position: "absolute",
@@ -498,7 +511,7 @@ export function Navbar({ visible = true }: NavbarProps) {
                 transition: "background 0.3s ease, box-shadow 0.3s ease",
               }}
             >
-              <img src={MEDIA.logoHome} alt="Memorae" className="h-[3.375rem] w-auto cursor-pointer" />
+              <img src={MEDIA.logoHome} alt="Falak" className="h-[3.375rem] w-auto cursor-pointer" />
               <button
                 aria-label="Toggle menu"
                 className="flex items-center justify-center rounded-full p-2 text-white transition hover:bg-white/20"

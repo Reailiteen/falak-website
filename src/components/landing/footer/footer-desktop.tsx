@@ -2,7 +2,6 @@
 
 import { useTranslations } from "next-intl";
 import { MEDIA } from "@/lib/landing/content";
-import { FooterTryButton } from "./footer-try-button";
 import { FooterSocialIcons } from "./footer-social-icons";
 import { FooterStoreBadges } from "./footer-store-badges";
 import { FooterLinks } from "./footer-links";
@@ -11,14 +10,14 @@ export function FooterDesktop() {
   const t = useTranslations("footer");
   return (
     <div className="px-3 hidden xl:block pt-14">
-      <div className="flex justify-center mb-20">
-        <FooterTryButton className="w-[20%] hover:scale-105 transition-all duration-300" />
-      </div>
-
-      <div
-        className="bg-cover bg-center bg-no-repeat h-[50vh] rounded-3xl relative overflow-hidden"
-        style={{ backgroundImage: `url("${MEDIA.footerBg}")` }}
+<div
+        className="h-[50vh] rounded-3xl relative overflow-hidden"
       >
+        {/* Decorative ring — bottom left */}
+        <img alt="" aria-hidden="true" loading="lazy" width={160} height={160} src={MEDIA.ring} className="absolute bottom-6 start-[45%] w-36 h-36 opacity-80 pointer-events-none" style={{ color: "transparent" }} />
+        {/* Decorative 6-new chip — top right */}
+        <img alt="" aria-hidden="true" loading="lazy" width={100} height={100} src={MEDIA.sixNew} className="absolute top-6 end-6 w-20 h-20 opacity-90 pointer-events-none" style={{ color: "transparent" }} />
+
         <div className="absolute inset-0 p-12">
           <div className="flex justify-between items-start">
             <div>
@@ -61,7 +60,6 @@ export function FooterDesktop() {
         </div>
       </div>
 
-      <div className="bg-white w-full h-6" />
     </div>
   );
 }

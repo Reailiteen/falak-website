@@ -95,7 +95,7 @@ export function HeroSection() {
           <div className="flex md:hidden w-full h-full items-center justify-center gap-4 mt-6">
             <div className="flex mt-8">
               <a
-                href="https://wa.me/390697636235?text=Hi%20Memorae%2C%20I%E2%80%99d%20love%20to%20get%20to%20know%20you%20better.%20I%20want%20to%20understand%20how%20you%20work%2C%20what%20I%20can%20do%20with%20you%2C%20and%20how%20to%20start%20using%20you."
+                href="https://wa.me/97474764064?text=Hi%20Falak%2C%20I%E2%80%99d%20love%20to%20get%20to%20know%20you%20better.%20I%20want%20to%20understand%20how%20you%20work%2C%20what%20I%20can%20do%20with%20you%2C%20and%20how%20to%20start%20using%20you."
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Chat on WhatsApp"

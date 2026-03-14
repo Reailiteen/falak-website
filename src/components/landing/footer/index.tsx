@@ -3,8 +3,8 @@ import { FooterDesktop } from "./footer-desktop";
 
 export function FooterSection() {
   return (
-    <div className="animate-up" id="memorae_app">
-      <div id="footer" className="bg-white">
+    <div className="animate-up" id="falak_app">
+      <div id="footer" style={{ backgroundImage: "url('/falak-footer.png')", backgroundSize: "90%", backgroundPosition: "center", backgroundRepeat: "no-repeat", backgroundColor: "#080923" }}>
         <FooterMobile />
         <FooterDesktop />
       </div>

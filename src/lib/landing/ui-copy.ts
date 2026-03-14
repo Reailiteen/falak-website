@@ -1,5 +1,5 @@
 export const NAV = {
-  logo: "Memorae",
+  logo: "Falak",
   links: [
     { label: "Superpowers", id: "superpowers-menu" },
     { label: "Channels", id: "channels-menu" },
@@ -13,7 +13,7 @@ export const NAV = {
 
 export const UI = {
   tryFree: "Try for Free",
-  talkToMemorae: "Talk to Memorae",
+  talkToMemorae: "Guide with Falak",
   discoverSuperpowers: "Discover all the superpowers",
   monthly: "Monthly",
   annual: "Annual",
@@ -24,10 +24,10 @@ export const UI = {
   perYear: "/yr",
   videoDemo: "Watch demo",
   guarantee: "14-day money-back guarantee",
-  guaranteeDesc: "Try Memorae risk-free. If you're not satisfied within 14 days, we'll refund your payment. No questions asked.",
+  guaranteeDesc: "Try Falak risk-free. If you're not satisfied within 14 days, we'll refund your payment. No questions asked.",
   supernovaHeading: "Everything you can unlock with the Supernova",
   viewMore: "View more",
-  usersLove: "200k+ users love Memorae",
+  usersLove: "200k+ families love Falak",
   faqHeading: "Frequently Asked Questions",
   faqSubheading: "Have questions? We answer them here.",
   chatDemoHeading: "How you'll stop forgetting forever",

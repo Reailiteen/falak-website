@@ -16,6 +16,7 @@ import { CompetitiveAdvantage } from "@/components/landing/competitive-advantage
 import { TestimoniesSection } from "@/components/landing/testimonies-section";
 import { FaqSection } from "@/components/landing/faq";
 import { FooterSection } from "@/components/landing/footer";
+import { FooterTryButton } from "@/components/landing/footer/footer-try-button";
 
 const SCROLL_THRESHOLD = 8;
 
@@ -86,6 +87,9 @@ export function LandingPage({ locale }: { locale: Locale }) {
         <FaqSection locale={locale} />
       </main>
 
+      <div className="flex justify-center py-10 bg-white">
+        <FooterTryButton className="w-[70%] md:w-[20%] hover:scale-105 transition-all duration-300" />
+      </div>
       <FooterSection />
     </div>
   );

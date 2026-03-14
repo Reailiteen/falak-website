@@ -91,32 +91,8 @@ function CardContent({ plan, isAnnual, locale, config }: CardContentProps) {
         )}
       </div>
 
-      {/* Video demo */}
-      <div
-        className={`${config.videoBg} rounded-2xl p-2 mb-6 flex items-center gap-4 cursor-pointer transition-all duration-200 group hover:-translate-y-0.5`}
-      >
-        <div className="relative">
-          <div className="w-32 h-16 bg-gray-300 rounded-lg flex items-center justify-center overflow-hidden transform transition-transform duration-200 group-hover:scale-[1.02]">
-            <img
-              alt="demo thumbnail"
-              className="absolute inset-0 w-full h-full object-cover rounded-lg"
-              src={plan.thumbnailImage}
-            />
-            <div className="absolute inset-0 flex items-center justify-center transition-transform duration-200 group-hover:scale-110">
-              <img alt="Play icon" width="20" height="20" src={PLAY_CIRCLE} />
-            </div>
-          </div>
-        </div>
-        <div className="text-left flex-1 min-h-[64px] flex items-center">
-          <p className="text-[13px] text-gray-800 leading-tight">
-            {tp("watchPrefix")}{" "}
-            <span className="bg-gradient-to-r from-[#9734E6] to-[#E5469F] bg-clip-text text-transparent text-[13px] inline">
-              {plan.name}
-            </span>{" "}
-            {tp("watchSuffix")}
-          </p>
-        </div>
-      </div>
+      {/* Video demo placeholder — reserved space */}
+      <div className="h-20 mb-6" />
 
       {/* CTA button */}
       <button
