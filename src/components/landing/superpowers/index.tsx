@@ -1,7 +1,6 @@
 "use client";
 
 import { useRef } from "react";
-import { MEDIA } from "@/lib/landing/content";
 import type { CardData } from "./superpowers-card";
 import { SuperpowersHeading } from "./superpowers-heading";
 import { SuperpowersNav } from "./superpowers-nav";
@@ -9,19 +8,16 @@ import { SuperpowersCarousel } from "./superpowers-carousel";
 import { SuperpowersCTA } from "./superpowers-cta";
 
 const CARDS: CardData[] = [
-  { title: "Unlimited reminders",          image: MEDIA.unlimitedReminders },
-  { title: "Memory trunk",                 image: MEDIA.memoryTrunk },
-  { title: "Memory everywhere",            image: MEDIA.memoryEverywhere },
-  { title: "Create & manage lists",        image: MEDIA.createLists },
-  { title: "Friend-to-friend reminders",   image: MEDIA.friendReminders },
-  { title: "Daily briefing",               image: MEDIA.prioritySupport3 },
-  { title: "Action from Image",            image: MEDIA.imageIntelligence },
-  { title: "Google Workspace integration", image: MEDIA.googleWorkspace5, isNew: true },
-  { title: "Long-term memory",             image: MEDIA.prioritySupport5 },
-  { title: "Full Control Dashboard",       image: MEDIA.prioritySupport6 },
-  { title: "Automatic Inbox Organizer",    image: MEDIA.googleWorkspace6, isNew: true },
-  { title: "Autopilot Email Drafting",     image: MEDIA.googleWorkspace7, isNew: true },
-  { title: "Multi-calendar integration",   image: MEDIA.prioritySupport7 },
+  { title: "Daily Prayer Habits",       image: "/falak-superpowers/falak-praying-peacfully.png" },
+  { title: "Smart Learning Path",       image: "/falak-superpowers/falak-smart-holding-books.png" },
+  { title: "Daily Challenges",          image: "/falak-superpowers/falak-sees-quests.png" },
+  { title: "Discover Hidden Rewards",   image: "/falak-superpowers/falak-discovers-treasure.png" },
+  { title: "Earn Amazing Rewards",      image: "/falak-superpowers/falak-rewards-discovers.png" },
+  { title: "Mystery Quests",            image: "/falak-superpowers/falak-detective.png" },
+  { title: "Fun Story Adventures",      image: "/falak-superpowers/falak-cinema.png" },
+  { title: "Limitless Growth",          image: "/falak-superpowers/falak-space-above-earth.png" },
+  { title: "Build Core Values",         image: "/falak-superpowers/falak-value-propositons.png" },
+  { title: "Tarbiya Insights",          image: "/falak-superpowers/parents-tarbiya-insights.png", isNew: true },
 ];
 
 export function SuperpowersSection() {
