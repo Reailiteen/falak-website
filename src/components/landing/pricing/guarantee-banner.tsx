@@ -1,3 +1,6 @@
+"use client";
+
+import { useTranslations } from "next-intl";
 import { MEDIA } from "@/lib/landing/content";
 
 const PLAN_ACCENTS: Record<string, { name: string; className: string }> = {
@@ -16,6 +19,7 @@ const PLAN_ACCENTS: Record<string, { name: string; className: string }> = {
 };
 
 export function GuaranteeBanner({ activePlanId }: { activePlanId: string }) {
+  const t = useTranslations("pricing");
   const accent = PLAN_ACCENTS[activePlanId] ?? PLAN_ACCENTS.bigbang;
 
   return (
@@ -30,16 +34,13 @@ export function GuaranteeBanner({ activePlanId }: { activePlanId: string }) {
           />
         </div>
         <div className="flex-1">
-          <span className="">14-day money-back guarantee.</span>{" "}
-          <span>
-            Try it for free. Then you have a full 14 days to request a complete refund. No questions, no forms, just
-            your money back.
-          </span>
+          <span>{t("guaranteeLabel")}</span>{" "}
+          <span>{t("guaranteeDesc")}</span>
         </div>
       </div>
 
       <h3 className="mt-6 text-2xl text-white">
-        Everything you can unlock with the{" "}
+        {t("everythingUnlock")}{" "}
         <span className={accent.className}>{accent.name}</span>
       </h3>
     </div>

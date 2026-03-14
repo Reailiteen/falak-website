@@ -1,22 +1,23 @@
 "use client";
 
 import { useRef, useState, useEffect } from "react";
+import { useTranslations } from "next-intl";
 
-const BIG_BANG_FEATURES = [
-  { label: "Unlimited reminders", icon: "https://cdn.memorae.ai/l3/Group%2037143-3.png" },
-  { label: "Memory everywhere", icon: "https://cdn.memorae.ai/l3/Group%202147203027-3.png" },
-  { label: "Multi-calendar integration", icon: "https://cdn.memorae.ai/l3/Group%202147203025-3.png" },
-  { label: "Memory trunk", icon: "https://cdn.memorae.ai/l3/treasure-chest-outline%201-3.png" },
-  { label: "Create & manage lists", icon: "https://cdn.memorae.ai/l3/Group%2037148-3.png" },
-  { label: "Friend-to-friend reminders", icon: "https://cdn.memorae.ai/l3/Group%202147203024-3.png" },
-  { label: "Long-term memory", icon: "https://cdn.memorae.ai/l3/neurology.png" },
-  { label: "Daily briefing", icon: "https://cdn.memorae.ai/l3/Group%202147203028-2.png" },
-  { label: "Image actions", icon: "https://cdn.memorae.ai/l3/Group%2037158-2.png" },
-  { label: "Full control dashboard", icon: "https://cdn.memorae.ai/l3/Group%2037160-2.png" },
-  { label: "Priority support", icon: "https://cdn.memorae.ai/l3/Group%2037157-2.png" },
-  { label: "Google Workspace integration", icon: "https://cdn.memorae.ai/l3/Group.png" },
-  { label: "Automatic Inbox Organizer", icon: "https://cdn.memorae.ai/l3/Group%202147203040.png" },
-  { label: "Automatic Email Drafting", icon: "https://cdn.memorae.ai/l3/Group%202147203057-3.png" },
+const FEATURE_ICONS = [
+  "https://cdn.memorae.ai/l3/Group%2037143-3.png",
+  "https://cdn.memorae.ai/l3/Group%202147203027-3.png",
+  "https://cdn.memorae.ai/l3/Group%202147203025-3.png",
+  "https://cdn.memorae.ai/l3/treasure-chest-outline%201-3.png",
+  "https://cdn.memorae.ai/l3/Group%2037148-3.png",
+  "https://cdn.memorae.ai/l3/Group%202147203024-3.png",
+  "https://cdn.memorae.ai/l3/neurology.png",
+  "https://cdn.memorae.ai/l3/Group%202147203028-2.png",
+  "https://cdn.memorae.ai/l3/Group%2037158-2.png",
+  "https://cdn.memorae.ai/l3/Group%2037160-2.png",
+  "https://cdn.memorae.ai/l3/Group%2037157-2.png",
+  "https://cdn.memorae.ai/l3/Group.png",
+  "https://cdn.memorae.ai/l3/Group%202147203040.png",
+  "https://cdn.memorae.ai/l3/Group%202147203057-3.png",
 ];
 
 const PLAN_TILE_CONFIG: Record<string, { accentColor: string; iconFilter?: string }> = {
@@ -75,8 +76,9 @@ const PLAN_FEATURE_COUNTS: Record<string, number> = {
 };
 
 export function FeaturesGrid({ activePlanId }: { activePlanId: string }) {
+  const t = useTranslations("pricing");
   const count = PLAN_FEATURE_COUNTS[activePlanId] ?? 14;
-  const features = BIG_BANG_FEATURES.slice(0, count);
+  const features = FEATURE_ICONS.slice(0, count).map((icon, i) => ({ label: t(`feature${i}`), icon }));
   const scrollRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);

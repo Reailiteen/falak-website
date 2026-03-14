@@ -13,10 +13,7 @@ export function CardApp({ mobile }: { mobile?: boolean }) {
             {t("subheading")}
           </h2>
           <div className="leading-tight text-base text-[#121C28]">
-            <p>
-              The world doesn't need more disconnected tools. It needs fewer things in the head. Memorae integrates
-              into the channels you already use. Centralize what matters. Reduce friction. Clear your mind.
-            </p>
+            <p>{t("appBody")}</p>
           </div>
         </div>
         <div className="w-full mb-14">
@@ -33,10 +30,7 @@ export function CardApp({ mobile }: { mobile?: boolean }) {
           {t("subheading")}
         </h2>
         <div className="leading-normal text-base text-gray-700">
-          <p>The world doesn't need more disconnected tools.</p>
-          <p>It needs fewer things in the head.</p>
-          <p>Memorae integrates into the channels you already use.</p>
-          <p>Centralize what matters. Reduce friction. Clear your mind.</p>
+          <p>{t("appBody")}</p>
         </div>
       </div>
       <div className="w-full">

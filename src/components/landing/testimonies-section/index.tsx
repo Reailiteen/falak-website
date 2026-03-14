@@ -1,11 +1,13 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { TestimoniesHeading } from "./testimonies-heading";
 import { TestimonialsGrid } from "./testimonials-grid";
 import { ViewMorePill } from "./view-more-pill";
 
 export function TestimoniesSection() {
+  const t = useTranslations("ui");
   const [expanded, setExpanded] = useState(false);
 
   return (
@@ -22,7 +24,7 @@ export function TestimoniesSection() {
               type="button"
               className="w-[320px] px-6 py-3 rounded-full bg-gradient-to-r from-[#557BF4] to-[#FF66C4] text-white text-2xl flex items-center justify-center gap-2 shadow-sm active:scale-95 transition-transform"
             >
-              <span>Try for free</span>
+              <span>{t("tryFree")}</span>
               <span aria-hidden="true">→</span>
             </button>
           </div>

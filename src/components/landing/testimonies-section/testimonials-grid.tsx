@@ -1,3 +1,6 @@
+"use client";
+
+import { useTranslations } from "next-intl";
 import { TESTIMONIALS } from "@/lib/landing/content";
 import { TestimonialCard } from "./testimonial-card";
 
@@ -6,17 +9,26 @@ interface TestimonialsGridProps {
 }
 
 export function TestimonialsGrid({ expanded }: TestimonialsGridProps) {
-  const visibleDesktop = expanded ? TESTIMONIALS : TESTIMONIALS.slice(0, 9);
-  const visibleMobile = expanded ? TESTIMONIALS : TESTIMONIALS.slice(0, 3);
+  const t = useTranslations("testimonials");
+
+  const items = TESTIMONIALS.map((item, i) => ({
+    ...item,
+    title: t(`t${i}Title`),
+    quote: t(`t${i}Quote`),
+    role: t(`t${i}Role`),
+  }));
+
+  const visibleDesktop = expanded ? items : items.slice(0, 9);
+  const visibleMobile = expanded ? items : items.slice(0, 3);
 
   return (
     <>
       {/* Desktop: 3-col grid, middle column offset */}
       <div className="hidden lg:block relative">
         <div className="grid grid-cols-3 gap-6 mb-8">
-          {visibleDesktop.map((t, i) => (
-            <div key={t.name} className={i % 3 === 1 ? "lg:mt-10" : ""}>
-              <TestimonialCard testimonial={t} />
+          {visibleDesktop.map((item, i) => (
+            <div key={item.name} className={i % 3 === 1 ? "lg:mt-10" : ""}>
+              <TestimonialCard testimonial={item} />
             </div>
           ))}
         </div>
@@ -37,8 +49,8 @@ export function TestimonialsGrid({ expanded }: TestimonialsGridProps) {
       {/* Mobile: show 3 or all */}
       <div className="lg:hidden relative">
         <div className="grid grid-cols-1 gap-4 mb-8">
-          {visibleMobile.map((t) => (
-            <TestimonialCard key={t.name} testimonial={t} />
+          {visibleMobile.map((item) => (
+            <TestimonialCard key={item.name} testimonial={item} />
           ))}
         </div>
 

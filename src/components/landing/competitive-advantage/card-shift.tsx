@@ -22,10 +22,7 @@ export function CardShift({ mobile }: { mobile?: boolean }) {
             {t("card3")}
           </h2>
           <div className="space-y-4 text-white text-base max-w-[250px]">
-            <p>
-              We don't design for you to look at it. We design it so you barely notice it. Memorae doesn't seek
-              attention — it acts when you need it and disappears afterward.
-            </p>
+            <p>{t("card3Body")}</p>
           </div>
         </div>
       </div>
@@ -40,10 +37,7 @@ export function CardShift({ mobile }: { mobile?: boolean }) {
           {t("card3")}
         </h2>
         <div className="space-y-2 text-white leading-tight">
-          <p>
-            We don't design for you to look at it. We design it so you barely notice it. Memorae doesn't seek
-            attention — it acts when you need it and disappears afterward.
-          </p>
+          <p>{t("card3Body")}</p>
         </div>
       </div>
     </div>

@@ -1,19 +1,14 @@
-import { MEDIA } from "@/lib/landing/content";
-
 export function ProblemMascot() {
   return (
     <>
-      {/* Mobile — mirrored */}
-      <div
-        className="absolute md:hidden bottom-20 -left-10 w-32 h-32 md:w-[428px] md:h-[428px] z-10"
-        style={{ transform: "perspective(1000px) rotateY(180deg)" }}
-      >
-        <img alt="mascot" src={MEDIA.mascot} width={428} height={428} className="w-full h-full object-contain" loading="lazy" />
+      {/* Mobile — bottom right */}
+      <div className="absolute md:hidden -bottom-[30rem] -right-[15rem] w-80 h-80 z-10">
+        <img alt="mascot" src="/falak-mascot-crying.png" width={428} height={428} className="w-full h-full object-contain" loading="lazy" />
       </div>
 
-      {/* Desktop */}
-      <div className="absolute hidden md:block bottom-20 md:-right-[10%] 2xl:right-0 w-32 h-32 md:w-[428px] md:h-[428px] z-10 md:z-0">
-        <img alt="mascot" src={MEDIA.mascot} width={428} height={428} className="w-full h-full object-contain" loading="lazy" />
+      {/* Desktop — bottom right */}
+      <div className="absolute hidden md:block -bottom-[15rem] -right-[15rem] w-[1000px] h-[1000px] z-10">
+        <img alt="mascot" src="/falak-mascot-crying.png" width={856} height={856} className="w-full h-full object-contain" loading="lazy" />
       </div>
     </>
   );

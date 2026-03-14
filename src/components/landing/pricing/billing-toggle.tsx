@@ -1,9 +1,14 @@
+"use client";
+
+import { useTranslations } from "next-intl";
+
 interface BillingToggleProps {
   billingCycle: "monthly" | "annual";
   onChange: (cycle: "monthly" | "annual") => void;
 }
 
 export function BillingToggle({ billingCycle, onChange }: BillingToggleProps) {
+  const t = useTranslations("ui");
   const isAnnual = billingCycle === "annual";
 
   return (
@@ -19,15 +24,15 @@ export function BillingToggle({ billingCycle, onChange }: BillingToggleProps) {
           className="cursor-pointer relative z-10 px-4 py-2 h-full rounded-full text-sm transition-colors duration-300 text-white"
           onClick={() => onChange("monthly")}
         >
-          Monthly
+          {t("monthly")}
         </button>
         <button
           type="button"
           className="cursor-pointer relative z-10 px-4 py-2 rounded-full text-sm transition-colors duration-300 flex items-center gap-2 text-white"
           onClick={() => onChange("annual")}
         >
-          Annual
-          <span className="bg-[#23CF67] text-white text-xs px-2 py-1 rounded-full ">-50%</span>
+          {t("annual")}
+          <span className="bg-[#23CF67] text-white text-xs px-2 py-1 rounded-full">{t("fiftyOff")}</span>
         </button>
       </div>
     </div>

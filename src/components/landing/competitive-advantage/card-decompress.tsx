@@ -24,8 +24,8 @@ export function CardDecompress({ mobile }: { mobile?: boolean }) {
             {t("card1")}
           </h2>
           <div className="space-y-3 text-lg text-white px-6 mb-6">
-            <p>Chaos isn't solved with more tools. It's removed by taking away friction.</p>
-            <p>Memorae converts messages into tasks, emails into plans, ideas into action. Without you having to think twice.</p>
+            <p>{t("card1Body1")}</p>
+            <p>{t("card1Body2")}</p>
           </div>
         </div>
       </div>
@@ -42,8 +42,8 @@ export function CardDecompress({ mobile }: { mobile?: boolean }) {
             {t("card1")}
           </h2>
           <div className="space-y-4 text-white">
-            <p>Chaos isn't solved with more tools. It's removed by taking away friction.</p>
-            <p>Memorae converts messages into tasks, emails into plans, ideas into action. Without you having to think twice.</p>
+            <p>{t("card1Body1")}</p>
+            <p>{t("card1Body2")}</p>
           </div>
         </div>
       </div>

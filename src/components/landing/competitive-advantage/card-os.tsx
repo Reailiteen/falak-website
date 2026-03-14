@@ -22,8 +22,8 @@ export function CardOs({ mobile }: { mobile?: boolean }) {
             {t("card4")}
           </h2>
           <div className="space-y-4 text-white text-base leading-tight">
-            <p>We don't add functions. We're building a mental operating system.</p>
-            <p>A new category, a new habit, a new way of living. With a clear head. And life under control.</p>
+            <p>{t("card4Body1")}</p>
+            <p>{t("card4Body2")}</p>
           </div>
         </div>
       </div>
@@ -36,8 +36,8 @@ export function CardOs({ mobile }: { mobile?: boolean }) {
       <div className="relative z-10 mt-[10%] max-w-2xl">
         <h2 className="text-[40px] text-white mb-6">{t("card4")}</h2>
         <div className="space-y-4 text-white text-2xl">
-          <p>We don't add functions. We're building a mental operating system.</p>
-          <p>A new category, a new habit, a new way of living. With a clear head. And life under control.</p>
+          <p>{t("card4Body1")}</p>
+          <p>{t("card4Body2")}</p>
         </div>
       </div>
     </div>

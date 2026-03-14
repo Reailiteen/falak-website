@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { trackLandingEvent } from "@/lib/landing/analytics";
 import type { PricingPlan } from "@/lib/landing/types";
 import type { Locale } from "@/lib/landing/types";
@@ -33,6 +34,8 @@ interface CardContentProps {
 }
 
 function CardContent({ plan, isAnnual, locale, config }: CardContentProps) {
+  const t = useTranslations("ui");
+  const tp = useTranslations("pricing");
   return (
     <div className="relative z-10">
       {/* Tier label */}
@@ -50,7 +53,7 @@ function CardContent({ plan, isAnnual, locale, config }: CardContentProps) {
         </h2>
         {isAnnual && (
           <span className="px-1 py-1 text-[11px] rounded-sm inline text-[#090D10] bg-green-500">
-            6 MONTHS FREE
+            {t("sixMonthsFree")}
           </span>
         )}
       </div>
@@ -67,12 +70,12 @@ function CardContent({ plan, isAnnual, locale, config }: CardContentProps) {
             </span>
           )}
           {config.showPerMonth && (
-            <span className="text-gray-400 font-normal flex-shrink-0 text-[16px] whitespace-nowrap">per month</span>
+            <span className="text-gray-400 font-normal flex-shrink-0 text-[16px] whitespace-nowrap">{t("perMonth")}</span>
           )}
         </div>
         {isAnnual && (
           <p className={`${config.annualTextColor} text-[16px] flex items-start`}>
-            12 months for {config.annualTotal} $ (<span className="line-through">{config.monthlyTotal} $</span>)
+            {tp("monthsFor")} {config.annualTotal} $ (<span className="line-through">{config.monthlyTotal} $</span>)
           </p>
         )}
       </div>
@@ -95,11 +98,11 @@ function CardContent({ plan, isAnnual, locale, config }: CardContentProps) {
         </div>
         <div className="text-left flex-1 min-h-[64px] flex items-center">
           <p className="text-[13px] text-gray-800 leading-tight">
-            Watch{" "}
+            {tp("watchPrefix")}{" "}
             <span className="bg-gradient-to-r from-[#9734E6] to-[#E5469F] bg-clip-text text-transparent text-[13px] inline">
               {plan.name}
             </span>{" "}
-            in action
+            {tp("watchSuffix")}
           </p>
         </div>
       </div>
@@ -111,7 +114,7 @@ function CardContent({ plan, isAnnual, locale, config }: CardContentProps) {
         style={config.buttonStyle}
         onClick={() => trackLandingEvent("cta_primary_click", { locale, section: `pricing_${plan.id}` })}
       >
-        Try for Free <span className="text-lg">→</span>
+        {t("tryFree")} <span className="text-lg">→</span>
       </button>
     </div>
   );
@@ -127,6 +130,7 @@ export interface PricingCardProps {
 }
 
 export function PricingCard({ plan, isAnnual, locale, config, isActive, onHover }: PricingCardProps) {
+  const t = useTranslations("ui");
   const bgImage = (
     <img
       alt=""
@@ -155,7 +159,7 @@ export function PricingCard({ plan, isAnnual, locale, config, isActive, onHover 
                   className="text-center py-1.5 text-white text-lg rounded-t-3xl"
                   style={{ background: "linear-gradient(135deg, rgb(99, 102, 241) 0%, rgb(236, 72, 153) 100%)" }}
                 >
-                  Most Popular
+                  {t("mostPopular")}
                 </div>
                 <div className="bg-[#090D10] rounded-b-3xl p-6 text-white -mt-[3px] relative z-20 transition-all duration-300 hover:shadow-[0_10px_30px_rgba(255,102,196,0.15)] overflow-hidden">
                   {bgImage}

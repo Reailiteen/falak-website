@@ -39,11 +39,13 @@ function MeetingCard({ compact, t }: { compact?: boolean; t: (k: string) => stri
         </span>
       </div>
       <div className={`text-[#0c254c] leading-tight ${compact ? "text-[1rem]" : "text-[1.3rem]"} mb-2 px-3`}>
-        Meeting with<br />new client
+        {t("meetingTitle").split("\n").map((line, i) => (
+          <span key={i}>{line}{i === 0 && <br />}</span>
+        ))}
       </div>
       <div className={`flex items-center justify-around text-[#8498ad] ${compact ? "text-sm" : "text-base"} mt-1 gap-7 font-normal pb-4 px-3`}>
-        <span>Tuesday, 27</span>
-        <span>9:00 AM</span>
+        <span>{t("meetingDate")}</span>
+        <span>{t("meetingTime")}</span>
       </div>
     </div>
   );
@@ -66,12 +68,12 @@ function ListsCard({ compact, t }: { compact?: boolean; t: (k: string) => string
         <span className="text-[10px] font-bold text-[#557BF4] tracking-wider">{t("labelLists")}</span>
       </div>
       <div className={`text-[#1A3556] leading-tight ${compact ? "text-base" : "text-lg"} px-4 mt-2`}>
-        Your pending tasks:
+        {t("listHeader")}
       </div>
       <ul className="mt-1 flex flex-col gap-1 text-sm ms-8 mb-2 list-disc">
-        <li className="text-[#989BAB]">Walk Paco 🐶</li>
-        {!compact && <li className="text-[#989BAB] text-sm">Do the grocery shopping</li>}
-        <li className="text-[#989BAB] text-sm">Send a quote</li>
+        <li className="text-[#989BAB]">{t("listItem1")}</li>
+        {!compact && <li className="text-[#989BAB] text-sm">{t("listItem2")}</li>}
+        <li className="text-[#989BAB] text-sm">{t("listItem3")}</li>
       </ul>
     </div>
   );
@@ -94,11 +96,13 @@ function ReminderCard({ compact, t }: { compact?: boolean; t: (k: string) => str
         <span className="text-[10px] font-bold text-[#23CF67] tracking-wider">{t("labelReminder")}</span>
       </div>
       <div className={`text-[#0c254c] leading-tight ${compact ? "text-[1rem]" : "text-[1.15rem]"} px-2 mt-2`}>
-        Call the dentist<br />and make an appointment
+        {t("reminderTitle").split("\n").map((line, i) => (
+          <span key={i}>{line}{i === 0 && <br />}</span>
+        ))}
       </div>
       <div className="flex items-center px-2 gap-4 text-[#8498ad] text-sm font-normal pb-4 pt-2">
-        <span>Monday, 26</span>
-        <span>8:00 AM</span>
+        <span>{t("reminderDate")}</span>
+        <span>{t("reminderTime")}</span>
       </div>
     </div>
   );
