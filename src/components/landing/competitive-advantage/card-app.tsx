@@ -1,13 +1,12 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { MEDIA } from "@/lib/landing/content";
 
 export function CardApp({ mobile }: { mobile?: boolean }) {
   const t = useTranslations("chaos");
   if (mobile) {
     return (
-      <div className="rounded-4xl overflow-hidden bg-cover bg-center" style={{ backgroundImage: "url('/falak-quests-calm-bg.png')" }}>
+      <div className="rounded-4xl overflow-hidden bg-cover bg-bottom" style={{ backgroundImage: "url('/falak-quests-calm-bg.png')" }}>
         <div className="p-6">
           <h2 className="text-[36px] leading-tight text-[#121C28] mb-6">
             {t("subheading")}
@@ -16,15 +15,13 @@ export function CardApp({ mobile }: { mobile?: boolean }) {
             <p>{t("appBody")}</p>
           </div>
         </div>
-        <div className="w-full mb-14">
-          <img alt="mem-bg" width="1920" height="1080" className="w-full h-auto" src={MEDIA.multiCards} />
-        </div>
+        <div className="h-64" />
       </div>
     );
   }
 
   return (
-    <div className="rounded-3xl overflow-hidden bg-cover bg-center" style={{ backgroundImage: "url('/falak-quests-calm-bg.png')" }}>
+    <div className="rounded-3xl overflow-hidden bg-cover bg-bottom" style={{ backgroundImage: "url('/falak-quests-calm-bg.png')" }}>
       <div className="p-8">
         <h2 className="text-[36px] leading-tight text-gray-800 mb-6">
           {t("subheading")}
@@ -33,9 +30,7 @@ export function CardApp({ mobile }: { mobile?: boolean }) {
           <p>{t("appBody")}</p>
         </div>
       </div>
-      <div className="w-full">
-        <img alt="mem-bg" width="1920" height="1080" className="w-full h-auto" src={MEDIA.multiCards} />
-      </div>
+      <div className="h-64" />
     </div>
   );
 }
