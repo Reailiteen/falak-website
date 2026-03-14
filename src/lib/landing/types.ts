@@ -39,6 +39,7 @@ export interface PricingPlan {
   thumbnailImage: string;
   videoThumb?: string;
   popular?: boolean;
+  contactUs?: boolean;
   features: string[];
 }
 

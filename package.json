@@ -9,6 +9,8 @@
     "dev:no-open": "BROWSER=none next dev",
     "dev:local": "next dev --hostname 127.0.0.1",
     "build": "next build",
+    "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
+    "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
     "start": "next start",
     "verify-redirect": "node scripts/verify-homepage-redirect.mjs",
     "lint": "next lint"
@@ -21,6 +23,7 @@
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
+    "@opennextjs/cloudflare": "^1.17.1",
     "@tailwindcss/postcss": "^4.0.0",
     "@types/matter-js": "^0.20.2",
     "@types/node": "^22.0.0",

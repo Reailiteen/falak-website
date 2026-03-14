@@ -13,7 +13,7 @@ export function FeaturesSection() {
   const scroll = (dir: 1 | -1) =>
     scrollRef.current?.scrollBy({ left: dir * 334, behavior: "smooth" });
 
-  const CARDS: FeatureCardData[] = Array.from({ length: 11 }, (_, i) => ({
+  const CARDS: FeatureCardData[] = Array.from({ length: 9 }, (_, i) => ({
     title: t(`card${i}Title`),
     userMessage: t(`card${i}User`),
     botReply: t(`card${i}Bot`),

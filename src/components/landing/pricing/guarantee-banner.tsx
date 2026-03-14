@@ -4,23 +4,23 @@ import { useTranslations } from "next-intl";
 import { MEDIA } from "@/lib/landing/content";
 
 const PLAN_ACCENTS: Record<string, { name: string; className: string }> = {
-  origin: {
-    name: "Origin",
+  orbit: {
+    name: "Orbit",
     className: "text-[#557BF4]",
   },
-  supernova: {
-    name: "Supernova",
+  constellation: {
+    name: "Constellation",
     className: "bg-gradient-to-r bg-clip-text text-transparent from-[#5C7BF3] to-[#FF66C4]",
   },
-  bigbang: {
-    name: "Big Bang",
+  sanctuary: {
+    name: "Sanctuary",
     className: "bg-gradient-to-r bg-clip-text text-transparent from-[#FAB115] to-white",
   },
 };
 
 export function GuaranteeBanner({ activePlanId }: { activePlanId: string }) {
   const t = useTranslations("pricing");
-  const accent = PLAN_ACCENTS[activePlanId] ?? PLAN_ACCENTS.bigbang;
+  const accent = PLAN_ACCENTS[activePlanId] ?? PLAN_ACCENTS.sanctuary;
 
   return (
     <div className="lg:max-w-[850px] lg:mx-auto lg:px-4">

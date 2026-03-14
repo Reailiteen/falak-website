@@ -10,7 +10,7 @@ import { FeaturesGrid } from "./features-grid";
 
 export function PricingSection({ locale }: { locale: Locale }) {
   const [billingCycle, setBillingCycle] = useState<"monthly" | "annual">("annual");
-  const [activeCardId, setActiveCardId] = useState("bigbang");
+  const [activeCardId, setActiveCardId] = useState("sanctuary");
   const isAnnual = billingCycle === "annual";
 
   return (
@@ -30,21 +30,21 @@ export function PricingSection({ locale }: { locale: Locale }) {
             className="hidden lg:block absolute inset-0 pointer-events-none transition-opacity duration-700 z-0"
             style={{
               background: "radial-gradient(ellipse 60% 120% at 18% 50%, rgba(85, 123, 244, 0.25) 0%, transparent 80%)",
-              opacity: activeCardId === "origin" ? 1 : 0,
+              opacity: activeCardId === "orbit" ? 1 : 0,
             }}
           />
           <div
             className="hidden lg:block absolute inset-0 pointer-events-none transition-opacity duration-700 z-0"
             style={{
               background: "radial-gradient(ellipse 65% 120% at 50% 50%, rgba(140, 80, 230, 0.20) 0%, transparent 80%)",
-              opacity: activeCardId === "supernova" ? 1 : 0,
+              opacity: activeCardId === "constellation" ? 1 : 0,
             }}
           />
           <div
             className="hidden lg:block absolute inset-0 pointer-events-none transition-opacity duration-700 z-0"
             style={{
               background: "radial-gradient(ellipse 60% 120% at 82% 50%, rgba(250, 177, 21, 0.20) 0%, transparent 80%)",
-              opacity: activeCardId === "bigbang" ? 1 : 0,
+              opacity: activeCardId === "sanctuary" ? 1 : 0,
             }}
           />
 

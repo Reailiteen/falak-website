@@ -24,7 +24,7 @@ export function PricingHero() {
       </div>
 
       <div className="absolute right-0 bottom-0 hidden md:block">
-        <img alt="Memorae Mascot" className="w-72 h-72 object-contain" src={MEDIA.chaosMem} loading="lazy" />
+        <img alt="Falak Mascot" className="w-[576px] h-[576px] object-contain" src={MEDIA.chaosMem} loading="lazy" />
       </div>
 
       {/* Mobile */}
@@ -32,7 +32,7 @@ export function PricingHero() {
         <h1 className="text-6xl text-white mb-4 z-40 -mt-20 leading-tight">{t("heroTitle")}</h1>
         <p className="text-lg text-white mb-12 z-50">{t("heroSubtitle")}</p>
         <img
-          alt="Memorae Mascot"
+          alt="Falak Mascot"
           className="w-48 h-48 object-contain absolute top-[66%] -right-[12%]"
           src={MEDIA.chaosMem}
           loading="lazy"

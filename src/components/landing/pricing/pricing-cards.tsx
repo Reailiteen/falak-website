@@ -7,7 +7,7 @@ import { PricingCard } from "./pricing-card";
 import type { CardVisualConfig } from "./pricing-card";
 
 const CARD_CONFIGS: Record<string, CardVisualConfig> = {
-  origin: {
+  orbit: {
     bgImage: MEDIA.frame2147238145,
     buttonClassName: "bg-[#557BF4]",
     videoBg: "bg-[#EAF2F1] hover:bg-[#d8ebe9]",
@@ -19,8 +19,9 @@ const CARD_CONFIGS: Record<string, CardVisualConfig> = {
     annualTextColor: "text-gray-400",
     ctaTextSize: "text-2xl",
     glowColor: "rgba(85, 123, 244, 0.5)",
+    mascotClassName: "w-[168px] h-[168px] lg:w-[180px] lg:h-[180px]",
   },
-  supernova: {
+  constellation: {
     bgImage: MEDIA.frame369458,
     buttonClassName: "",
     buttonStyle: { background: "linear-gradient(135deg, rgb(99, 102, 241) 0%, rgb(236, 72, 153) 100%)" },
@@ -33,8 +34,9 @@ const CARD_CONFIGS: Record<string, CardVisualConfig> = {
     annualTextColor: "text-gray-300",
     ctaTextSize: "text-xl lg:text-2xl",
     glowColor: "linear-gradient(135deg, rgba(92, 123, 243, 0.5) 0%, rgba(255, 102, 196, 0.5) 100%)",
+    mascotClassName: "w-[190px] h-[190px] lg:w-[204px] lg:h-[204px]",
   },
-  bigbang: {
+  sanctuary: {
     bgImage: MEDIA.frame2147238144,
     buttonClassName: "bg-[#FAB115]",
     videoBg: "bg-[#EAF2F1] hover:bg-[#d8ebe9]",
@@ -47,6 +49,8 @@ const CARD_CONFIGS: Record<string, CardVisualConfig> = {
     ctaTextSize: "text-2xl",
     accentClassName: "ring-2 ring-[#f9b31c]",
     glowColor: "rgba(250, 177, 21, 0.5)",
+    mascotClassName: "w-[168px] h-[168px] lg:w-[180px] lg:h-[180px]",
+    mascotPositionClassName: "right-[-4px] top-6 md:right-[-2px] md:top-6",
   },
 };
 

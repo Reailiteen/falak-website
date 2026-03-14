@@ -24,6 +24,8 @@ export interface CardVisualConfig {
   ctaTextSize: string;
   accentClassName?: string;
   glowColor: string;
+  mascotClassName?: string;
+  mascotPositionClassName?: string;
 }
 
 interface CardContentProps {
@@ -60,23 +62,32 @@ function CardContent({ plan, isAnnual, locale, config }: CardContentProps) {
 
       {/* Price */}
       <div className="mb-3">
-        <div className="flex items-baseline gap-2 mb-2">
-          <span className={`${config.priceClassName} text-white whitespace-nowrap`}>
-            {isAnnual ? plan.annualPrice : plan.monthlyPrice}
-          </span>
-          {isAnnual && (
-            <span className="text-[28px] lg:text-[32px] text-white/70 line-through whitespace-nowrap flex-shrink-0">
-              {plan.monthlyPrice}
-            </span>
-          )}
-          {config.showPerMonth && (
-            <span className="text-gray-400 font-normal flex-shrink-0 text-[16px] whitespace-nowrap">{t("perMonth")}</span>
-          )}
-        </div>
-        {isAnnual && (
-          <p className={`${config.annualTextColor} text-[16px] flex items-start`}>
-            {tp("monthsFor")} {config.annualTotal} $ (<span className="line-through">{config.monthlyTotal} $</span>)
-          </p>
+        {plan.contactUs ? (
+          <div className="flex items-baseline gap-2 mb-2">
+            <span className={`${config.priceClassName} text-white whitespace-nowrap`}>{t("customPrice")}</span>
+            <span className="text-gray-400 font-normal flex-shrink-0 text-[16px] whitespace-nowrap">{t("customPricing")}</span>
+          </div>
+        ) : (
+          <>
+            <div className="flex items-baseline gap-2 mb-2">
+              <span className={`${config.priceClassName} text-white whitespace-nowrap`}>
+                {isAnnual ? plan.annualPrice : plan.monthlyPrice}
+              </span>
+              {isAnnual && (
+                <span className="text-[28px] lg:text-[32px] text-white/70 line-through whitespace-nowrap flex-shrink-0">
+                  {plan.monthlyPrice}
+                </span>
+              )}
+              {config.showPerMonth && (
+                <span className="text-gray-400 font-normal flex-shrink-0 text-[16px] whitespace-nowrap">{t("perMonth")}</span>
+              )}
+            </div>
+            {isAnnual && (
+              <p className={`${config.annualTextColor} text-[16px] flex items-start`}>
+                {tp("monthsFor")} {config.annualTotal} $ (<span className="line-through">{config.monthlyTotal} $</span>)
+              </p>
+            )}
+          </>
         )}
       </div>
 
@@ -114,7 +125,7 @@ function CardContent({ plan, isAnnual, locale, config }: CardContentProps) {
         style={config.buttonStyle}
         onClick={() => trackLandingEvent("cta_primary_click", { locale, section: `pricing_${plan.id}` })}
       >
-        {t("tryFree")} <span className="text-lg">→</span>
+        {plan.contactUs ? "Contact us" : t("tryFree")} <span className="text-lg">→</span>
       </button>
     </div>
   );
@@ -164,10 +175,10 @@ export function PricingCard({ plan, isAnnual, locale, config, isActive, onHover 
                 <div className="bg-[#090D10] rounded-b-3xl p-6 text-white -mt-[3px] relative z-20 transition-all duration-300 hover:shadow-[0_10px_30px_rgba(255,102,196,0.15)] overflow-hidden">
                   {bgImage}
                   <div className="absolute inset-0 rounded-b-3xl z-0" />
-                  <div className="absolute right-3 top-3 md:right-0 md:top-2 z-10 w-28 h-28 lg:w-[120px] lg:h-[120px]">
+                  <div className={`absolute right-3 top-3 md:right-0 md:top-2 z-10 ${config.mascotClassName ?? "w-28 h-28 lg:w-[120px] lg:h-[120px]"}`}>
                     <img
                       alt={`${plan.name} mascot`}
-                      className="w-full h-full object-contain drop-shadow-[0_0_16px_rgba(0,0,0,0.5)]"
+                      className="w-full h-full object-contain"
                       loading="lazy"
                       src={plan.mascotImage}
                     />
@@ -197,10 +208,10 @@ export function PricingCard({ plan, isAnnual, locale, config, isActive, onHover 
       >
         {bgImage}
         <div className="absolute inset-0 rounded-4xl z-0" />
-        <div className="absolute right-[9px] top-0 md:right-1 md:top-0 z-10 w-28 h-28 lg:w-[120px] lg:h-[120px]">
+        <div className={`absolute z-10 ${config.mascotPositionClassName ?? "right-[9px] top-0 md:right-1 md:top-0"} ${config.mascotClassName ?? "w-28 h-28 lg:w-[120px] lg:h-[120px]"}`}>
           <img
             alt={`${plan.name} mascot`}
-            className="w-full h-full object-contain drop-shadow-[0_0_16px_rgba(0,0,0,0.5)]"
+            className="w-full h-full object-contain"
             loading="lazy"
             src={plan.mascotImage}
           />

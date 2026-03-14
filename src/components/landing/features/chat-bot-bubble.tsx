@@ -1,5 +1,3 @@
-import { MEDIA } from "@/lib/landing/content";
-
 type Props = { reply: string };
 
 export function ChatBotBubble({ reply }: Props) {
@@ -12,12 +10,12 @@ export function ChatBotBubble({ reply }: Props) {
         </svg>
       </span>
 
-      {/* Memorae badge */}
+      {/* Falak badge */}
       <div className="flex items-center gap-1 rounded-[6px] bg-[#E4ECFF] px-2 py-1 w-fit">
-        <div className="h-[14px] w-[14px] rounded-full bg-white grid place-items-center">
-          <img alt="Memorae logo" src={MEDIA.memoraeLogo} width={20} height={20} className="object-contain" loading="lazy" />
+        <div className="h-[18px] w-[18px] rounded-full bg-white grid place-items-center overflow-hidden">
+          <img alt="Falak mascot" src="/falak-mascot-no-bg.png" width={18} height={18} className="object-cover" loading="lazy" />
         </div>
-        <span className="text-[10px] uppercase tracking-wide text-[#557BF4]">Memorae</span>
+        <span className="text-[10px] uppercase tracking-wide text-[#557BF4]">Falak</span>
       </div>
 
       <p className="text-sm leading-[136%] text-[#01214F] text-left">{reply}</p>

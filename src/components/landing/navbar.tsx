@@ -83,7 +83,7 @@ export function Navbar({ visible = true }: NavbarProps) {
           {/* ── Desktop ── */}
           <div className="hidden lg:block" onMouseLeave={() => setActiveMenu(null)}>
             <header
-              className="relative mx-auto mt-5 max-w-fit rounded-full border px-3 py-1 overflow-hidden backdrop-blur-xl transition-all duration-300"
+              className="relative mx-auto mt-5 max-w-fit rounded-full border px-3 py-0 backdrop-blur-xl transition-all duration-300"
               style={{
                 background: scrolled ? "rgba(25, 30, 48, 0.82)" : "rgba(255, 255, 255, 0.12)",
                 borderColor: scrolled ? "rgba(255, 255, 255, 0.10)" : "rgba(255, 255, 255, 0.2)",
@@ -91,7 +91,7 @@ export function Navbar({ visible = true }: NavbarProps) {
                 transition: "background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease",
               }}
             >
-              <div className="flex items-center justify-between">
+              <div className="flex items-center justify-between h-[52px] overflow-hidden">
                 {/* Logo */}
                 <a href="#top" className="ms-4 me-10 flex-shrink-0 text-white text-2xl">
                   <img src={MEDIA.logoHome} alt="Memorae" className="h-[4rem] w-[8rem] cursor-pointer object-contain" />

@@ -21,9 +21,9 @@ const FEATURE_ICONS = [
 ];
 
 const PLAN_TILE_CONFIG: Record<string, { accentColor: string; iconFilter?: string }> = {
-  origin:   { accentColor: "#557BF4", iconFilter: "hue-rotate(180deg) brightness(0.75)" },
-  supernova:{ accentColor: "#ec4899", iconFilter: "hue-rotate(270deg) saturate(1.3) brightness(0.75)" },
-  bigbang:  { accentColor: "#FAB115" },
+  orbit:        { accentColor: "#557BF4", iconFilter: "hue-rotate(180deg) brightness(0.75)" },
+  constellation:{ accentColor: "#ec4899", iconFilter: "hue-rotate(270deg) saturate(1.3) brightness(0.75)" },
+  sanctuary:    { accentColor: "#FAB115" },
 };
 
 function FeatureTile({
@@ -70,9 +70,9 @@ function FeatureTile({
 }
 
 const PLAN_FEATURE_COUNTS: Record<string, number> = {
-  origin: 6,
-  supernova: 11,
-  bigbang: 14,
+  orbit: 5,
+  constellation: 10,
+  sanctuary: 14,
 };
 
 export function FeaturesGrid({ activePlanId }: { activePlanId: string }) {
