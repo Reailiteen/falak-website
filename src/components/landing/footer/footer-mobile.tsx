@@ -21,7 +21,7 @@ export function FooterMobile() {
         </div>
 
         <div className="mb-8 relative">
-          <img alt="memorae-logo" loading="lazy" width={140} height={140} src={MEDIA.logoWhite} style={{ color: "transparent" }} />
+          <img alt="falak-logo" loading="lazy" width={140} height={40} src={MEDIA.logoHome} style={{ color: "transparent" }} />
         </div>
 
         <div className="mb-12 relative">

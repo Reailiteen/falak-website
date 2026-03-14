@@ -15,16 +15,17 @@ export function PricingHero() {
         backgroundRepeat: "no-repeat",
       }}
     >
-      {/* Desktop */}
-      <div className="hidden md:flex items-center justify-between w-full max-w-6xl mx-auto px-8">
+      {/* Desktop mascot — behind text */}
+      <div className="absolute right-0 bottom-0 hidden md:block">
+        <img alt="Falak Mascot" className="w-[576px] h-[576px] object-contain" src={MEDIA.chaosMem} loading="lazy" />
+      </div>
+
+      {/* Desktop text — above mascot */}
+      <div className="hidden md:flex items-center justify-between w-full max-w-6xl mx-auto px-8 relative z-10">
         <div className="text-center flex-1">
           <h1 className="text-8xl text-white mb-4">{t("heroTitle")}</h1>
           <p className="text-2xl text-white">{t("heroSubtitle")}</p>
         </div>
-      </div>
-
-      <div className="absolute right-0 bottom-0 hidden md:block">
-        <img alt="Falak Mascot" className="w-[576px] h-[576px] object-contain" src={MEDIA.chaosMem} loading="lazy" />
       </div>
 
       {/* Mobile */}

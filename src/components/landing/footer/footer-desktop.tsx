@@ -23,11 +23,11 @@ export function FooterDesktop() {
           <div className="flex justify-between items-start">
             <div>
               <img
-                alt="memorae-logo"
+                alt="falak-logo"
                 loading="lazy"
                 width={140}
                 height={40}
-                src={MEDIA.logoWhite}
+                src={MEDIA.logoHome}
                 style={{ color: "transparent" }}
               />
             </div>
