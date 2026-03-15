@@ -1,14 +1,14 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 
-const FOOTER_LINKS = [
-  { labelKey: "privacyPolicy" as const, href: "/privacy-policy/" },
-  { labelKey: "termsAndConditions" as const, href: "/terms/" },
-  { labelKey: "cookieSettings" as const, href: "/cookies-settings/" },
-  { labelKey: "legalNotice" as const, href: "/legal-notice/" },
-  { labelKey: "communicationChannels" as const, href: "/communications/" },
-  { labelKey: "refundsAndReturns" as const, href: "/refunds-and-return-policy/" },
+const FOOTER_LINK_PATHS = [
+  { labelKey: "privacyPolicy" as const, path: "privacy-policy" },
+  { labelKey: "termsAndConditions" as const, path: "terms" },
+  { labelKey: "cookieSettings" as const, path: "cookies-settings" },
+  { labelKey: "legalNotice" as const, path: "legal-notice" },
+  { labelKey: "communicationChannels" as const, path: "communications" },
+  { labelKey: "refundsAndReturns" as const, path: "refunds-and-return-policy" },
 ];
 
 interface FooterLinksProps {
@@ -17,6 +17,11 @@ interface FooterLinksProps {
 
 export function FooterLinks({ layout }: FooterLinksProps) {
   const t = useTranslations("footer");
+  const locale = useLocale();
+  const FOOTER_LINKS = FOOTER_LINK_PATHS.map(({ labelKey, path }) => ({
+    labelKey,
+    href: `/${locale}/${path}/`,
+  }));
   if (layout === "vertical") {
     return (
       <div className="space-y-4 mb-8 relative">
