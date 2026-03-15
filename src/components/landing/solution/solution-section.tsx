@@ -34,7 +34,7 @@ export function SolutionSection() {
         <div className={lineClass}>
           <div className="text-center w-full">
             <span className="bg-gradient-to-r from-[#557BF4] to-[#FF66C4] bg-clip-text text-transparent font-bold">Falak</span>{" "}
-            <img src="/falak-mascot-no-bg.png" alt="falak mascot" className="inline-block -mt-1 align-middle w-auto h-[45px] md:h-[70px] object-contain" /> {t("line1")}
+            <img src="/images/mascots/falak-mascot-no-bg.png" alt="falak mascot" className="inline-block -mt-1 align-middle w-auto h-[45px] md:h-[70px] object-contain" /> {t("line1")}
           </div>
         </div>
 
@@ -57,7 +57,7 @@ export function SolutionSection() {
             <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f331.png" alt="habits" className="w-[30px] h-[30px] md:w-[50px] md:h-[50px] flex-shrink-0" />
             <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f3c6.png" alt="milestones" className="w-[30px] h-[30px] md:w-[50px] md:h-[50px] flex-shrink-0" />
             <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f49b.png" alt="values" className="w-[30px] h-[30px] md:w-[50px] md:h-[50px] flex-shrink-0" />
-            <img src="/falak-mascot.png" alt="Falak" className="w-[30px] h-[30px] md:w-[50px] md:h-[50px] rounded-xl object-cover flex-shrink-0" />
+            <img src="/images/mascots/falak-mascot.png" alt="Falak" className="w-[30px] h-[30px] md:w-[50px] md:h-[50px] rounded-xl object-cover flex-shrink-0" />
           </div>
         </div>
 

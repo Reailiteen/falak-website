@@ -14,12 +14,12 @@
    needed — everything that inherits font-family updates instantly.
 
    Font file:
-     public/fonts/GESSTwoBold.otf
+     public/fonts/gess-two-bold.otf
    ───────────────────────────────────────────────────────────────── */
 
 @font-face {
   font-family: "GE SS Two";
-  src: url("/fonts/GESSTwoBold.otf") format("opentype");
+  src: url("/fonts/gess-two-bold.otf") format("opentype");
   font-weight: 700;
   font-style: normal;
   font-display: swap;

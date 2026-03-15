@@ -13,7 +13,7 @@ import { SuperpowersSection } from "@/components/landing/superpowers";
 import { FeaturesSection } from "@/components/landing/features";
 import { PricingSection } from "@/components/landing/pricing";
 import { CompetitiveAdvantage } from "@/components/landing/competitive-advantage";
-import { TestimoniesSection } from "@/components/landing/testimonies-section";
+import { TestimoniesSection } from "@/components/landing/testimonials";
 import { FaqSection } from "@/components/landing/faq";
 import { FooterSection } from "@/components/landing/footer";
 import { FooterTryButton } from "@/components/landing/footer/footer-try-button";

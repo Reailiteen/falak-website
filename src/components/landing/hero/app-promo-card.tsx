@@ -24,7 +24,7 @@ export function AppPromoCard({ variant }: Props) {
         <img
           alt="Falak App"
           className="w-20 h-20 object-contain rounded-2xl"
-          src="/falak-mascot.png"
+          src="/images/mascots/falak-mascot.png"
         />
       </div>
       <div className="flex flex-col">

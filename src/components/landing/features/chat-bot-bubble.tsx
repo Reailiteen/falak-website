@@ -13,7 +13,7 @@ export function ChatBotBubble({ reply }: Props) {
       {/* Falak badge */}
       <div className="flex items-center gap-1 rounded-[6px] bg-[#E4ECFF] px-2 py-1 w-fit">
         <div className="h-[18px] w-[18px] rounded-full bg-white grid place-items-center overflow-hidden">
-          <img alt="Falak mascot" src="/falak-mascot-no-bg.png" width={18} height={18} className="object-cover" loading="lazy" />
+          <img alt="Falak mascot" src="/images/mascots/falak-mascot-no-bg.png" width={18} height={18} className="object-cover" loading="lazy" />
         </div>
         <span className="text-[10px] uppercase tracking-wide text-[#557BF4]">Falak</span>
       </div>

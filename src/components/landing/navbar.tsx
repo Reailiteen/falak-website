@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
-import { MEDIA } from "@/lib/landing/content";
+import { MEDIA, SUPERPOWER_CARDS } from "@/lib/landing/content";
 
 type NavMenu = "superpowers" | "channels" | null;
 
@@ -30,22 +30,10 @@ function ChevronIcon({ open }: { open: boolean }) {
 }
 
 const PROMO_CARDS = [
-  { image: "/falak-superpowers/falak-smart-holding-books.png", titleKey: "promoCard1" as const },
-  { image: "/falak-superpowers/falak-detective.png", titleKey: "promoCard2" as const },
+  { image: SUPERPOWER_CARDS[1].image, titleKey: "promoCard1" as const },
+  { image: SUPERPOWER_CARDS[5].image, titleKey: "promoCard2" as const },
 ];
 
-const FALAK_SUPERPOWERS = [
-  { id: "cinema", title: "Cinema Night", image: "/falak-superpowers/falak-cinema.png" },
-  { id: "detective", title: "Detective Mode", image: "/falak-superpowers/falak-detective.png" },
-  { id: "treasure", title: "Discover Rewards", image: "/falak-superpowers/falak-discovers-treasure.png" },
-  { id: "prayer", title: "Peaceful Prayer", image: "/falak-superpowers/falak-praying-peacfully.png" },
-  { id: "rewards", title: "Rewards", image: "/falak-superpowers/falak-rewards-discovers.png" },
-  { id: "quests", title: "Quests", image: "/falak-superpowers/falak-sees-quests.png" },
-  { id: "books", title: "Study Time", image: "/falak-superpowers/falak-smart-holding-books.png" },
-  { id: "space", title: "Space Explorer", image: "/falak-superpowers/falak-space-above-earth.png" },
-  { id: "values", title: "Family Values", image: "/falak-superpowers/falak-value-propositons.png" },
-  { id: "tarbiya", title: "Tarbiya Insights", image: "/falak-superpowers/parents-tarbiya-insights.png" },
-];
 
 export function Navbar({ visible = true }: NavbarProps) {
   const t = useTranslations("nav");
@@ -353,7 +341,7 @@ export function Navbar({ visible = true }: NavbarProps) {
                           }}
                           className="[&::-webkit-scrollbar]:hidden"
                         >
-                          {FALAK_SUPERPOWERS.map((sp) => (
+                          {SUPERPOWER_CARDS.map((sp) => (
                             <button
                               key={sp.id}
                               type="button"
@@ -389,7 +377,7 @@ export function Navbar({ visible = true }: NavbarProps) {
                                     margin: 0,
                                   }}
                                 >
-                                  {sp.title}
+                                  {sp.navTitle}
                                 </p>
                               </div>
                             </button>
@@ -452,7 +440,7 @@ export function Navbar({ visible = true }: NavbarProps) {
 
                             {/* Mascot */}
                             <img
-                              src="/falak-mascot-crying.png"
+                              src={MEDIA.mascotCrying}
                               alt={ch.title}
                               style={{
                                 position: "absolute",

@@ -1,24 +1,14 @@
 "use client";
 
 import { useRef } from "react";
+import { SUPERPOWER_CARDS } from "@/lib/landing/content";
 import type { CardData } from "./superpowers-card";
 import { SuperpowersHeading } from "./superpowers-heading";
 import { SuperpowersNav } from "./superpowers-nav";
 import { SuperpowersCarousel } from "./superpowers-carousel";
 import { SuperpowersCTA } from "./superpowers-cta";
 
-const CARDS: CardData[] = [
-  { title: "Daily Prayer Habits",       image: "/falak-superpowers/falak-praying-peacfully.png" },
-  { title: "Smart Learning Path",       image: "/falak-superpowers/falak-smart-holding-books.png" },
-  { title: "Daily Challenges",          image: "/falak-superpowers/falak-sees-quests.png" },
-  { title: "Discover Hidden Rewards",   image: "/falak-superpowers/falak-discovers-treasure.png" },
-  { title: "Earn Amazing Rewards",      image: "/falak-superpowers/falak-rewards-discovers.png" },
-  { title: "Mystery Quests",            image: "/falak-superpowers/falak-detective.png" },
-  { title: "Fun Story Adventures",      image: "/falak-superpowers/falak-cinema.png" },
-  { title: "Limitless Growth",          image: "/falak-superpowers/falak-space-above-earth.png" },
-  { title: "Build Core Values",         image: "/falak-superpowers/falak-value-propositons.png" },
-  { title: "Tarbiya Insights",          image: "/falak-superpowers/parents-tarbiya-insights.png", isNew: true },
-];
+const CARDS: CardData[] = SUPERPOWER_CARDS.map((c) => ({ title: c.label, image: c.image, isNew: (c as { isNew?: boolean }).isNew }));
 
 export function SuperpowersSection() {
   const scrollRef = useRef<HTMLDivElement>(null);

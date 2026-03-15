@@ -21,7 +21,7 @@ export const MEDIA = {
   sixNew: "https://cdn.memorae.ai/l3/6-new.webp",
 
   logoWhite: "https://cdn.memorae.ai/l3/MemoraeLogoWhite.png",
-  logoHome: "/falak-logo-white.png",
+  logoHome: "/images/branding/logo-white.png",
   logoDark: "https://cdn.memorae.ai/l3/Memorae_logo_home_dark.png",
   memoraeLogo: "https://cdn.memorae.ai/l4/MemoraeLogo.webp",
 
@@ -56,15 +56,15 @@ export const MEDIA = {
   originThumb: "https://cdn.memorae.ai/l3/origin-thumbnail.webp",
   supernovaThumb: "https://cdn.memorae.ai/l3/supernova-thumbnail.webp",
   bigbangThumb: "https://cdn.memorae.ai/l3/bigbang-thumbnail.webp",
-  originMascot: "/falak_reading.png",
-  supernovaMascot: "/falak-family-happy.png",
-  bigbangMascot: "/falak-good-people.png",
+  originMascot: "/images/pricing/plan-orbit.png",
+  supernovaMascot: "/images/pricing/plan-constellation.png",
+  bigbangMascot: "/images/pricing/plan-sanctuary.png",
   supernovaRow: "https://cdn.memorae.ai/assets/supernova-row.webp",
 
   writingImage: "https://cdn.memorae.ai/l3/Writing_image.webp",
   brainImage: "https://cdn.memorae.ai/l3/Brain_image.webp",
   chaosDesk: "https://cdn.memorae.ai/l3/chaos_desk_bg.webp",
-  chaosMem: "/falak-cool-mf.png",
+  chaosMem: "/images/mascots/falak-mascot-chaos.png",
   memoraeInspirational: "https://cdn.memorae.ai/l3/memorae_inspirational.webp",
 
   frame2147238407: "https://cdn.memorae.ai/l3/Frame%202147238407.webp",
@@ -118,6 +118,23 @@ export const MEDIA = {
   group2147203025: "https://cdn.memorae.ai/l3/Group%202147203025.png",
   group2147203027: "https://cdn.memorae.ai/l3/Group%202147203027-2.png",
   group2147203028: "https://cdn.memorae.ai/l3/Group%202147203028.png",
+
+  // Local mascots
+  mascotDefault: "/images/mascots/falak-mascot.png",
+  mascotCrying: "/images/mascots/falak-mascot-crying.png",
+  mascotNoBg: "/images/mascots/falak-mascot-no-bg.png",
+
+  // Local UI
+  questsBg: "/images/ui/quests-calm-bg.png",
+  footerLocalBg: "/images/ui/footer-bg.png",
+
+  // Local hero
+  familyHeroMobile: "/images/hero/family-hero-mobile.png",
+  familyHeroDesktop: "/images/hero/family-hero-desktop.png",
+
+  // Local portals
+  portalMobile: "/images/ui/portal-mobile.png",
+  portalDesktop: "/images/ui/portal-desktop.png",
 };
 
 export const HERO = {
@@ -538,3 +555,16 @@ export const SEO = {
   title: "Falak | Raise children with clarity and purpose",
   description: "Falak helps families build strong habits, meaningful routines, and lasting values — through quests, rewards, and Tarbiyah insights.",
 };
+
+export const SUPERPOWER_CARDS = [
+  { id: "prayer",    label: "Daily Prayer Habits",     navTitle: "Peaceful Prayer",     image: "/images/superpowers/falak-praying-peacefully.png" },
+  { id: "learning",  label: "Smart Learning Path",     navTitle: "Study Time",          image: "/images/superpowers/falak-learning.png" },
+  { id: "quests",    label: "Daily Challenges",        navTitle: "Quests",              image: "/images/superpowers/falak-quests.png" },
+  { id: "treasure",  label: "Discover Hidden Rewards", navTitle: "Discover Rewards",    image: "/images/superpowers/falak-treasure.png" },
+  { id: "rewards",   label: "Earn Amazing Rewards",    navTitle: "Rewards",             image: "/images/superpowers/falak-rewards.png" },
+  { id: "detective", label: "Mystery Quests",          navTitle: "Detective Mode",      image: "/images/superpowers/falak-detective.png" },
+  { id: "cinema",    label: "Fun Story Adventures",    navTitle: "Cinema Night",        image: "/images/superpowers/falak-cinema.png" },
+  { id: "space",     label: "Limitless Growth",        navTitle: "Space Explorer",      image: "/images/superpowers/falak-space.png" },
+  { id: "values",    label: "Build Core Values",       navTitle: "Family Values",       image: "/images/superpowers/falak-values.png" },
+  { id: "tarbiya",   label: "Tarbiya Insights",        navTitle: "Tarbiya Insights",    image: "/images/superpowers/tarbiya-insights.png", isNew: true },
+] as const;
